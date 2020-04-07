@@ -128,11 +128,14 @@ img {
   <div class="sidenav">
     <div id="heading"> Select Appropriate Filters </div>
     <br>
-    <a href="#class">class</a>
+    <div class="accordion"><a href="#class">class</a></div>
+    <div class="panel"></div>
     <br>
-    <a href="#teacher">teacher</a>
+    <div class="accordion"><a href="#teacher">teacher</a></div>
+    <div class="panel"></div>
     <br>
-    <a href="#year">year</a>
+    <div class="accordion"><a href="#year">year</a></div>
+    <div class="panel"></div>
   </div>
   <div class="main">
     <h1>oldways portal</h1>
@@ -151,5 +154,19 @@ img {
     document.getElementById('mainpage').style.display='block';
     document.getElementById('loader').style.display='none';
   }
+  var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
 </script>
 </html>

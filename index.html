@@ -138,13 +138,13 @@ img {
   <div class="sidenav">
     <div id="heading"> Select Appropriate Filters </div>
     <br>
-    <div class="accordion"><a href="#class">class</a></div>
+    <button class="accordion"><a href="#class">class</a></buttonv>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
     <br>
-    <div class="accordion"><a href="#teacher">teacher</a></div>
+    <button class="accordion"><a href="#teacher">teacher</a></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
     <br>
-    <div class="accordion"><a href="#year">year</a></div>
+    <button class="accordion"><a href="#year">year</a></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
   </div>
   <div class="main">
@@ -168,7 +168,7 @@ img {
 var i;
 
 for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("mouseenter", function() {
+  acc[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
     if (panel.style.maxHeight) {

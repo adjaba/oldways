@@ -35,14 +35,17 @@ h1 {
   font-family: Optima; 
 }
 /* On mouse-over */
-  
+
+.active, .accordion:hover {
+  color: #FFF2EB;
+}
+
 .accordion:after {
   color: #818181;
   content: '\2023'; 
 }
   
-.accordion:active {
-  color: #FFF2EB;
+.active:after {
   content: '\02D1';
 }
   

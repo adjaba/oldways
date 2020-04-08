@@ -36,12 +36,12 @@ h1 {
 }
 /* On mouse-over */
   
-.sidenav a:after {
+a:after {
   color: #818181;
   content: '\2023'; 
 }
   
-.sidenav a:active {
+a:active {
   color: #FFF2EB;
   content: '\02D1';
 }
@@ -177,6 +177,7 @@ for (i = 0; i < acc.length; i++) {
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
       panel.style.display = "none";
+      
     } else {
       panel.style.display = "block";
     }

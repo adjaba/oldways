@@ -35,8 +35,17 @@ h1 {
   font-family: Optima; 
 }
 /* On mouse-over */
+  
+.sidenav a:after {
+  color: #818181;
+  content: '\2023'; 
+  font-size: 30px;
+}
+  
 .sidenav a:active {
   color: #FFF2EB;
+  content: '\02D1';
+  font-size: 30px;
 }
   
 .accordion {
@@ -64,17 +73,7 @@ h1 {
   font-family: Optima; 
   font-size: 25px;
 }
-.accordion:after {
-  content: '\2023'; 
-  font-size: 30px;
-  color: #FFF2EB;
-}
-  
-.active:after {
-  content: '\02D1';
-  font-size: 30px;
-}
-  
+
 /* Main content */
 .main {
   margin-left: 200px; /* Same as the width of the sidenav */
@@ -146,13 +145,13 @@ img {
   <div class="sidenav">
     <div id="heading"> Select Appropriate Filters </div>
     <br>
-    <a href="#class"><button class="accordion">class</button></a>
+    <button class="accordion"><a href="#class">class</a></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
     <br>
-    <a href="#teacher"><button class="accordion">teacher</button></a>
+    <button class="accordion"><a href="#teacher">teacher</a></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
     <br>
-    <a href="#year"><button class="accordion">year</button></a>
+    <button class="accordion"><a href="#year">year</a></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
   </div>
   <div class="main">

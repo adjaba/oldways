@@ -170,6 +170,7 @@ img {
     document.getElementById('loader').style.display='none';
   }
 var acc = document.getElementsByClassName("accordion");
+var list_of_a = document.getElementsByTagName("a");
 var i;
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
@@ -177,9 +178,11 @@ for (i = 0; i < acc.length; i++) {
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
       panel.style.display = "none";
+      list_of_a[i].color = "#818181";
       
     } else {
       panel.style.display = "block";
+      list_of_a[i].color = "#FFF2EB";
     }
   });
 }

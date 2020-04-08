@@ -37,12 +37,12 @@ h1 {
 
 .accordion:after {
   color: #818181;
-  content: '\2023'; 
+  content: '(" attr(id) ") + \2023'; 
   font-size: 20px;
 }
   
 .active:after {
-  content: '\02D1';
+  content: '(" attr(id) ") + \02D1';
   color: #FFF2EB;
   font-size: 20px;
 }
@@ -147,13 +147,13 @@ img {
   <div class="sidenav">
     <div id="heading"> Select Appropriate Filters </div>
     <br>
-    <button class="accordion">class </button>
+    <button class="accordion" id="class"></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
     <br>
-    <button class="accordion">teacher </button>
+    <button class="accordion" id="teacher"></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
     <br>
-    <button class="accordion">year </button>
+    <button class="accordion" id="year"></button>
     <div class="panel"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
   </div>
   <div class="main">

@@ -273,7 +273,7 @@ for (i = 0; i < acc.length; i++) {
 		var totalComplete = totalWithPrePost.length;
 		document.getElementById("container").innerHTML += "complete:" + totalComplete + "<br>";
 		document.getElementById("container").innerHTML += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete + "<br>";
-		document.getElementById("container").innerHTML += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete + box_end;
+		document.getElementById("container").innerHTML += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
 		console.log("complete", totalComplete);
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
@@ -287,9 +287,9 @@ for (i = 0; i < acc.length; i++) {
 				return entry[change]==="✅" || entry[change] === 1
 			})
 			
-			document.getElementById("container").innerHTML += box_start + change + "total: " + total + "<br>";
+			document.getElementById("container").innerHTML += change + "total: " + total + "<br>";
 			document.getElementById("container").innerHTML += change + "complete: " + complete.length + "<br>";
-			document.getElementById("container").innerHTML += change + "percent:" + complete.length === 0? 0: count.length/complete.length + box_end;
+			document.getElementById("container").innerHTML += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
 			console.log(change, 'total', total);
 			console.log(change, 'complete', complete.length);
 			console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
@@ -300,7 +300,7 @@ for (i = 0; i < acc.length; i++) {
 		averageAndPercentage('BP Category Change', 'BP Category_Pre Num', 'BP Category_Post Num');
 		
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
-		document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
+		document.getElementById("container").innerHTML += '# of participants:' + database.filter((entry) => entry['Participant ID']).length;
 			
 	}
 	queue()

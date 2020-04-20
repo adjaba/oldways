@@ -256,8 +256,8 @@ for (i = 0; i < acc.length; i++) {
 			return positivelyImpacted
 		})
 		
-		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>";
-		document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
+		document.getElementById("container").innerHTML += "posImpactNum:"+ positiveImpactNum;
+		document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length;
 		console.log("posImpactNum", positiveImpactNum)
 		console.log("posImpact", positiveImpact.length);
 		var totalWithPrePost = database.filter(function(entry){
@@ -271,7 +271,7 @@ for (i = 0; i < acc.length; i++) {
 		
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		document.getElementById("container").innerHTML += box_start + "complete:" + totalComplete + "<br>;
+		document.getElementById("container").innerHTML += "complete:" + totalComplete + "<br>";
 		document.getElementById("container").innerHTML += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete + "<br>";
 		document.getElementById("container").innerHTML += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete + box_end;
 		console.log("complete", totalComplete);

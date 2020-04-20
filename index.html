@@ -223,7 +223,7 @@ for (i = 0; i < acc.length; i++) {
 			var denominator = database.filter((entry) => isComplete(entry[column])).length;
 			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 			var result = denominator === 0? 0: numerator/denominator;
-			document.getElementById("container").text += column + ":" + result;
+			document.getElementById("container").innerHTML += column + ":" + result;
 		})
 		
 		var positiveImpactNum = 0;
@@ -236,8 +236,8 @@ for (i = 0; i < acc.length; i++) {
 			return positivelyImpacted
 		})
 		
-		document.getElementById("container").text += "posImpactNum:"+ positiveImpactNum;
-		document.getElementById("container").text += "posImpact:"+ positiveImpact.length;
+		document.getElementById("container").innerHTML += "posImpactNum:"+ positiveImpactNum;
+		document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length;
 		console.log("posImpactNum", positiveImpactNum)
 		console.log("posImpact", positiveImpact.length);
 		var totalWithPrePost = database.filter(function(entry){
@@ -251,9 +251,9 @@ for (i = 0; i < acc.length; i++) {
 		
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		document.getElementById("container").text += "complete:" + totalComplete;
-		document.getElementById("container").text += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
-		document.getElementById("container").text += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete
+		document.getElementById("container").innerHTML += "complete:" + totalComplete;
+		document.getElementById("container").innerHTML += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+		document.getElementById("container").innerHTML += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete
 		console.log("complete", totalComplete);
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
@@ -267,9 +267,9 @@ for (i = 0; i < acc.length; i++) {
 				return entry[change]==="✅"
 			})
 			
-			document.getElementById("container").text += change + "total: " + total;
-			document.getElementById("container").text += change + "complete: " + complete.length;
-			document.getElementById("container").text += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
+			document.getElementById("container").innerHTML += change + "total: " + total;
+			document.getElementById("container").innerHTML += change + "complete: " + complete.length;
+			document.getElementById("container").innerHTML += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
 			console.log(change, 'total', total);
 			console.log(change, 'complete', complete.length);
 			console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
@@ -280,7 +280,7 @@ for (i = 0; i < acc.length; i++) {
 		averageAndPercentage('BP Category Change', 'BP Category_Pre Num', 'BP Category_Post Num');
 		
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
-		document.getElementById("container").text += '# of participants:' + database.filter((entry) => entry['Participant ID']).length
+		document.getElementById("container").innerHTML += '# of participants:' + database.filter((entry) => entry['Participant ID']).length
 			
 	}
 	queue()

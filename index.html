@@ -271,7 +271,7 @@ for (i = 0; i < acc.length; i++) {
 		
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		var to_add += box_start + "complete:" + totalComplete + "<br>";
+		var to_add = box_start + "complete:" + totalComplete + "<br>";
 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
 		to_add += "<br>"
 		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;

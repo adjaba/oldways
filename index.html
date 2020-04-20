@@ -221,7 +221,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		var columns = categories.map((category) => category + ' Change');
 		
-		document.getElementById("container").innerHTML += "div class='boxed'>Test</div>"
+		document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
 	
 		columns.forEach(function (column){
 			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === 1).length;

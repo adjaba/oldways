@@ -256,8 +256,8 @@ for (i = 0; i < acc.length; i++) {
 			return positivelyImpacted
 		})
 		
-		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum;
-		document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
+		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
+		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
 		console.log("posImpactNum", positiveImpactNum)
 		console.log("posImpact", positiveImpact.length);
 		var totalWithPrePost = database.filter(function(entry){

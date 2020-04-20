@@ -219,7 +219,7 @@ for (i = 0; i < acc.length; i++) {
 		var columns = categories.map((category) => category + ' Change');
 	
 		columns.forEach(function (column){
-			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === 1).length;
 			var denominator = database.filter((entry) => isComplete(entry[column])).length;
 			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 			var result = denominator === 0? 0: numerator/denominator;
@@ -230,8 +230,8 @@ for (i = 0; i < acc.length; i++) {
 		var positiveImpact = database.filter(function(entry){
 			var positivelyImpacted = false;
 			columns.forEach(function(column){
-				positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
-				positiveImpactNum += entry[column] === "✅" || entry[column] === "1"? 1: 0;
+				positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === 1;
+				positiveImpactNum += entry[column] === "✅" || entry[column] === 1? 1: 0;
 			})
 			return positivelyImpacted
 		})
@@ -263,8 +263,8 @@ for (i = 0; i < acc.length; i++) {
 			var total = 0;
 			
 			var count = database.filter(function(entry){
-				total += entry[change]==="✅" || entry[change] === "1"? entry[pre]-entry[post]:0;
-				return entry[change]==="✅" || entry[change] === "1"
+				total += entry[change]==="✅" || entry[change] === 1? entry[pre]-entry[post]:0;
+				return entry[change]==="✅" || entry[change] === 1
 			})
 			
 			document.getElementById("container").innerHTML += change + "total: " + total;

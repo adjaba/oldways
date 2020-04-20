@@ -271,9 +271,12 @@ for (i = 0; i < acc.length; i++) {
 		
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		document.getElementById("container").innerHTML += "complete:" + totalComplete + "<br>";
-		document.getElementById("container").innerHTML += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete + "<br>";
-		document.getElementById("container").innerHTML += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+		var to_add += box_start + "complete:" + totalComplete + "<br>";
+		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+		to_add += "<br>"
+		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+		to_add += box_end
+		document.getElementById("container").innerHTML += to_add
 		console.log("complete", totalComplete);
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);

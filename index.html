@@ -132,8 +132,10 @@ img {
 </style>
 <head>
   <meta charset="utf-8"/>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
 </head>
-<body style="background-image:url('scroll_background.png')">  
+<body style="background-image:url('scroll_background.png')" onload = loaddata()>  
 <div id="loader" style="display:block">
   <h1 style="padding-top:150px"> loading ...</h1> 
   <center>
@@ -210,5 +212,76 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+  	function statistics(database, categories){
+		function isComplete(change){
+			return ["✅", "🔻", "Remained Same"].indexOf(change) >=0
+		}
+		var columns = categories.map((category) => category + ' Change');
+	
+		columns.forEach(function (column){
+			var numerator = database.filter((entry) => entry[column] === "✅").length;
+			var denominator = database.filter((entry) => isComplete(entry[column])).length;
+			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
+			var result = denominator === 0? 0: numerator/denominator;
+			console.log(column, result);
+		})
+		
+		var positiveImpactNum = 0;
+		var positiveImpact = database.filter(function(entry){
+			var positivelyImpacted = false;
+			columns.forEach(function(column){
+				positivelyImpacted = positivelyImpacted || entry[column] === "✅";
+				positiveImpactNum += entry[column] === "✅"? 1: 0;
+			})
+			return positivelyImpacted
+		})
+		
+		console.log("posImpactNum", positiveImpactNum)
+		console.log("posImpact", positiveImpact.length);
+		var totalWithPrePost = database.filter(function(entry){
+			var complete = false;
+			columns.forEach(function(column){
+				complete = complete || isComplete(entry[column]);
+					//entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
+			})
+			return complete
+		})
+		
+		var atLeastOnePos = positiveImpact.length;
+		var totalComplete = totalWithPrePost.length;
+		console.log("complete", totalComplete);
+		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
+		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
+		
+		function averageAndPercentage(change, pre, post){
+			var complete = database.filter((entry) => isComplete(entry[change]));
+			var total = 0;
+			
+			var count = database.filter(function(entry){
+				total += entry[change]==="✅"? entry[pre]-entry[post]:0;
+				return entry[change]==="✅"
+			})
+			
+			console.log(change, 'total', total);
+			console.log(change, 'complete', complete.length);
+			console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
+		}
+		
+		averageAndPercentage('WeightChange', 'Weight_Pre', 'Weight_Post');
+		averageAndPercentage('WaistCircumference Change', 'WaistCircumference_Pre', 'WaistCircumference_Post');
+		averageAndPercentage('BP Category Change', 'BP Category_Pre Num', 'BP Category_Post Num');
+		
+		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
+			
+	}
+	queue()
+		.defer(d3.csv, "ATOAH-Student Data.csv")
+		.await(loaddata);
+	
+	function loaddata(error, atoahstudent){
+		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
+		console.log(atoahstudent);
+		statistics(atoahstudent, categories);
+	}
 </script>
 </html>

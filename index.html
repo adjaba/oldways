@@ -263,8 +263,8 @@ for (i = 0; i < acc.length; i++) {
 			var total = 0;
 			
 			var count = database.filter(function(entry){
-				total += entry[change]==="✅" || entry[column] === "1"? entry[pre]-entry[post]:0;
-				return entry[change]==="✅" || entry[column] === "1"
+				total += entry[change]==="✅" || entry[change] === "1"? entry[pre]-entry[post]:0;
+				return entry[change]==="✅" || entry[change] === "1"
 			})
 			
 			document.getElementById("container").innerHTML += change + "total: " + total;

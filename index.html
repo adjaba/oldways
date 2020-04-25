@@ -178,14 +178,6 @@ img {
 .tab button.active {
   background-color: #362311;
 }
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #FFF2EB;
-  border-top: none;
-}
 </style>
 <head>
   <meta charset="utf-8"/>
@@ -262,6 +254,8 @@ img {
   }
 var acc = document.getElementsByClassName("accordion");
 var database;
+var ogContainer = document.getElementById("container").innerHTML;
+var oldContainer = ogContainer.innerHTML;
 var i;
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
@@ -294,7 +288,7 @@ for (i = 0; i < acc.length; i++) {
 		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
 		
 		if (tabName == "cooking"){
-			//document.getElementById("container").style.display='none';
+			document.getElementById("container").innerHTML = oldContainer;
 			categories.forEach(function (category){
 				var column = category + '_Change';
 				var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
@@ -307,7 +301,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		
 		if (tabName == "physical"){	
-			//document.getElementById("container").style.display='none';
+			document.getElementById("container").innerHTML = oldContainer;
 			var positiveImpactNum = 0;
 			var positiveImpact = database.filter(function(entry){
 				var positivelyImpacted = false;
@@ -348,7 +342,7 @@ for (i = 0; i < acc.length; i++) {
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
 		}
 		if (tabName == "stats"){
-		//document.getElementById("container").style.display='none';
+			document.getElementById("container").innerHTML = oldContainer;
 		function averageAndPercentage(change, pre, post, name){
 			var complete = database.filter((entry) => isComplete(entry[change]));
 			var total = 0;

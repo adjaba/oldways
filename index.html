@@ -296,7 +296,7 @@ for (i = 0; i < acc.length; i++) {
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
 		
-		function averageAndPercentage(change, pre, post){
+		function averageAndPercentage(change, pre, post, name){
 			var complete = database.filter((entry) => isComplete(entry[change]));
 			var total = 0;
 			
@@ -305,20 +305,22 @@ for (i = 0; i < acc.length; i++) {
 				return entry[change]==="✅" || entry[change] === "1"
 			})
 			
-			to_add = ""
-			to_add += box_start + change + "total: " + total + "<br>";
-			to_add += change + "complete: " + complete.length + "<br>";
-			to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
-			to_add += box_end
-			document.getElementById("container").innerHTML += to_add
+// 			to_add = ""
+// 			to_add += box_start + change + "total: " + total + "<br>";
+// 			to_add += change + "complete: " + complete.length + "<br>";
+// 			to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
+// 			to_add += box_end
+// 			document.getElementById("container").innerHTML += to_add
+			document.getElementById("container").innerHTML += box_start + name + "<br>" + "Percentage <br>" + toPercent(count.length/complete.length);
+			document.getElementById("container").innerHTML += "Average change <br>" + (total/complete.length).toFixed(2) + box_end;
 			console.log(change, 'total', total);
 			console.log(change, 'complete', complete.length);
 			console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
 		}
 		
-		averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post');
-		averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post');
-		averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num');
+		averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight');
+		averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
+		averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
 		
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
 		document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;

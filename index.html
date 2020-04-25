@@ -248,7 +248,8 @@ for (i = 0; i < acc.length; i++) {
 		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
 		
 	
-		columns.forEach(function (column){
+		categories.forEach(function (category){
+			var column = category + '_Change
 			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
 			var denominator = database.filter((entry) => isComplete(entry[column])).length;
 			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
@@ -268,7 +269,7 @@ for (i = 0; i < acc.length; i++) {
 		})
 		
 		addToContainer("Number of categories positively impacted", positiveImpactNum);
-		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
+// 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
 		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
 		console.log("posImpactNum", positiveImpactNum)
 		console.log("posImpact", positiveImpact.length);
@@ -283,7 +284,7 @@ for (i = 0; i < acc.length; i++) {
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
 		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete));
-		addToContainer("Average number of categories positively impacted per person", toPercent(positiveImpactNum/totalComplete));
+		addToContainer("Average number of categories positively impacted per person", positiveImpactNum/totalComplete.toFixed(2));
 
 // 		var to_add = box_start + "complete:" + totalComplete + "<br>";
 // 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;

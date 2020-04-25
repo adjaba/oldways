@@ -30,11 +30,9 @@ h1 {
   outline: none;
 }
 /* On mouse-over */
-
 .active, .accordion:hover {
   color: #FFF2EB;
 }
-
 .accordion:after {
   color: #818181;
   content: "" attr(id) " \25B8"; 
@@ -93,7 +91,6 @@ h1 {
   font-family: Optima; 
   font-size: 25px;
 }
-
 /* Main content */
 .main {
   margin-left: 200px; /* Same as the width of the sidenav */
@@ -210,11 +207,11 @@ img {
 </div>
 </body>
 <script>
-//  setTimeout("changedisplays()", 5000);
-//  function changedisplays() {
+  setTimeout("changedisplays()", 5000);
+  function changedisplays() {
     document.getElementById('mainpage').style.display='block';
     document.getElementById('loader').style.display='none';
- // }
+  }
 var acc = document.getElementsByClassName("accordion");
 var i;
 for (i = 0; i < acc.length; i++) {
@@ -237,49 +234,49 @@ for (i = 0; i < acc.length; i++) {
 		var box_end = "</div>"
 		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
 		
-
-	//	columns.forEach(function (column){
-	//		var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === 1).length;
-	//		var denominator = database.filter((entry) => isComplete(entry[column])).length;
-	//		    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
-	//		var result = denominator === 0? 0: numerator/denominator;
-	//		document.getElementById("container").innerHTML += box_start + column + ":" + result + box_end;
-	//	})
+	
+		columns.forEach(function (column){
+			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === 1).length;
+			var denominator = database.filter((entry) => isComplete(entry[column])).length;
+			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
+			var result = denominator === 0? 0: numerator/denominator;
+			document.getElementById("container").innerHTML += box_start + column + ":" + result + box_end;
+		})
 		
-	//	var positiveImpactNum = 0;
-	//	var positiveImpact = database.filter(function(entry){
-	//		var positivelyImpacted = false;
-	//		columns.forEach(function(column){
-	//			positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === 1;
-	//			positiveImpactNum += entry[column] === "✅" || entry[column] === 1? 1: 0;
-	//		})
-	//		return positivelyImpacted
-	//	})
+		var positiveImpactNum = 0;
+		var positiveImpact = database.filter(function(entry){
+			var positivelyImpacted = false;
+			columns.forEach(function(column){
+				positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === 1;
+				positiveImpactNum += entry[column] === "✅" || entry[column] === 1? 1: 0;
+			})
+			return positivelyImpacted
+		})
 		
-	//	document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
-	//	// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
-	//	console.log("posImpactNum", positiveImpactNum)
-	//	console.log("posImpact", positiveImpact.length);
-	//	var totalWithPrePost = database.filter(function(entry){
-	//		var complete = false;
-	//		columns.forEach(function(column){
-	//			complete = complete || isComplete(entry[column]);
-	//				//entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
-	//		})
-	//		return complete
-	//	})
+		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
+		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
+		console.log("posImpactNum", positiveImpactNum)
+		console.log("posImpact", positiveImpact.length);
+		var totalWithPrePost = database.filter(function(entry){
+			var complete = false;
+			columns.forEach(function(column){
+				complete = complete || isComplete(entry[column]);
+					//entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
+			})
+			return complete
+		})
 		
-	//	var atLeastOnePos = positiveImpact.length;
-	//	var totalComplete = totalWithPrePost.length;
-	//	var to_add = box_start + "complete:" + totalComplete + "<br>";
-	//	to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
-	//	to_add += "<br>"
-	//	to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
-	//	to_add += box_end
-	//	document.getElementById("container").innerHTML += to_add
-	//	console.log("complete", totalComplete);
-	//	console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
-	//	console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
+		var atLeastOnePos = positiveImpact.length;
+		var totalComplete = totalWithPrePost.length;
+		var to_add = box_start + "complete:" + totalComplete + "<br>";
+		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+		to_add += "<br>"
+		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+		to_add += box_end
+		document.getElementById("container").innerHTML += to_add
+		console.log("complete", totalComplete);
+		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
+		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
 		
 		function averageAndPercentage(change, pre, post){
 			var complete = database.filter((entry) => isComplete(entry[change]));
@@ -307,7 +304,7 @@ for (i = 0; i < acc.length; i++) {
 		
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
 		document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
-		//document.getElementById("container").innerHTML += "test";
+		document.getElementById("container").innerHTML += "test";
 	}
 	queue()
 		.defer(d3.csv, "atoah.csv")

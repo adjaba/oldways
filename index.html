@@ -368,6 +368,10 @@ for (i = 0; i < acc.length; i++) {
 		averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
 		averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
 		}
+		tablinks = document.getElementsByClassName("tablinks");
+		  for (i = 0; i < tablinks.length; i++) {
+		    tablinks[i].className = tablinks[i].className.replace(" actively", "");
+		  }
 		evt.currentTarget.className += " actively";
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
 		//document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;

@@ -237,7 +237,7 @@ for (i = 0; i < acc.length; i++) {
 		function addToContainer(category_name, number){
 			var box_start = "<div class = 'boxed'>"
 			var box_end = "</div>"
-			document.getElementById("container").innerHTML += box_start + category_name + <br> + number + box_end;
+			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}
 		function isComplete(change){
 			return ["✅", "🔻", "Remained Same","1", "0", "-1"].indexOf(change) >=0
@@ -268,7 +268,7 @@ for (i = 0; i < acc.length; i++) {
 		})
 		
 		addToContainer("Number of categories positively impacted", positiveImpactNum);
-		addToContainer("Percentage of people that were positively impacted in at least one category"", positiveImpact.length/positiveNum)
+		addToContainer("Percentage of people that were positively impacted in at least one category"", toPercent(positiveImpact.length/positiveNum));
 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
 		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
 		console.log("posImpactNum", positiveImpactNum)

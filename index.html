@@ -300,7 +300,7 @@ for (i = 0; i < acc.length; i++) {
 			})
 		}
 		
-		if (tabName == "physical"){	
+		if (tabName == "stats"){	
 			document.getElementById("container").innerHTML = "";
 			var positiveImpactNum = 0;
 			var positiveImpact = database.filter(function(entry){
@@ -341,7 +341,7 @@ for (i = 0; i < acc.length; i++) {
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
 		}
-		if (tabName == "stats"){
+		if (tabName == "physical"){
 			document.getElementById("container").innerHTML = "";
 		function averageAndPercentage(change, pre, post, name){
 			var complete = database.filter((entry) => isComplete(entry[change]));

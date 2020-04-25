@@ -254,7 +254,7 @@ for (i = 0; i < acc.length; i++) {
 			var denominator = database.filter((entry) => isComplete(entry[column])).length;
 			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 			var result = denominator === 0? 0: numerator/denominator;
-			addToContainer(column, toPercent(result));
+			addToContainer(category, toPercent(result));
 // 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
 		})
 		

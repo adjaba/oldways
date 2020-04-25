@@ -211,7 +211,7 @@ img {
 </div>
 </body>
 <script>
-  setTimeout("changedisplays()", 5000);
+#  setTimeout("changedisplays()", 5000);
   function changedisplays() {
     document.getElementById('mainpage').style.display='block';
     document.getElementById('loader').style.display='none';
@@ -330,6 +330,7 @@ for (i = 0; i < acc.length; i++) {
 		.await(loaddata);
 	
 	function loaddata(error, atoahstudent){
+		changedisplays()
 		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
 		console.log(atoahstudent);
 		statistics(atoahstudent, categories);

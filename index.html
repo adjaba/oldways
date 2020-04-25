@@ -269,17 +269,17 @@ for (i = 0; i < acc.length; i++) {
 	//		return complete
 	//	})
 		
-		var atLeastOnePos = positiveImpact.length;
-		var totalComplete = totalWithPrePost.length;
-		var to_add = box_start + "complete:" + totalComplete + "<br>";
-		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
-		to_add += "<br>"
-		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
-		to_add += box_end
-		document.getElementById("container").innerHTML += to_add
-		console.log("complete", totalComplete);
-		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
-		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
+	//	var atLeastOnePos = positiveImpact.length;
+	//	var totalComplete = totalWithPrePost.length;
+	//	var to_add = box_start + "complete:" + totalComplete + "<br>";
+	//	to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+	//	to_add += "<br>"
+	//	to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+	//	to_add += box_end
+	//	document.getElementById("container").innerHTML += to_add
+	//	console.log("complete", totalComplete);
+	//	console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
+	//	console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
 		
 		function averageAndPercentage(change, pre, post){
 			var complete = database.filter((entry) => isComplete(entry[change]));

@@ -148,6 +148,41 @@ img {
   20%  {bottom: 30px;}
   40%  {bottom: 0px;}
 }
+.tab {
+  overflow: hidden;
+  border: 1px solid #FFF2EB;
+  background-color: #654321;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #4E4841;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #57493a;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #FFF2EB;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #FFF2EB;
+  border-top: none;
+}
 </style>
 <head>
   <meta charset="utf-8"/>
@@ -205,6 +240,11 @@ img {
     <h1>oldways portal</h1>
   <center>
   <div class="card">
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+      <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+      <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    </div>
     <div class="container" id="container">
     </div>
   </div>
@@ -331,7 +371,8 @@ for (i = 0; i < acc.length; i++) {
 		.await(loaddata);
 	
 	function loaddata(error, atoahstudent){
-		setTimeout("changedisplays()", 5000);
+		//setTimeout("changedisplays()", 5000);
+		setTimeout("changedisplays()", 100);
 		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
 		console.log(atoahstudent);
 		statistics(atoahstudent, categories);

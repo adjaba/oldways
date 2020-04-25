@@ -230,6 +230,15 @@ for (i = 0; i < acc.length; i++) {
   });
 }
   	function statistics(database, categories){
+		function toPercent(fraction){
+			return (fraction*100).toFixed(2)+"%"
+		}
+		
+		function addToContainer(category_name, number){
+			var box_start = "<div class = 'boxed'>"
+			var box_end = "</div>"
+			document.getElementById("container").innerHTML += box_start + category_name + <br> + number + box_end;
+		}
 		function isComplete(change){
 			return ["✅", "🔻", "Remained Same","1", "0", "-1"].indexOf(change) >=0
 		}
@@ -244,7 +253,8 @@ for (i = 0; i < acc.length; i++) {
 			var denominator = database.filter((entry) => isComplete(entry[column])).length;
 			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 			var result = denominator === 0? 0: numerator/denominator;
-			document.getElementById("container").innerHTML += box_start + column + ":" + result + box_end;
+			addtoContainer(column, toPercent(result));
+// 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
 		})
 		
 		var positiveImpactNum = 0;
@@ -257,6 +267,8 @@ for (i = 0; i < acc.length; i++) {
 			return positivelyImpacted
 		})
 		
+		addToContainer("Number of categories positively impacted", positiveImpactNum);
+		addToContainer("Percentage of people that were positively impacted in at least one category"", positiveImpact.length/positiveNum)
 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
 		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
 		console.log("posImpactNum", positiveImpactNum)
@@ -269,15 +281,15 @@ for (i = 0; i < acc.length; i++) {
 			})
 			return complete
 		})
-		
+		addToContainer("Average number of categories positively impacted per person", toPercent(positiveImpactNum/totalComplete));
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		var to_add = box_start + "complete:" + totalComplete + "<br>";
-		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
-		to_add += "<br>"
-		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
-		to_add += box_end
-		document.getElementById("container").innerHTML += to_add
+// 		var to_add = box_start + "complete:" + totalComplete + "<br>";
+// 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+// 		to_add += "<br>"
+// 		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+// 		to_add += box_end
+// 		document.getElementById("container").innerHTML += to_add
 		console.log("complete", totalComplete);
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);

@@ -284,7 +284,7 @@ for (i = 0; i < acc.length; i++) {
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
 		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete));
-		addToContainer("Average number of categories positively impacted per person", positiveImpactNum/totalComplete.toFixed(2));
+		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2));
 
 // 		var to_add = box_start + "complete:" + totalComplete + "<br>";
 // 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;

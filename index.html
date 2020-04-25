@@ -287,7 +287,10 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 	function get_students(database){
-		document.getElementById("rightpanel").innerHTML = "testing";
+		var text_to_add = "<center> Number of Surveys: ";
+		var cur_students = database.filter((entry) => entry['Participant ID']).length
+		var text_to_add += "<b>" + cur_students + "</b> </center>"
+		document.getElementById("rightpanel").innerHTML = text_to_add;
 	}
   	function all_statistics(evt, tabName){
 		function toPercent(fraction){

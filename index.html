@@ -152,7 +152,7 @@ img {
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="https://d3js.org/queue.v1.min.js"></script>
 </head>
-<body style="background-image:url('scroll_background.png')" margin:"0px" onload = loaddata()>  
+<body style="background-image:url('scroll_background.png')" margin:"0px"> 
 <div id="loader" style="display:block">
   <h1 style="padding-top:150px"> loading ...</h1> 
   <center>
@@ -330,7 +330,7 @@ for (i = 0; i < acc.length; i++) {
 		.await(loaddata);
 	
 	function loaddata(error, atoahstudent){
-		changedisplays()
+		changedisplays();
 		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
 		console.log(atoahstudent);
 		statistics(atoahstudent, categories);

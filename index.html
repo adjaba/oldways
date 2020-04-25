@@ -260,7 +260,6 @@ img {
   
   </center>
   <div class = "rightpanel">
-	  <center> Number of students </center>
   </div>
  
   </div>
@@ -287,6 +286,9 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+	function get_students(database){
+		document.getElementById("rightpanel").innerHTML = "testing";
+	}
   	function all_statistics(evt, tabName){
 		function toPercent(fraction){
 			return (fraction*100).toFixed(2)+"%"
@@ -404,6 +406,7 @@ for (i = 0; i < acc.length; i++) {
 		//setTimeout("changedisplays()", 5000);
 		setTimeout("changedisplays()", 100);
 		database = atoahstudent;
+		get_students(database);
 	}
 </script>
 </html>

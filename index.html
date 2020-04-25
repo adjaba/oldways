@@ -249,7 +249,7 @@ for (i = 0; i < acc.length; i++) {
 		
 	
 		categories.forEach(function (category){
-			var column = category + '_Change
+			var column = category + '_Change';
 			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
 			var denominator = database.filter((entry) => isComplete(entry[column])).length;
 			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;

@@ -256,18 +256,18 @@ for (i = 0; i < acc.length; i++) {
 	//		return positivelyImpacted
 	//	})
 		
-		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
-		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
-		console.log("posImpactNum", positiveImpactNum)
-		console.log("posImpact", positiveImpact.length);
-		var totalWithPrePost = database.filter(function(entry){
-			var complete = false;
-			columns.forEach(function(column){
-				complete = complete || isComplete(entry[column]);
-					//entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
-			})
-			return complete
-		})
+	//	document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
+	//	// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
+	//	console.log("posImpactNum", positiveImpactNum)
+	//	console.log("posImpact", positiveImpact.length);
+	//	var totalWithPrePost = database.filter(function(entry){
+	//		var complete = false;
+	//		columns.forEach(function(column){
+	//			complete = complete || isComplete(entry[column]);
+	//				//entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
+	//		})
+	//		return complete
+	//	})
 		
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;

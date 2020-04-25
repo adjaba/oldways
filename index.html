@@ -244,9 +244,9 @@ img {
   <center>
   <div class="card">
     <div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'London')"> Cooking & Lifestyle </button>
-      <button class="tablinks" onclick="openCity(event, 'Paris')"> Physical Improvement </button>
-      <button class="tablinks" onclick="openCity(event, 'Tokyo')"> Overall Statistics </button>
+      <button class="tablinks" onclick="all_statistics(event, 'cooking')"> Cooking & Lifestyle </button>
+      <button class="tablinks" onclick="all_statistics(event, 'physical')"> Physical Improvement </button>
+      <button class="tablinks" onclick="all_statistics(event, 'stats')"> Overall Statistics </button>
     </div>
     <div class="container" id="container">
     </div>
@@ -261,6 +261,7 @@ img {
     document.getElementById('loader').style.display='none';
   }
 var acc = document.getElementsByClassName("accordion");
+var database;
 var i;
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
@@ -273,7 +274,7 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
-  	function statistics(database, categories){
+  	function statistics(evt, tabName){
 		function toPercent(fraction){
 			return (fraction*100).toFixed(2)+"%"
 		}
@@ -286,31 +287,37 @@ for (i = 0; i < acc.length; i++) {
 		function isComplete(change){
 			return ["✅", "🔻", "Remained Same","1", "0", "-1"].indexOf(change) >=0
 		}
+		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
 		var columns = categories.map((category) => category + '_Change');
 		var box_start = "<div class = 'boxed'>"
 		var box_end = "</div>"
 		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
 		
-	
-		categories.forEach(function (category){
-			var column = category + '_Change';
-			var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-			var denominator = database.filter((entry) => isComplete(entry[column])).length;
-			    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
-			var result = denominator === 0? 0: numerator/denominator;
-			addToContainer(category, toPercent(result));
-// 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
-		})
-		
-		var positiveImpactNum = 0;
-		var positiveImpact = database.filter(function(entry){
-			var positivelyImpacted = false;
-			columns.forEach(function(column){
-				positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
-				positiveImpactNum += entry[column] === "✅" || entry[column] === "1"? 1: 0;
+		if (tabName == "cooking"){
+			document.getElementById("container").style.display='none';
+			categories.forEach(function (category){
+				var column = category + '_Change';
+				var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+				var denominator = database.filter((entry) => isComplete(entry[column])).length;
+				    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
+				var result = denominator === 0? 0: numerator/denominator;
+				addToContainer(category, toPercent(result));
+	// 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
 			})
-			return positivelyImpacted
-		})
+		}
+		
+		if (tabName == "physical"){	
+			document.getElementById("container").style.display='none';
+			var positiveImpactNum = 0;
+			var positiveImpact = database.filter(function(entry){
+				var positivelyImpacted = false;
+				columns.forEach(function(column){
+					positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
+					positiveImpactNum += entry[column] === "✅" || entry[column] === "1"? 1: 0;
+				})
+				return positivelyImpacted
+			})
+		
 		
 		addToContainer("Number of categories positively impacted", positiveImpactNum);
 // 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
@@ -329,7 +336,7 @@ for (i = 0; i < acc.length; i++) {
 		var totalComplete = totalWithPrePost.length;
 		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete));
 		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2));
-
+		}
 // 		var to_add = box_start + "complete:" + totalComplete + "<br>";
 // 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
 // 		to_add += "<br>"
@@ -340,6 +347,8 @@ for (i = 0; i < acc.length; i++) {
 		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
 		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
 		
+		if (tabName == "stats"){
+		document.getElementById("container").style.display='none';
 		function averageAndPercentage(change, pre, post, name){
 			var complete = database.filter((entry) => isComplete(entry[change]));
 			var total = 0;
@@ -364,9 +373,9 @@ for (i = 0; i < acc.length; i++) {
 		averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight');
 		averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
 		averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
-		
+		}
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
-		document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
+		//document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
 		//document.getElementById("container").innerHTML += "test";
 	}
 	queue()
@@ -376,9 +385,7 @@ for (i = 0; i < acc.length; i++) {
 	function loaddata(error, atoahstudent){
 		//setTimeout("changedisplays()", 5000);
 		setTimeout("changedisplays()", 100);
-		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
-		console.log(atoahstudent);
-		statistics(atoahstudent, categories);
+		database = atoahstudent;
 	}
 </script>
 </html>

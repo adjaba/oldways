@@ -237,7 +237,6 @@ for (i = 0; i < acc.length; i++) {
 		var box_end = "</div>"
 		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
 		
-		document.getElementById("container").innerHTML += box_start + column + ":" + result + box_end;
 
 	//	columns.forEach(function (column){
 	//		var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === 1).length;
@@ -247,15 +246,15 @@ for (i = 0; i < acc.length; i++) {
 	//		document.getElementById("container").innerHTML += box_start + column + ":" + result + box_end;
 	//	})
 		
-		var positiveImpactNum = 0;
-		var positiveImpact = database.filter(function(entry){
-			var positivelyImpacted = false;
-			columns.forEach(function(column){
-				positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === 1;
-				positiveImpactNum += entry[column] === "✅" || entry[column] === 1? 1: 0;
-			})
-			return positivelyImpacted
-		})
+	//	var positiveImpactNum = 0;
+	//	var positiveImpact = database.filter(function(entry){
+	//		var positivelyImpacted = false;
+	//		columns.forEach(function(column){
+	//			positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === 1;
+	//			positiveImpactNum += entry[column] === "✅" || entry[column] === 1? 1: 0;
+	//		})
+	//		return positivelyImpacted
+	//	})
 		
 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
 		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;

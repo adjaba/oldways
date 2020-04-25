@@ -175,7 +175,7 @@ img {
 }
 
 /* Create an active/current tablink class */
-.tab button.active {
+.tab button.actively {
   background-color: #362311;
 }
 </style>
@@ -368,7 +368,7 @@ for (i = 0; i < acc.length; i++) {
 		averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
 		averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
 		}
-		evt.currentTarget.className += " active";
+		evt.currentTarget.className += " actively";
 		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
 		//document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
 		//document.getElementById("container").innerHTML += "test";

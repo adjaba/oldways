@@ -328,10 +328,10 @@ for (i = 0; i < acc.length; i++) {
 			
 		// change the color to grey
 		var category = obj.id;
-		var num_completed = obj.getAttribute("data-completed") / total_survey_count * 100;
-		var num_increase = obj.getAttribute("data-improved") / total_survey_count * 100;
-		var num_same = obj.getAttribute("data-same") / total_survey_count * 100;
-		var num_decrease = obj.getAttribute("data-decreased") / total_survey_count * 100;
+		var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
+		var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
+		var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
+		var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
 		console.log(category);
 		console.log(num_completed);
 		var circle_colors = [];

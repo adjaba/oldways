@@ -323,7 +323,7 @@ for (i = 0; i < acc.length; i++) {
 		console.log(category);
 		var circle_colors = [];
 		var cur_students = database.filter((entry) => entry['Participant ID']).length;
-		var num_completed = database.filter((entry) => isComplete(entry[column])).length;
+		var num_completed = database.filter((entry) => isComplete(entry[category])).length;
 		console.log(num_completed);
 		
 		for(var i = 0; i < cur_students; i++) {
@@ -342,8 +342,8 @@ for (i = 0; i < acc.length; i++) {
 			return (fraction*100).toFixed(2)+"%"
 		}
 		
-		function addToContainer(category_name, number){
-			var box_start = "<div class = 'boxed' id = '" + category_name + "' onmouseover='student_results(this)' onmouseout='get_students(database)'>"
+		function addToContainer(category_name, number, denominator){
+			var box_start = "<div class = 'boxed' id = '" + denominator + "' onmouseover='student_results(this)' onmouseout='get_students(database)'>"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}
@@ -364,7 +364,7 @@ for (i = 0; i < acc.length; i++) {
 				var denominator = database.filter((entry) => isComplete(entry[column])).length;
 				    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 				var result = denominator === 0? 0: numerator/denominator;
-				addToContainer(category, toPercent(result));
+				addToContainer(category, toPercent(result), denominator);
 	// 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
 			})
 		}
@@ -382,7 +382,7 @@ for (i = 0; i < acc.length; i++) {
 			})
 		
 		
-		addToContainer("Number of categories positively impacted", positiveImpactNum);
+		addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length);
 // 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
 		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
 		console.log("posImpactNum", positiveImpactNum)
@@ -397,8 +397,8 @@ for (i = 0; i < acc.length; i++) {
 		})
 		var atLeastOnePos = positiveImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete));
-		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2));
+		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete);
+		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete);
 		
 // 		var to_add = box_start + "complete:" + totalComplete + "<br>";
 // 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;

@@ -287,14 +287,29 @@ for (i = 0; i < acc.length; i++) {
       panel.style.display = "block";
     }
   });
-}
+}	function get_students(database){
+		var text_to_add = '<br> <center> Number of Surveys: ';
+		var circle = ' <svg width = "12px" height = "10px"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
+		var cur_students = 10 // database.filter((entry) => entry['Participant ID']).length
+		text_to_add += "<b>" + cur_students + "</b> </center>"
+		for (var i = 1; i < cur_students + 1; i++) {
+			text_to_add += circle;
+			if ( i % 15 == 0 ) {
+				text_to_add += "<br>";
+			}
+		}
+		document.getElementById("rightpanel").innerHTML = text_to_add;
+	}
 
 	function get_students(database){
 		console.log("here");
-		var svg = d3.select('mainpage').select('main').select('rightpanel').append('svg');
+		
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		var cur_students = 10; // database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>";
+		document.getElementById("rightpanel").innerHTML = text_to_add;
+		var svg = d3.select('mainpage').select('main').select('rightpanel').append('svg');
+		console.log(svg);
 		var circleSelection;
 		for (var i = 1; i < cur_students + 1; i++) {
 			circleSelection = svg.append("circle").attr("cx", 5).attr("cy", 5).attr("r", 5).style("fill", "black");

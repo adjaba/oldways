@@ -299,7 +299,7 @@ for (i = 0; i < acc.length; i++) {
 				text_to_add += "<br>";
 			}
 		}
-		document.getElementById("rightpanel").innerHTML += text_to_add;
+		document.getElementById("rightpanel").innerHTML = text_to_add;
 	}
 	function student_results(){
 		document.getElementById("rightpanel").innerHTML = "adding " + document.getElementById("rightpanel").innerHTML;
@@ -310,7 +310,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		
 		function addToContainer(category_name, number){
-			var box_start = "<div class = 'boxed' onmouseover='student_results()'>"
+			var box_start = "<div class = 'boxed' onmouseover='student_results()' onmouseout='get_students(database)'>"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}

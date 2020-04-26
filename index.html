@@ -299,11 +299,11 @@ for (i = 0; i < acc.length; i++) {
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
-		for (var i = 1; i < total_survey_count + 1; i++) {
-			svg = d3.select('#rightpanel').append('svg').attr('width', '12').attr('height', '10').attr('id', i);
-			circleSelection = svg.append("circle").attr("cx", 5).attr("cy", 5).attr("r", 5).style("fill", "black");
+		for (var i = 1; i < 100 + 1; i++) {
+			svg = d3.select('#rightpanel').append('svg').attr('width', '16').attr('height', '14').attr('id', i);
+			circleSelection = svg.append("circle").attr("cx", 7).attr("cy", 7).attr("r", 7).style("fill", "black");
 			
-			if (i % 15 == 0) {
+			if (i % 10 == 0) {
 				document.getElementById("rightpanel").innerHTML += "<br>"
 			}
 		}
@@ -323,10 +323,10 @@ for (i = 0; i < acc.length; i++) {
 			
 		// change the color to grey
 		var category = obj.id;
-		var num_completed = obj.getAttribute("data-completed");
-		var num_increase = obj.getAttribute("data-improved")
-		var num_same = obj.getAttribute("data-same")
-		var num_decrease = obj.getAttribute("data-decreased")
+		var num_completed = obj.getAttribute("data-completed") / total_survey_count * 100;
+		var num_increase = obj.getAttribute("data-improved") / total_survey_count * 100;
+		var num_same = obj.getAttribute("data-same") / total_survey_count * 100;
+		var num_decrease = obj.getAttribute("data-decreased") / total_survey_count * 100;
 		console.log(category);
 		console.log(num_completed);
 		var circle_colors = [];

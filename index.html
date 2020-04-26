@@ -306,7 +306,7 @@ for (i = 0; i < acc.length; i++) {
 		document.getElementById("rightpanel").innerHTML = "changed " + document.getElementById("rightpanel").innerHTML;
 		
 		// change the color to grey
-		const rightpanel = d3.select("mainpage").select("main").select("rightpanel").select("svg");
+		const svg = d3.select("mainpage").select("main").select("rightpanel").select("svg");
 		svg.selectAll("circle").style("fill", "red");
 			
 		console.log("changed svg?");

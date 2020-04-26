@@ -302,12 +302,13 @@ for (i = 0; i < acc.length; i++) {
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 	}
 	function student_results(){
-		document.getElementById("rightpanel").innerHTML = "adding " + document.getElementById("rightpanel").innerHTML;
+		document.getElementById("rightpanel").innerHTML = "changed? " + document.getElementById("rightpanel").innerHTML;
 		
 		// change the color to grey
-		const svg = d3.select("mainpage").select("main").select("rightpanel").select("svg").select("circle");
-		console.log(svg);
-		console.log("found svg");
+		const svg = d3.select("mainpage").select("main").select("rightpanel").select("svg");
+		svg.selectAll("circle").style("fill", "red");
+			
+		console.log("changed svg?");
 		
 	}
   	function all_statistics(evt, tabName){

@@ -293,7 +293,8 @@ for (i = 0; i < acc.length; i++) {
 		function onlyUnique(value, index, self) { 
     			return self.indexOf(value) === index;
 		}
-		var dates = database.map((entry) => new Date(entry['Date Filled Out']).toYear());
+		var dates = database.map((entry) => new Date(entry['Date Filled Out']));
+		dates = dates.map((entry) => entry.toYear())
 		dates = dates.filter(onlyUnique);
 		console.log(dates[0]);
 		var text_to_add = "";

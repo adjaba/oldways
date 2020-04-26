@@ -289,8 +289,8 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 	function get_students(database){
-		var text_to_add = '<br> <center> Number of Surveys: <svg width = "12px" height = "10px" xmlns="http://www.w3.org/2000/svg">';
-		var circle = ' <circle cx="5" cy="5" r="5" fill="black" />'
+		var text_to_add = '<br> <center> Number of Surveys: ';
+		var circle = ' <svg width = "12px" height = "10px" xmlns="http://www.w3.org/2000/svg"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
 		var cur_students = 10 // database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>"
 		for (var i = 1; i < cur_students + 1; i++) {
@@ -299,7 +299,6 @@ for (i = 0; i < acc.length; i++) {
 				text_to_add += "<br>";
 			}
 		}
-		text_to_add += "</svg>";
 		console.log(text_to_add);
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 	}
@@ -307,10 +306,11 @@ for (i = 0; i < acc.length; i++) {
 		document.getElementById("rightpanel").innerHTML = "changed " + document.getElementById("rightpanel").innerHTML;
 		
 		// change the color to grey
-		const svg = d3.select("mainpage").select("main").select("rightpanel").select("svg");
+		const svg = d3.select("mainpage").select("main").select("rightpanel").selectAll("svg");
 		svg.selectAll("circle").style("fill", "red");
 			
 		console.log("changed svg?");
+		console.log(svg);
 		
 	}
   	function all_statistics(evt, tabName){

@@ -300,7 +300,7 @@ for (i = 0; i < acc.length; i++) {
 			text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"
 			text_to_add += " <label for = 'vehicle'" + i + "'> " + dates[i] + " </label> <br>"
 		}
-		document.getElementById("year-panel");
+		document.getElementById("year-panel").innerHTML = text_to_add;
 		
 	
 	}

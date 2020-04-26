@@ -296,7 +296,7 @@ for (i = 0; i < acc.length; i++) {
 		var dates = database.map((entry) => new Date(entry['Date Filled Out']));
 		dates = dates.map((entry) => entry.getFullYear())
 		dates = dates.filter(onlyUnique);
-		dates = dates.sort();
+		dates = dates.sort().reverse();
 		console.log(dates[0]);
 		var text_to_add = "";
 		for (var i = 0; i < dates.length; i++) {

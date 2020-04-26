@@ -324,6 +324,9 @@ for (i = 0; i < acc.length; i++) {
 		// change the color to grey
 		var category = obj.id;
 		var num_completed = 10 // obj.getAttribute("data-completed");
+		var num_increase = 10 // obj.getAttribute("data-improved")
+		var num_same = 3 // obj.getAttribute("data-same")
+		var num_decrease = 7 //obj.getAttribute("data-decreased")
 		console.log(category);
 		console.log(num_completed);
 		var circle_colors = [];
@@ -351,8 +354,8 @@ for (i = 0; i < acc.length; i++) {
 			return (fraction*100).toFixed(2)+"%"
 		}
 		
-		function addToContainer(category_name, number, denominator){
-			var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
+		function addToContainer(category_name, number, denominator, improved, same, decreased){
+			var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + "onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}
@@ -370,10 +373,12 @@ for (i = 0; i < acc.length; i++) {
 			categories.forEach(function (category){
 				var column = category + '_Change';
 				var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+				var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+				var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
 				var denominator = database.filter((entry) => isComplete(entry[column])).length;
 				    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 				var result = denominator === 0? 0: numerator/denominator;
-				addToContainer(category, toPercent(result), denominator);
+				addToContainer(category, toPercent(result), denominator, numerator, same, decreased);
 	// 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
 			})
 		}
@@ -389,9 +394,29 @@ for (i = 0; i < acc.length; i++) {
 				})
 				return positivelyImpacted
 			})
+			
+			var negativeImpactNum = 0;
+			var negativeImpact = database.filter(function(entry){
+				var negativelyImpacted = false;
+				columns.forEach(function(column){
+					negativelyImpacted = negativelyImpacted || entry[column] === "🔻" || entry[column] === "-1";
+					negativeImpactNum += entry[column] === "🔻" || entry[column] === "-1"? 1: 0;
+				})
+				return negativelyImpacted
+			})
+			
+			var noImpactNum = 0;
+			var noImpact = database.filter(function(entry){
+				var noImpacted = false;
+				columns.forEach(function(column){
+					noImpacted = noImpacted || entry[column] === "Remained Same" || entry[column] === "0";
+					noImpactNum += entry[column] === "Remained Same" || entry[column] === "0"? 1: 0;
+				})
+				return noImpacted
+			})
 		
 		
-		addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length);
+		addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum);
 // 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
 		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
 		console.log("posImpactNum", positiveImpactNum)
@@ -405,9 +430,11 @@ for (i = 0; i < acc.length; i++) {
 			return complete
 		})
 		var atLeastOnePos = positiveImpact.length;
+		var atLeastOneNeg = negativeImpact.length;
+		var atLeastOneSame = noImpact.length;
 		var totalComplete = totalWithPrePost.length;
-		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete);
-		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete);
+		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete));
+		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2));
 		
 // 		var to_add = box_start + "complete:" + totalComplete + "<br>";
 // 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;

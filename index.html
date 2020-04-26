@@ -262,10 +262,6 @@ img {
   
   </center>
   <div class = "rightpanel" id = "rightpanel">
- <svg xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="50" fill="red" />
-</svg>
-	  circle drawn?
   </div>
  
   </div>
@@ -294,8 +290,15 @@ for (i = 0; i < acc.length; i++) {
 }
 	function get_students(database){
 		var text_to_add = "<br> <center> test Number of Surveys: &#x25CB; ";
+		var circle = '<svg xmlns="http://www.w3.org/2000/svg"> <circle cx="10" cy="10" r="10" fill="black" /></svg>'
 		var cur_students = database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>"
+		for (var i = 1; i < cur_students + 1; i++) {
+			text_to_add += circle;
+			if ( i % 5 == 0 ) {
+				text_to_add += "<br>";
+			}
+		}
 		document.getElementById("rightpanel").innerHTML += text_to_add;
 	}
   	function all_statistics(evt, tabName){

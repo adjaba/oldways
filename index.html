@@ -240,13 +240,8 @@ img {
     </div>
     <br>
     <button class="accordion" id="year"></button>
-    <div class="panel">
-     <input type="checkbox" name="year1" value="2019" checked>
-    <label for="vehicle1"> 2019</label><br>
-    <input type="checkbox" name="year2" value="2018">
-    <label for="vehicle2"> 2018</label><br>
-    <input type="checkbox" name="year3" value="2017">
-    <label for="vehicle3"> 2017</label>
+    <div class="panel" id = "year-panel">
+    
     </div>
    </div>
   <div class="main">
@@ -293,6 +288,22 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }	
+	
+	function get_years(database) {
+		function onlyUnique(value, index, self) { 
+    			return self.indexOf(value) === index;
+		}
+		var dates = database.filter((entry) => entry['Date Filled Out'].getYear());
+		dates = dates.filter(onlyUnique);
+		var text_to_add = "";
+		for (var i = 0; i < dates.length; i++) {
+			text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"
+			text_to_add += " <label for = 'vehicle'" + i + "'> " + dates[i] + " </label> <br>"
+		}
+		document.getElementById("year-panel");
+		
+	
+	}
 
 	function get_students(database){
 		console.log("here");
@@ -507,6 +518,7 @@ for (i = 0; i < acc.length; i++) {
 		total_survey_count = database.filter((entry) => entry['Participant ID']).length;
 		// total_survey_count = 30;
 		get_students(database);
+		get_years(database);
 	}
 </script>
 </html>

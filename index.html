@@ -301,13 +301,16 @@ for (i = 0; i < acc.length; i++) {
 		}
 		document.getElementById("rightpanel").innerHTML += text_to_add;
 	}
+	function student_results(){
+		document.getElementById("rightpanel").innerHTML = "adding " + document.getElementById("rightpanel").innerHTML;
+	}
   	function all_statistics(evt, tabName){
 		function toPercent(fraction){
 			return (fraction*100).toFixed(2)+"%"
 		}
 		
 		function addToContainer(category_name, number){
-			var box_start = "<div class = 'boxed'>"
+			var box_start = "<div class = 'boxed' onmouseover="student_results()">"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}

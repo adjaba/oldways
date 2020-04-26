@@ -183,7 +183,7 @@ img {
 .rightpanel {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 25%;
+  width: 18%;
   height: auto;
   border-radius: 5px;
   background-color: #fffbed;
@@ -290,7 +290,7 @@ for (i = 0; i < acc.length; i++) {
 }
 	function get_students(database){
 		var text_to_add = "<br> <center> Number of Surveys: ";
-		var circle = '<svg width = "15px" height = "10px" xmlns="http://www.w3.org/2000/svg"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
+		var circle = '<svg width = "12px" height = "9px" xmlns="http://www.w3.org/2000/svg"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
 		var cur_students = database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>"
 		for (var i = 1; i < cur_students + 1; i++) {

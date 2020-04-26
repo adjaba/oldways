@@ -295,7 +295,7 @@ for (i = 0; i < acc.length; i++) {
 		
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		
-		text_to_add += "<b>" + total_survey_count + "</b> </center>";
+		text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
@@ -307,6 +307,7 @@ for (i = 0; i < acc.length; i++) {
 				document.getElementById("rightpanel").innerHTML += "<br>"
 			}
 		}
+		document.getElementById("rightpanel").innerHTML += "<br>
 		
 			
 		

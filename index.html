@@ -290,6 +290,7 @@ for (i = 0; i < acc.length; i++) {
 }
 
 	function get_students(database){
+		console.log("here");
 		var svg = d3.select('mainpage').select('main').select('rightpanel').append('svg');
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		var cur_students = 10; // database.filter((entry) => entry['Participant ID']).length

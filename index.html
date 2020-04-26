@@ -295,6 +295,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		var dates = database.filter((entry) => entry['Date Filled Out'].toString());
 		dates = dates.filter(onlyUnique);
+		console.log(dates[0]);
 		var text_to_add = "";
 		for (var i = 0; i < dates.length; i++) {
 			text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"

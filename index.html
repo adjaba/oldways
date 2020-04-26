@@ -311,11 +311,15 @@ for (i = 0; i < acc.length; i++) {
 		
 	}
 		
-	function student_results(){
+	function student_results(this){
 		document.getElementById("rightpanel").innerHTML = "changed " + document.getElementById("rightpanel").innerHTML;
 		
 		// change the color to grey
 		const circles = d3.selectAll("circle").style("fill", "red");
+		var category = $(this).attr('id');
+		console.log(category);
+		var circle_colors = [];
+		
 		
 			
 		/*console.log("changed rightpanel?");
@@ -329,7 +333,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		
 		function addToContainer(category_name, number){
-			var box_start = "<div class = 'boxed' onmouseover='student_results()' onmouseout='get_students(database)'>"
+			var box_start = "<div class = 'boxed' id = '" + category_name + "' onmouseover='student_results()' onmouseout='get_students(database)'>"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}

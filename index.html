@@ -294,7 +294,7 @@ for (i = 0; i < acc.length; i++) {
     			return self.indexOf(value) === index;
 		}
 		var dates = database.map((entry) => new Date(entry['Date Filled Out']));
-		dates = dates.map((entry) => entry.toYear())
+		dates = dates.map((entry) => entry.getYear())
 		dates = dates.filter(onlyUnique);
 		console.log(dates[0]);
 		var text_to_add = "";

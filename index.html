@@ -274,6 +274,7 @@ img {
   }
 var acc = document.getElementsByClassName("accordion");
 var database;
+var total_survey_count;
 var ogContainer = document.getElementById("container").innerHTML;
 var oldContainer = ogContainer.innerHTML;
 var i;
@@ -293,8 +294,8 @@ for (i = 0; i < acc.length; i++) {
 		console.log("here");
 		
 		var text_to_add = '<br> <center> Number of Surveys: ';
-		var cur_students = database.filter((entry) => entry['Participant ID']).length;
-		text_to_add += "<b>" + cur_students + "</b> </center>";
+		
+		text_to_add += "<b>" + total_survey_count + "</b> </center>";
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
@@ -320,15 +321,14 @@ for (i = 0; i < acc.length; i++) {
 		// change the color to grey
 		const circles = d3.selectAll("circle").style("fill", "red");
 		var category = obj.id;
+		var num_completed = obj.getAttribute("data-completed");
 		console.log(category);
+		console.log(num_completed);
 		var circle_colors = [];
-		var cur_students = database.filter((entry) => entry['Participant ID']).length;
-		var num_completed = database.filter((entry) => isComplete(entry[category])).length;
+		// var cur_students = database.filter((entry) => entry['Participant ID']).length;
+		// var num_completed = database.filter((entry) => isComplete(entry[category])).length;
 		console.log(num_completed);
 		
-		for(var i = 0; i < cur_students; i++) {
-			
-		}
 		
 		
 			
@@ -343,7 +343,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		
 		function addToContainer(category_name, number, denominator){
-			var box_start = "<div class = 'boxed' id = '" + denominator + "' onmouseover='student_results(this)' onmouseout='get_students(database)'>"
+			var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " onmouseover='student_results(this)' onmouseout='get_students(database)'>"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}
@@ -454,6 +454,7 @@ for (i = 0; i < acc.length; i++) {
 		//setTimeout("changedisplays()", 5000);
 		setTimeout("changedisplays()", 100);
 		database = atoahstudent;
+		total_survey_count = database.filter((entry) => entry['Participant ID']).length;
 		get_students(database);
 	}
 </script>

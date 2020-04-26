@@ -335,7 +335,16 @@ for (i = 0; i < acc.length; i++) {
 		console.log(num_completed);
 		
 		d3.selectAll('circle').each(function(d, i){
-			if (i >= total_survey_count - num_completed) {
+			if (i < num_increase) {
+				d3.select(this).style("fill", "#0bb839");
+			}
+			else if (i < num_increase + num_same) {
+				d3.select(this).style("fill", "#ebeb31");
+			}
+			else if (i < num_increase + num_same + num_decrease) {
+				d3.select(this).style("fill", "#ed2d2d")
+			}
+			else if (i >= total_survey_count - num_completed) {
 				d3.select(this).style("fill", "#b3b3b3");
 			}
 		});

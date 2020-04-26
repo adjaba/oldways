@@ -293,14 +293,18 @@ for (i = 0; i < acc.length; i++) {
 		console.log("here");
 		
 		var text_to_add = '<br> <center> Number of Surveys: ';
-		var cur_students = 10; // database.filter((entry) => entry['Participant ID']).length
+		var cur_students = 30; // database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>";
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
 		for (var i = 1; i < cur_students + 1; i++) {
-			svg = d3.select('#rightpanel').append('svg').attr('width', '10').attr('height', '10').attr('id', i);
+			svg = d3.select('#rightpanel').append('svg').attr('width', '12').attr('height', '10').attr('id', i);
 			circleSelection = svg.append("circle").attr("cx", 5).attr("cy", 5).attr("r", 5).style("fill", "black");
+			
+			if (i % 15 == 0) {
+				document.getElementById("rightpanel").innerHTML += "<br>"
+			}
 		}
 		
 			

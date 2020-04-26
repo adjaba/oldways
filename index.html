@@ -310,7 +310,7 @@ for (i = 0; i < acc.length; i++) {
 		}
 		
 		function addToContainer(category_name, number){
-			var box_start = "<div class = 'boxed' onmouseover="student_results()">"
+			var box_start = "<div class = 'boxed' onmouseover='student_results()'>"
 			var box_end = "</div>"
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}

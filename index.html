@@ -290,7 +290,7 @@ for (i = 0; i < acc.length; i++) {
 }
 	function get_students(database){
 		var text_to_add = '<br> <center> Number of Surveys: ';
-		var circle = ' <svg width = "12px" height = "10px" xmlns="http://www.w3.org/2000/svg"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
+		var circle = ' <svg width = "12px" height = "10px"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
 		var cur_students = 10 // database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>"
 		for (var i = 1; i < cur_students + 1; i++) {
@@ -301,6 +301,19 @@ for (i = 0; i < acc.length; i++) {
 		}
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 	}
+	function get_students_2(database){
+		var svg = d3.select('mainpage').select('main').select('rightpanel').append('svg');
+		var text_to_add = '<br> <center> Number of Surveys: ';
+		var cur_students = 10; // database.filter((entry) => entry['Participant ID']).length
+		text_to_add += "<b>" + cur_students + "</b> </center>";
+		var circleSelection;
+		for (var i = 1; i < cur_students + 1; i++) {
+			circleSelection = svgSelection.append("circle").attr("cx", 5).attr("cy", 5).attr("r", 5).style("fill", "black");
+		}
+			
+		
+	}
+		
 	function student_results(){
 		document.getElementById("rightpanel").innerHTML = "changed " + document.getElementById("rightpanel").innerHTML;
 		
@@ -430,7 +443,7 @@ for (i = 0; i < acc.length; i++) {
 		//setTimeout("changedisplays()", 5000);
 		setTimeout("changedisplays()", 100);
 		database = atoahstudent;
-		get_students(database);
+		get_students_2(database);
 	}
 </script>
 </html>

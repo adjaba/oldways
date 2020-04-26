@@ -295,7 +295,7 @@ for (i = 0; i < acc.length; i++) {
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		var cur_students = 10; // database.filter((entry) => entry['Participant ID']).length
 		text_to_add += "<b>" + cur_students + "</b> </center>";
-		// document.getElementById("rightpanel").innerHTML = text_to_add;
+		document.getElementById("rightpanel").innerHTML = text_to_add;
 		/*var svg = d3.select('mainpage').select('main').select('rightpanel').append('svg').attr('width', '10%').attr('height', 'auto');
 		console.log(svg);
 		var circleSelection;
@@ -303,7 +303,7 @@ for (i = 0; i < acc.length; i++) {
 			circleSelection = svg.append("circle").attr("cx", 5).attr("cy", 5).attr("r", 5).style("fill", "black");
 		}*/
 		console.log('here');
-		var svgSelection = d3.select('mainpage').select('main').select('rightpanel').append("svg")
+		var svgSelection = d3.select('body').select('mainpage').select('main').select('rightpanel').append("svg")
                                 .attr("width", 50)
                                 .attr("height", 50);
 

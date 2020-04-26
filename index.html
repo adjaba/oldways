@@ -287,19 +287,7 @@ for (i = 0; i < acc.length; i++) {
       panel.style.display = "block";
     }
   });
-}	function get_students(database){
-		var text_to_add = '<br> <center> Number of Surveys: ';
-		var circle = ' <svg width = "12px" height = "10px"> <circle cx="5" cy="5" r="5" fill="black" /></svg>'
-		var cur_students = 10 // database.filter((entry) => entry['Participant ID']).length
-		text_to_add += "<b>" + cur_students + "</b> </center>"
-		for (var i = 1; i < cur_students + 1; i++) {
-			text_to_add += circle;
-			if ( i % 15 == 0 ) {
-				text_to_add += "<br>";
-			}
-		}
-		document.getElementById("rightpanel").innerHTML = text_to_add;
-	}
+}	
 
 	function get_students(database){
 		console.log("here");
@@ -325,9 +313,9 @@ for (i = 0; i < acc.length; i++) {
 		const rightpanel = d3.select("mainpage").select("main").select("rightpanel");
 		rightpanel.selectAll("svg").style("fill", "red");
 			
-		console.log("changed rightpanel?");
+		/*console.log("changed rightpanel?");
 		console.log(rightpanel);
-		console.log(rightpanel.selectAll("svg"));
+		console.log(rightpanel.selectAll("svg"));*/
 		
 	}
   	function all_statistics(evt, tabName){

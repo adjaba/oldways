@@ -315,8 +315,8 @@ for (i = 0; i < acc.length; i++) {
 
     console.log(students_of_teachers);
     console.log(students_in_classes);
-   // database = database.filter(function(row){return students_of_teachers.includes(database['Participant ID'])});
-   // database = database.filter(function(row){return students_in_classes.includes(database['Participant ID'])});
+    database = database.filter(function(row){return students_of_teachers.includes(row['Participant ID'])});
+    database = database.filter(function(row){return students_in_classes.includes(row['Participant ID'])});
 
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     get_students(database);

@@ -419,7 +419,6 @@ for (i = 0; i < acc.length; i++) {
 		
 	}
   	function all_statistics(evt, tabName){
-		alert(evt);
 		function toPercent(fraction){
 			return (fraction*100).toFixed(2)+"%"
 		}
@@ -581,6 +580,7 @@ for (i = 0; i < acc.length; i++) {
 		get_years(database);
 		get_teachers(studentteachermapping);
 		get_classes(teacher_database);
+		all_statistics([object MouseEvent], "cooking");
 	}
 </script>
 </html>

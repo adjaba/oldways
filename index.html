@@ -307,8 +307,8 @@ for (i = 0; i < acc.length; i++) {
     curr_years = curr_years.map((year) => Number(year));
     database = original_database.filter(function(row){return curr_years.includes(new Date(row['Date Filled Out']).getFullYear());});
 
-    map_teachers = studentteachermapping.filter(function(row){return curr_teachers.includes(row['Teacher Participant ID']);
-    map_classes = studentteachermapping.filter(function(row){return curr_teachers.includes(row['Class ']);
+    map_teachers = studentteachermapping.filter(function(row){return curr_teachers.includes(row['Teacher Participant ID'])});
+    map_classes = studentteachermapping.filter(function(row){return curr_teachers.includes(row['Class '])});
 
     students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
     students_in_classes = map_classes.map((row) => row['Student Participant ID']);

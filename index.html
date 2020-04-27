@@ -317,6 +317,7 @@ for (i = 0; i < acc.length; i++) {
     database = database.filter(function(row){return students_in_classes.include(database['Participant ID'])});
 
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
+    get_students(database);
     
   }
   

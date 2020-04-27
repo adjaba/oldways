@@ -334,7 +334,7 @@ for (i = 0; i < acc.length; i++) {
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		
 		text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
-		text_to_add += "<b> Category: </b>" + selectedCategory + "<br>";
+		text_to_add += "<span id='category'>" + selectedCategory + "<br> </span>";
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
@@ -392,7 +392,7 @@ for (i = 0; i < acc.length; i++) {
 			}
 		});
 		
-		
+		d3.selectAll('#category').innerHTML = "<b> Category: </b>" + category + "<br>";
 		
 		
 			

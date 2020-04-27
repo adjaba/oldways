@@ -428,7 +428,7 @@ for (i = 0; i < acc.length; i++) {
       var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
       var box_end = "</div>"
       document.getElementById("container").innerHTML += box_start + category_name +"<br>"
-      document.getElementById("container").innerHTML += "<span style='color: #0bb839;'>" + number "</span>" + box_end;
+      document.getElementById("container").innerHTML += "<span style='color: #0bb839;'>" + number + "</span>" + box_end;
     }
     function isComplete(change){
       return ["✅", "🔻", "Remained Same","1", "0", "-1", 1, 0, -1].indexOf(change) >=0

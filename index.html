@@ -290,6 +290,7 @@ for (i = 0; i < acc.length; i++) {
 } 
   
   function viewfiltereddata(){
+    document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
     var curr_classes = [];
     var curr_teachers = [];
     var curr_years = [];
@@ -313,7 +314,7 @@ for (i = 0; i < acc.length; i++) {
     students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
     students_in_classes = map_classes.map((row) => row['Student Participant ID']);
 
-    console.log(curr_years);
+    console.log(current_years);
     console.log(students_of_teachers);
     console.log(students_in_classes);
     database = database.filter(function(row){return students_of_teachers.includes(row['Participant ID'])});
@@ -321,7 +322,6 @@ for (i = 0; i < acc.length; i++) {
 
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     get_students(database);
-    document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
     
   }
   
@@ -616,14 +616,12 @@ for (i = 0; i < acc.length; i++) {
     original_database = atoahstudent;
     teacher_database = atoahteacher;
     studentteachermapping = mapping;
-    total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     selectedCategory = "Hover over a category to see its breakdown."
     // total_survey_count = 30;
-    get_students(database);
     get_years(database);
     get_teachers(studentteachermapping);
     get_classes(teacher_database);
-    document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
+    viewfiltereddata();
   }
 </script>
 </html>

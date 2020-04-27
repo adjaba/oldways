@@ -105,7 +105,7 @@ h1 {
   width: 79%;
   height: auto;
   border-radius: 5px;
-  background-color: #fffbed;
+  background-color: #FCFCFC;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -289,7 +289,20 @@ for (i = 0; i < acc.length; i++) {
 } 
   
   function viewfiltereddata(){
-    alert("meow");  
+    var curr_classes = [];
+    var curr_teachers = [];
+    var curr_years = [];
+    $("input:checkbox[name=class]:checked").each(function(){
+    curr_classes.push($(this).val());
+  }); 
+    $("input:checkbox[name=teacher]:checked").each(function(){
+    curr_teachers.push($(this).val());
+  });
+
+    $("input:checkbox[name=year]:checked").each(function(){
+    curr_years.push($(this).val());
+  });
+    console.log(curr_classes);
   }
   
   function get_classes(teacher_database) {
@@ -300,7 +313,7 @@ for (i = 0; i < acc.length; i++) {
     classes = classes.filter(onlyUnique);
     var text_to_add = "";
     for (var i = 0; i < classes.length; i++) {
-      text_to_add += "<input type = 'checkbox' name = 'class" + i + "' value = '" + classes[i] + "' checked>"
+      text_to_add += "<input type = 'checkbox' name = 'class" + "' value = '" + classes[i] + "' checked>"
       text_to_add += " <label for = 'classes'" + i + "'> " + classes[i] + " </label> <br>"
     }
     document.getElementById("class-panel").innerHTML = text_to_add;
@@ -315,7 +328,7 @@ for (i = 0; i < acc.length; i++) {
     teachers = teachers.filter(onlyUnique);
     var text_to_add = "";
     for (var i = 0; i < teachers.length; i++) {
-      text_to_add += "<input type = 'checkbox' name = 'teacher" + i + "' value = '" + teachers[i] + "' checked>"
+      text_to_add += "<input type = 'checkbox' name = 'teacher" + "' value = '" + teachers[i] + "' checked>"
       text_to_add += " <label for = 'teachers'" + i + "'> " + teachers[i] + " </label> <br>"
     }
     document.getElementById("teacher-panel").innerHTML = text_to_add;
@@ -332,7 +345,7 @@ for (i = 0; i < acc.length; i++) {
     console.log(dates[0]);
     var text_to_add = "";
     for (var i = 0; i < dates.length; i++) {
-      text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"
+      text_to_add += "<input type = 'checkbox' name = 'year" + "' value = '" + dates[i] + "' checked>"
       text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
     }
     document.getElementById("year-panel").innerHTML = text_to_add;
@@ -428,7 +441,7 @@ for (i = 0; i < acc.length; i++) {
       else {
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
         var box_end = "</div>"
-        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>"+ "<br><br>" + "<img src='" + "happy.jpeg" + "' width=\"110px\" height=\"110px\">" + box_end;
+        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>"+ "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
       } 
     }
     function isComplete(change){

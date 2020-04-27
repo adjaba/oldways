@@ -303,15 +303,14 @@ for (i = 0; i < acc.length; i++) {
     curr_years.push($(this).val());
   });
 
-    database = database.filter(function(row){
+    meow = database.filter(function(row){
     for (year in curr_years) {
-      console.log(new Date(row['Date Filled Out']).getFullYear());
-      console.log(year);
+
       return new Date(row['Date Filled Out']).getFullYear() == year;
     } 
   });
 
-    console.log(database);
+    console.log(meow);
 
 
     var teacher_database;

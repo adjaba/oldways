@@ -313,8 +313,10 @@ for (i = 0; i < acc.length; i++) {
     students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
     students_in_classes = map_classes.map((row) => row['Student Participant ID']);
 
-    database = database.filter(function(row){return students_of_teachers.includes(database['Participant ID'])});
-    database = database.filter(function(row){return students_in_classes.includes(database['Participant ID'])});
+    console.log(students_of_teachers);
+    console.log(students_in_classes);
+   // database = database.filter(function(row){return students_of_teachers.includes(database['Participant ID'])});
+   // database = database.filter(function(row){return students_in_classes.includes(database['Participant ID'])});
 
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     get_students(database);

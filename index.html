@@ -269,6 +269,7 @@ img {
   }
 var acc = document.getElementsByClassName("accordion");
 var database;
+var original_database;
 var teacher_database;
 var studentteachermapping;
 var total_survey_count;
@@ -303,19 +304,17 @@ for (i = 0; i < acc.length; i++) {
     curr_years.push($(this).val());
   });
 
-    meow = database.filter(function(row){
-    for (year in curr_years) {
+    curr_years = curr_years.map((year) => Number(year));
+    database = original_database.filter(function(row){return curr_years.includes(new Date(row['Date Filled Out']).getFullYear());});
 
-      return new Date(row['Date Filled Out']).getFullYear() == Number(year);
-    } 
-  });
+    map_teachers = studentteachermapping.filter(function(row){return curr_teachers.includes(row['Teacher Participant ID']);
+    map_classes = studentteachermapping.filter(function(row){return curr_teachers.includes(row['Class ']);
 
-    console.log(meow);
+    students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
+    students_in_classes = map_classes.map((row) => row['Student Participant ID']);
 
-
-    var teacher_database;
-    var studentteachermapping;
-
+    database = database.filter(function(row){return students_of_teachers.include(database['Participant ID'])});
+    database = database.filter(function(row){return students_in_classes.include(database['Participant ID'])});
 
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     
@@ -607,8 +606,9 @@ for (i = 0; i < acc.length; i++) {
   
   function loaddata(error, atoahstudent, mapping, atoahteacher){
     //setTimeout("changedisplays()", 5000);
-    setTimeout("changedisplays()", 100);
+    setTimeout("changedisplays()", 5000);
     database = atoahstudent;
+    original_database = atoahstudent;
     teacher_database = atoahteacher;
     studentteachermapping = mapping;
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;

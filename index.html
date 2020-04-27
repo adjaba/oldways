@@ -334,7 +334,7 @@ for (i = 0; i < acc.length; i++) {
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		
 		text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
-		text_to_add += "<b> Category: </b>" + selectedCategory;
+		text_to_add += "<b> Category: </b>" + selectedCategory + "<br>";
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
@@ -347,7 +347,7 @@ for (i = 0; i < acc.length; i++) {
 			}
 		}
 		document.getElementById("rightpanel").innerHTML += "<br>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg></span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
 		
 			
 		
@@ -369,6 +369,7 @@ for (i = 0; i < acc.length; i++) {
 		var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
 		var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
 		selectedCategory = category;
+		console.log(selectedCategory);
 		console.log(category);
 		console.log(num_completed);
 		var circle_colors = [];

@@ -338,15 +338,16 @@ for (i = 0; i < acc.length; i++) {
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
+		document.getElementById("rightpanel").innerHTML += "<div id='circles'>"
 		for (var i = 1; i < 100 + 1; i++) {
-			svg = d3.select('#rightpanel').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
+			svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
 			circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
 			
 			if (i % 10 == 0) {
 				document.getElementById("rightpanel").innerHTML += "<br>"
 			}
 		}
-		document.getElementById("rightpanel").innerHTML += "<br>"
+		document.getElementById("rightpanel").innerHTML += "<br></div>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
 		
 			
@@ -368,8 +369,7 @@ for (i = 0; i < acc.length; i++) {
 		var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
 		var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
 		var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
-		selectedCategory = category;
-		console.log(selectedCategory);
+
 		console.log(category);
 		console.log(num_completed);
 		var circle_colors = [];
@@ -377,7 +377,7 @@ for (i = 0; i < acc.length; i++) {
 		// var num_completed = database.filter((entry) => isComplete(entry[category])).length;
 		console.log(num_completed);
 		
-		d3.selectAll('circle').each(function(d, i){
+		d3.selectAll('#circles circle').each(function(d, i){
 			if (i < num_increase) {
 				d3.select(this).style("fill", "#0bb839");
 			}

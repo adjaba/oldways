@@ -305,9 +305,9 @@ for (i = 0; i < acc.length; i++) {
 
     database = database.filter(function(row){
     for (year in curr_years) {
-      console.log(Date(row['Date Filled Out']).getFullYear());
+      console.log(new Date(row['Date Filled Out']).getFullYear());
       console.log(year);
-      return Date(row['Date Filled Out']).getFullYear() == year;
+      return new Date(row['Date Filled Out']).getFullYear() == year;
     } 
   });
 

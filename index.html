@@ -429,6 +429,7 @@ for (i = 0; i < acc.length; i++) {
 				var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
 				var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
 				var denominator = database.filter((entry) => isComplete(entry[column])).length;
+				console.log(numerator);
 				    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
 				var result = denominator === 0? 0: numerator/denominator;
 				addToContainer(category, toPercent(result), denominator, numerator, same, decreased);

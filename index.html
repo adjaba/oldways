@@ -264,6 +264,7 @@ var database;
 var teacher_database;
 var studentteachermapping;
 var total_survey_count;
+var selectedCategory;
 var ogContainer = document.getElementById("container").innerHTML;
 var oldContainer = ogContainer.innerHTML;
 var i;
@@ -333,6 +334,7 @@ for (i = 0; i < acc.length; i++) {
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		
 		text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
+		text_to_add += "<b> Category: </b>" + selectedCategory;
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
@@ -345,7 +347,7 @@ for (i = 0; i < acc.length; i++) {
 			}
 		}
 		document.getElementById("rightpanel").innerHTML += "<br>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> Hover over a category to see its breakdown. <br> <svg width="20" height="16" id="help"><circle cx="8" cy="8" r="8" style="fill:black"></svg></span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg></span>"
 		
 			
 		
@@ -366,6 +368,7 @@ for (i = 0; i < acc.length; i++) {
 		var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
 		var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
 		var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
+		selectedCategory = category;
 		console.log(category);
 		console.log(num_completed);
 		var circle_colors = [];
@@ -543,6 +546,7 @@ for (i = 0; i < acc.length; i++) {
 		teacher_database = atoahteacher;
 		studentteachermapping = mapping;
 		total_survey_count = database.filter((entry) => entry['Participant ID']).length;
+		selectedCategory = "Hover over a category to see its breakdown."
 		// total_survey_count = 30;
 		get_students(database);
 		get_years(database);

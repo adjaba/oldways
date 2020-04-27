@@ -359,10 +359,10 @@ for (i = 0; i < acc.length; i++) {
 			circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
 			
 			if (i % 10 == 0) {
-				document.getElementById("circles").innerHTML += "<br>"
+				document.getElementById("circles").innerHTML += "<br><center>"
 			}
 		}
-		document.getElementById("rightpanel").innerHTML += "<br></div>"
+		document.getElementById("rightpanel").innerHTML += "</center><br></div>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who did not change </span>"

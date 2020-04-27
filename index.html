@@ -355,7 +355,8 @@ for (i = 0; i < acc.length; i++) {
 	}
 	
 	function reset_results(obj){
-		const circles = d3.selectAll("circle").style("fill", "black");
+		const circles = d3.selectAll("#circles circle").style("fill", "black");
+		document.getElementById('category').innerHTML = "Hover over a category to see its breakdown.";
 	}
 		
 	function student_results(obj){
@@ -509,6 +510,15 @@ for (i = 0; i < acc.length; i++) {
 				return entry[change]==="✅" || entry[change] === "1"
 			})
 			
+			var same = database.filter(function(entry){
+				return entry[change]==="Remained Same" || entry[change] === "0"
+			})
+			
+			var decreased = database.filter(function(entry){
+				return entry[change] === "🔻" || entry[change] === "-1"
+			})
+			
+			var box_start = "<div class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
 // 			to_add = ""
 // 			to_add += box_start + change + "total: " + total + "<br>";
 // 			to_add += change + "complete: " + complete.length + "<br>";

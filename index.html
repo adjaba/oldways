@@ -71,7 +71,7 @@ h1 {
     padding: 5px;
     border: 2px solid;
     border-color: #654321;
-	  
+    
 }
 .boxed:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -190,7 +190,7 @@ img {
   float: right;
   position: fixed;
   right: 10px;
-  font-family: Optima; 	
+  font-family: Optima;  
 }
 
 .submitbutton {
@@ -203,15 +203,16 @@ img {
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  font-family: Optima; 	
+  font-family: Optima;  
   cursor: pointer; 
 }
-	
+  
 </style>
 <head>
   <meta charset="utf-8"/>
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body style="background-image:url('scroll_background.png')" margin:"0px"> 
 <div id="loader" style="display:block">
@@ -241,7 +242,7 @@ img {
     <button class="accordion" id="year"></button>
     <div class="panel" id = "year-panel">
     </div>
-	  <center> <button onclick="viewfiltereddata()" class="submitbutton">View Results</button> </center>
+    <center> <button onclick="viewfiltereddata()" class="submitbutton">View Results</button> </center>
    </div>
   <div class="main">
     <h1>oldways portal</h1>
@@ -289,298 +290,299 @@ for (i = 0; i < acc.length; i++) {
       panel.style.display = "block";
     }
   });
-}	
-	
-	function viewfiltereddata(){
-		alert("meow");	
-	}
-	
-	function get_classes(teacher_database) {
-		function onlyUnique(value, index, self) { 
-    			return self.indexOf(value) === index;
-		}
-		var classes = teacher_database.map((entry) => entry['Class']);
-		classes = classes.filter(onlyUnique);
-		var text_to_add = "";
-		for (var i = 0; i < classes.length; i++) {
-			text_to_add += "<input type = 'checkbox' name = 'class" + i + "' value = '" + classes[i] + "' checked>"
-			text_to_add += " <label for = 'classes'" + i + "'> " + classes[i] + " </label> <br>"
-		}
-		document.getElementById("class-panel").innerHTML = text_to_add;
-	}
-	
-	
-	function get_teachers(studentteachermapping) {
-		function onlyUnique(value, index, self) { 
-    			return self.indexOf(value) === index;
-		}
-		var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
-		teachers = teachers.filter(onlyUnique);
-		var text_to_add = "";
-		for (var i = 0; i < teachers.length; i++) {
-			text_to_add += "<input type = 'checkbox' name = 'teacher" + i + "' value = '" + teachers[i] + "' checked>"
-			text_to_add += " <label for = 'teachers'" + i + "'> " + teachers[i] + " </label> <br>"
-		}
-		document.getElementById("teacher-panel").innerHTML = text_to_add;
-	}
-	
-	function get_years(database) {
-		function onlyUnique(value, index, self) { 
-    			return self.indexOf(value) === index;
-		}
-		var dates = database.map((entry) => new Date(entry['Date Filled Out']));
-		dates = dates.map((entry) => entry.getFullYear())
-		dates = dates.filter(onlyUnique);
-		dates = dates.sort().reverse();
-		console.log(dates[0]);
-		var text_to_add = "";
-		for (var i = 0; i < dates.length; i++) {
-			text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"
-			text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
-		}
-		document.getElementById("year-panel").innerHTML = text_to_add;
-		
-	
-	}
+} 
+  
+  function viewfiltereddata(){
+    alert("meow");  
+  }
+  
+  function get_classes(teacher_database) {
+    function onlyUnique(value, index, self) { 
+          return self.indexOf(value) === index;
+    }
+    var classes = teacher_database.map((entry) => entry['Class']);
+    classes = classes.filter(onlyUnique);
+    var text_to_add = "";
+    for (var i = 0; i < classes.length; i++) {
+      text_to_add += "<input type = 'checkbox' name = 'class" + i + "' value = '" + classes[i] + "' checked>"
+      text_to_add += " <label for = 'classes'" + i + "'> " + classes[i] + " </label> <br>"
+    }
+    document.getElementById("class-panel").innerHTML = text_to_add;
+  }
+  
+  
+  function get_teachers(studentteachermapping) {
+    function onlyUnique(value, index, self) { 
+          return self.indexOf(value) === index;
+    }
+    var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
+    teachers = teachers.filter(onlyUnique);
+    var text_to_add = "";
+    for (var i = 0; i < teachers.length; i++) {
+      text_to_add += "<input type = 'checkbox' name = 'teacher" + i + "' value = '" + teachers[i] + "' checked>"
+      text_to_add += " <label for = 'teachers'" + i + "'> " + teachers[i] + " </label> <br>"
+    }
+    document.getElementById("teacher-panel").innerHTML = text_to_add;
+  }
+  
+  function get_years(database) {
+    function onlyUnique(value, index, self) { 
+          return self.indexOf(value) === index;
+    }
+    var dates = database.map((entry) => new Date(entry['Date Filled Out']));
+    dates = dates.map((entry) => entry.getFullYear())
+    dates = dates.filter(onlyUnique);
+    dates = dates.sort().reverse();
+    console.log(dates[0]);
+    var text_to_add = "";
+    for (var i = 0; i < dates.length; i++) {
+      text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"
+      text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
+    }
+    document.getElementById("year-panel").innerHTML = text_to_add;
+    
+  
+  }
 
-	function get_students(database){
-		console.log("here");
-		
-		var text_to_add = '<br> <center> Number of Surveys: ';
-		
-		text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
-		text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
-		document.getElementById("rightpanel").innerHTML = text_to_add;
-		var svg; 
-		var circleSelection;
-		document.getElementById("rightpanel").innerHTML += "<center><div id='circles'>"
-		for (var i = 1; i < 100 + 1; i++) {
-			svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
-			circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
-			
-			if (i % 10 == 0) {
-				document.getElementById("circles").innerHTML += "<br>"
-			}
-		}
-		document.getElementById("rightpanel").innerHTML += "<br></div></center>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change </span>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease </span>"
-		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</span>"
-	}
-	
-	function reset_results(obj){
-		const circles = d3.selectAll("#circles circle").style("fill", "black");
-		document.getElementById('category').innerHTML = '<center>Hover over a category to see its breakdown.</center>';
-	}
-		
-	function student_results(obj){
-		function isComplete(change){
-			return ["✅", "🔻", "Remained Same","1", "0", "-1"].indexOf(change) >=0
-		}
-			
-		// change the color to grey
-		var category = obj.id;
-		var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
-		var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
-		var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
-		var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
+  function get_students(database){
+    console.log("here");
+    
+    var text_to_add = '<br> <center> Number of Surveys: ';
+    
+    text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
+    text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
+    document.getElementById("rightpanel").innerHTML = text_to_add;
+    var svg; 
+    var circleSelection;
+    document.getElementById("rightpanel").innerHTML += "<center><div id='circles'>"
+    for (var i = 1; i < 100 + 1; i++) {
+      svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
+      circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
+      
+      if (i % 10 == 0) {
+        document.getElementById("circles").innerHTML += "<br>"
+      }
+    }
+    document.getElementById("rightpanel").innerHTML += "<br></div></center>"
+    document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
+    document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
+    document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change </span>"
+    document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease </span>"
+    document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</span>"
+  }
+  
+  function reset_results(obj){
+    const circles = d3.selectAll("#circles circle").style("fill", "black");
+    document.getElementById('category').innerHTML = '<center>Hover over a category to see its breakdown.</center>';
+  }
+    
+  function student_results(obj){
+    function isComplete(change){
+      return ["✅", "🔻", "Remained Same","1", "0", "-1"].indexOf(change) >=0
+    }
+      
+    // change the color to grey
+    var category = obj.id;
+    var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
+    var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
+    var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
+    var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
 
-		console.log(category);
-		console.log(num_completed);
-		var circle_colors = [];
-		// var cur_students = database.filter((entry) => entry['Participant ID']).length;
-		// var num_completed = database.filter((entry) => isComplete(entry[category])).length;
-		console.log(num_completed);
-		
-		d3.selectAll('#circles circle').each(function(d, i){
-			if (i < num_increase) {
-				d3.select(this).style("fill", "#0bb839");
-			}
-			else if (i < num_increase + num_same) {
-				d3.select(this).style("fill", "#ebeb31");
-			}
-			else if (i < num_increase + num_same + num_decrease) {
-				d3.select(this).style("fill", "#ed2d2d")
-			}
-			else if (i >= total_survey_count - num_completed) {
-				d3.select(this).style("fill", "#b3b3b3");
-			}
-		});
-		
-		document.getElementById('category').innerHTML = "<b> Category: </b>" + category + "<br>";
-		
-		
-			
-		/*console.log("changed rightpanel?");
-		console.log(rightpanel);
-		console.log(rightpanel.selectAll("svg"));*/
-		
-	}
-  	function all_statistics(evt, tabName){
-		function toPercent(fraction){
-			return (fraction*100).toFixed(2)+"%"
-		}
-		
-		function addToContainer(category_name, number, denominator, improved, same, decreased){
-			var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
-			var box_end = "</div>"
-			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
-		}
-		function isComplete(change){
-			return ["✅", "🔻", "Remained Same","1", "0", "-1", 1, 0, -1].indexOf(change) >=0
-		}
-		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
-		var columns = categories.map((category) => category + '_Change');
-		var box_start = "<div class = 'boxed'>"
-		var box_end = "</div>"
-		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
-		if (tabName == "cooking"){
-			document.getElementById("container").innerHTML = "";
-			categories.forEach(function (category){
-				var column = category + '_Change';
-				var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-				var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-				var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-				var denominator = database.filter((entry) => isComplete(entry[column])).length;
-				console.log(numerator);
-				    //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
-				var result = denominator === 0? 0: numerator/denominator;
-				addToContainer(category, toPercent(result), denominator, numerator, same, decreased);
-	// 			document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
-			})
-		}
-		
-		if (tabName == "stats"){	
-			document.getElementById("container").innerHTML = "";
-			var positiveImpactNum = 0;
-			var positiveImpact = database.filter(function(entry){
-				var positivelyImpacted = false;
-				columns.forEach(function(column){
-					positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
-					positiveImpactNum += entry[column] === "✅" || entry[column] === "1"? 1: 0;
-				})
-				return positivelyImpacted
-			})
-			
-			var negativeImpactNum = 0;
-			var negativeImpact = database.filter(function(entry){
-				var negativelyImpacted = false;
-				columns.forEach(function(column){
-					negativelyImpacted = negativelyImpacted || entry[column] === "🔻" || entry[column] === "-1";
-					negativeImpactNum += entry[column] === "🔻" || entry[column] === "-1"? 1: 0;
-				})
-				return negativelyImpacted
-			})
-			
-			var noImpactNum = 0;
-			var noImpact = database.filter(function(entry){
-				var noImpacted = false;
-				columns.forEach(function(column){
-					noImpacted = noImpacted || entry[column] === "Remained Same" || entry[column] === "0";
-					noImpactNum += entry[column] === "Remained Same" || entry[column] === "0"? 1: 0;
-				})
-				return noImpacted
-			})
-		
-		
-		addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum);
-// 		document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
-		// document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
-		console.log("posImpactNum", positiveImpactNum)
-		console.log("posImpact", positiveImpact.length);
-		var totalWithPrePost = database.filter(function(entry){
-			var complete = false;
-			columns.forEach(function(column){
-				complete = complete || isComplete(entry[column]);
-					//entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
-			})
-			return complete
-		})
-		var atLeastOnePos = positiveImpact.length;
-		var atLeastOneNeg = negativeImpact.length;
-		var atLeastOneSame = noImpact.length;
-		var totalComplete = totalWithPrePost.length;
-		addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete));
-		addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2));
-		
-// 		var to_add = box_start + "complete:" + totalComplete + "<br>";
-// 		to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
-// 		to_add += "<br>"
-// 		to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
-// 		to_add += box_end
-// 		document.getElementById("container").innerHTML += to_add
-		console.log("complete", totalComplete);
-		console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
-		console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
-		}
-		if (tabName == "physical"){
-			document.getElementById("container").innerHTML = "";
-		function averageAndPercentage(change, pre, post, name){
-			var complete = database.filter((entry) => isComplete(entry[change]));
-			var total = 0;
-			
-			var count = database.filter(function(entry){
-				total += entry[change]==="✅" || entry[change] === "1"? entry[pre]-entry[post]:0;
-				return entry[change]==="✅" || entry[change] === "1"
-			})
-			
-			var same = database.filter(function(entry){
-				return entry[change]==="Remained Same" || entry[change] === "0"
-			})
-			
-			var decreased = database.filter(function(entry){
-				return entry[change] === "🔻" || entry[change] === "-1"
-			})
-			
-			var box_start = "<div class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
-// 			to_add = ""
-// 			to_add += box_start + change + "total: " + total + "<br>";
-// 			to_add += change + "complete: " + complete.length + "<br>";
-// 			to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
-// 			to_add += box_end
-// 			document.getElementById("container").innerHTML += to_add
-			document.getElementById("container").innerHTML += box_start + name + "<br>" + "Percentage of people who improved<br>" + toPercent(count.length/complete.length) + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + box_end;
-			console.log(change, 'total', total);
-			console.log(change, 'complete', complete.length);
-			console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
-		}
-		
-		averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight');
-		averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
-		//averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
-		}
-		tablinks = document.getElementsByClassName("tablinks");
-		  for (i = 0; i < tablinks.length; i++) {
-		    tablinks[i].className = tablinks[i].className.replace(" actively", "");
-		  }
-		evt.currentTarget.className += " actively";
-		console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
-		//document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
-		//document.getElementById("container").innerHTML += "test";
-	}
-	queue()
-		.defer(d3.csv, "atoah.csv")
-		.defer(d3.csv, "mapping.csv")
-		.defer(d3.csv, "atoah_teacher.csv")
-		.await(loaddata);
-	
-	function loaddata(error, atoahstudent, mapping, atoahteacher){
-		//setTimeout("changedisplays()", 5000);
-		setTimeout("changedisplays()", 100);
-		database = atoahstudent;
-		teacher_database = atoahteacher;
-		studentteachermapping = mapping;
-		total_survey_count = database.filter((entry) => entry['Participant ID']).length;
-		selectedCategory = "Hover over a category to see its breakdown."
-		// total_survey_count = 30;
-		get_students(database);
-		get_years(database);
-		get_teachers(studentteachermapping);
-		get_classes(teacher_database);
-		document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
+    console.log(category);
+    console.log(num_completed);
+    var circle_colors = [];
+    // var cur_students = database.filter((entry) => entry['Participant ID']).length;
+    // var num_completed = database.filter((entry) => isComplete(entry[category])).length;
+    console.log(num_completed);
+    
+    d3.selectAll('#circles circle').each(function(d, i){
+      if (i < num_increase) {
+        d3.select(this).style("fill", "#0bb839");
+      }
+      else if (i < num_increase + num_same) {
+        d3.select(this).style("fill", "#ebeb31");
+      }
+      else if (i < num_increase + num_same + num_decrease) {
+        d3.select(this).style("fill", "#ed2d2d")
+      }
+      else if (i >= total_survey_count - num_completed) {
+        d3.select(this).style("fill", "#b3b3b3");
+      }
+    });
+    
+    document.getElementById('category').innerHTML = "<b> Category: </b>" + category + "<br>";
+    
+    
+      
+    /*console.log("changed rightpanel?");
+    console.log(rightpanel);
+    console.log(rightpanel.selectAll("svg"));*/
+    
+  }
+    function all_statistics(evt, tabName){
+    function toPercent(fraction){
+      return (fraction*100).toFixed(2)+"%"
+    }
+    
+    function addToContainer(category_name, number, denominator, improved, same, decreased){
+      var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
+      var box_end = "</div>"
+      document.getElementById("container").innerHTML += box_start + category_name +"<br>"
+      document.getElementById("container").innerHTML += "<span style='color: #0bb839;'> &#x2191 " + number "</span>" + box_end;
+    }
+    function isComplete(change){
+      return ["✅", "🔻", "Remained Same","1", "0", "-1", 1, 0, -1].indexOf(change) >=0
+    }
+    var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
+    var columns = categories.map((category) => category + '_Change');
+    var box_start = "<div class = 'boxed'>"
+    var box_end = "</div>"
+    // document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
+    if (tabName == "cooking"){
+      document.getElementById("container").innerHTML = "";
+      categories.forEach(function (category){
+        var column = category + '_Change';
+        var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+        var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+        var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+        var denominator = database.filter((entry) => isComplete(entry[column])).length;
+        console.log(numerator);
+            //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
+        var result = denominator === 0? 0: numerator/denominator;
+        addToContainer(category, toPercent(result), denominator, numerator, same, decreased);
+  //      document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
+      })
+    }
+    
+    if (tabName == "stats"){  
+      document.getElementById("container").innerHTML = "";
+      var positiveImpactNum = 0;
+      var positiveImpact = database.filter(function(entry){
+        var positivelyImpacted = false;
+        columns.forEach(function(column){
+          positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
+          positiveImpactNum += entry[column] === "✅" || entry[column] === "1"? 1: 0;
+        })
+        return positivelyImpacted
+      })
+      
+      var negativeImpactNum = 0;
+      var negativeImpact = database.filter(function(entry){
+        var negativelyImpacted = false;
+        columns.forEach(function(column){
+          negativelyImpacted = negativelyImpacted || entry[column] === "🔻" || entry[column] === "-1";
+          negativeImpactNum += entry[column] === "🔻" || entry[column] === "-1"? 1: 0;
+        })
+        return negativelyImpacted
+      })
+      
+      var noImpactNum = 0;
+      var noImpact = database.filter(function(entry){
+        var noImpacted = false;
+        columns.forEach(function(column){
+          noImpacted = noImpacted || entry[column] === "Remained Same" || entry[column] === "0";
+          noImpactNum += entry[column] === "Remained Same" || entry[column] === "0"? 1: 0;
+        })
+        return noImpacted
+      })
+    
+    
+    addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum);
+//    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
+    // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
+    console.log("posImpactNum", positiveImpactNum)
+    console.log("posImpact", positiveImpact.length);
+    var totalWithPrePost = database.filter(function(entry){
+      var complete = false;
+      columns.forEach(function(column){
+        complete = complete || isComplete(entry[column]);
+          //entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
+      })
+      return complete
+    })
+    var atLeastOnePos = positiveImpact.length;
+    var atLeastOneNeg = negativeImpact.length;
+    var atLeastOneSame = noImpact.length;
+    var totalComplete = totalWithPrePost.length;
+    addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete));
+    addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2));
+    
+//    var to_add = box_start + "complete:" + totalComplete + "<br>";
+//    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+//    to_add += "<br>"
+//    to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+//    to_add += box_end
+//    document.getElementById("container").innerHTML += to_add
+    console.log("complete", totalComplete);
+    console.log("show increase in at least one", totalComplete === 0? 0: atLeastOnePos/totalComplete); 
+    console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
+    }
+    if (tabName == "physical"){
+      document.getElementById("container").innerHTML = "";
+    function averageAndPercentage(change, pre, post, name){
+      var complete = database.filter((entry) => isComplete(entry[change]));
+      var total = 0;
+      
+      var count = database.filter(function(entry){
+        total += entry[change]==="✅" || entry[change] === "1"? entry[pre]-entry[post]:0;
+        return entry[change]==="✅" || entry[change] === "1"
+      })
+      
+      var same = database.filter(function(entry){
+        return entry[change]==="Remained Same" || entry[change] === "0"
+      })
+      
+      var decreased = database.filter(function(entry){
+        return entry[change] === "🔻" || entry[change] === "-1"
+      })
+      
+      var box_start = "<div class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
+//      to_add = ""
+//      to_add += box_start + change + "total: " + total + "<br>";
+//      to_add += change + "complete: " + complete.length + "<br>";
+//      to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
+//      to_add += box_end
+//      document.getElementById("container").innerHTML += to_add
+      document.getElementById("container").innerHTML += box_start + name + "<br>" + "Percentage of people who improved<br>" + toPercent(count.length/complete.length) + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + box_end;
+      console.log(change, 'total', total);
+      console.log(change, 'complete', complete.length);
+      console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
+    }
+    
+    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight');
+    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
+    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" actively", "");
+      }
+    evt.currentTarget.className += " actively";
+    console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
+    //document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
+    //document.getElementById("container").innerHTML += "test";
+  }
+  queue()
+    .defer(d3.csv, "atoah.csv")
+    .defer(d3.csv, "mapping.csv")
+    .defer(d3.csv, "atoah_teacher.csv")
+    .await(loaddata);
+  
+  function loaddata(error, atoahstudent, mapping, atoahteacher){
+    //setTimeout("changedisplays()", 5000);
+    setTimeout("changedisplays()", 100);
+    database = atoahstudent;
+    teacher_database = atoahteacher;
+    studentteachermapping = mapping;
+    total_survey_count = database.filter((entry) => entry['Participant ID']).length;
+    selectedCategory = "Hover over a category to see its breakdown."
+    // total_survey_count = 30;
+    get_students(database);
+    get_years(database);
+    get_teachers(studentteachermapping);
+    get_classes(teacher_database);
+    document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
 
-	}
+  }
 </script>
 </html>

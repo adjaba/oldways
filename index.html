@@ -545,9 +545,9 @@ for (i = 0; i < acc.length; i++) {
 		//document.getElementById("container").innerHTML += "test";
 	}
 	queue()
-		.defer(d3.csv, "atoah.csv")
+		.defer(d3.csv, "student.csv")
 		.defer(d3.csv, "mapping.csv")
-		.defer(d3.csv, "atoah_teacher.csv")
+		.defer(d3.csv, "teacher.csv")
 		.await(loaddata);
 	
 	function loaddata(error, atoahstudent, mapping, atoahteacher){

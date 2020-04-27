@@ -220,23 +220,11 @@ img {
     <div id="heading"> See Survey Results </div>
     <br>
     <button class="accordion" id="class"></button>
-    <div class="panel">
-    <input type="checkbox" name="class1" value="african">
-    <label for="vehicle1">African</label><br>
-    <input type="checkbox" name="class2" value="middleeastern" checked>
-    <label for="vehicle2">Middle Eastern</label><br>
-    <input type="checkbox" name="class3" value="asian">
-    <label for="vehicle3">Asian</label>
+    <div class="panel" id="class-panel">
     </div>  
     <br>
     <button class="accordion" id="teacher"></button>
-    <div class="panel">
-    <input type="checkbox" name="teacher1" value="smith">
-    <label for="vehicle1"> Mr. Smith</label><br>
-    <input type="checkbox" name="teacher2" value="brown">
-    <label for="vehicle2"> Mr. Brown</label><br>
-    <input type="checkbox" name="teacher3" value="rogers" checked>
-    <label for="vehicle3"> Ms. Rogers</label>
+    <div class="panel" id ="teacher-panel">
     </div>
     <br>
     <button class="accordion" id="year"></button>
@@ -273,6 +261,8 @@ img {
   }
 var acc = document.getElementsByClassName("accordion");
 var database;
+var teacher_database;
+var studentteachermapping;
 var total_survey_count;
 var ogContainer = document.getElementById("container").innerHTML;
 var oldContainer = ogContainer.innerHTML;
@@ -289,6 +279,22 @@ for (i = 0; i < acc.length; i++) {
   });
 }	
 	
+	function get_teachers(studentteachermapping) {
+		function onlyUnique(value, index, self) { 
+    			return self.indexOf(value) === index;
+		}
+		var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
+		teachers = teachers.filter(onlyUnique);
+		var text_to_add = "";
+		for (var i = 0; i < teachers.length; i++) {
+			text_to_add += "<input type = 'checkbox' name = 'teacher" + i + "' value = '" + teachers[i] + "' checked>"
+			text_to_add += " <label for = 'teachers'" + i + "'> " + teachers[i] + " </label> <br>"
+		}
+		document.getElementById("teacher-panel").innerHTML = text_to_add;
+		
+	
+	}
+	
 	function get_years(database) {
 		function onlyUnique(value, index, self) { 
     			return self.indexOf(value) === index;
@@ -301,7 +307,7 @@ for (i = 0; i < acc.length; i++) {
 		var text_to_add = "";
 		for (var i = 0; i < dates.length; i++) {
 			text_to_add += "<input type = 'checkbox' name = 'year" + i + "' value = '" + dates[i] + "' checked>"
-			text_to_add += " <label for = 'vehicle'" + i + "'> " + dates[i] + " </label> <br>"
+			text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
 		}
 		document.getElementById("year-panel").innerHTML = text_to_add;
 		
@@ -512,16 +518,21 @@ for (i = 0; i < acc.length; i++) {
 	}
 	queue()
 		.defer(d3.csv, "atoah.csv")
+		.defer(d3.csv, "mapping.csv")
+		.defer(d3.csv, "atoah_teacher.csv")
 		.await(loaddata);
 	
-	function loaddata(error, atoahstudent){
+	function loaddata(error, atoahstudent, mapping, atoahteacher){
 		//setTimeout("changedisplays()", 5000);
 		setTimeout("changedisplays()", 100);
 		database = atoahstudent;
+		teacher_database = atoahteacher;
+		studentteachermapping = mapping;
 		total_survey_count = database.filter((entry) => entry['Participant ID']).length;
 		// total_survey_count = 30;
 		get_students(database);
 		get_years(database);
+		get_teachers(studentteachermapping);
 	}
 </script>
 </html>

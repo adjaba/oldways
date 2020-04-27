@@ -353,16 +353,16 @@ for (i = 0; i < acc.length; i++) {
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
-		document.getElementById("rightpanel").innerHTML += "<div id='circles'>"
+		document.getElementById("rightpanel").innerHTML += "<center><div id='circles'>"
 		for (var i = 1; i < 100 + 1; i++) {
 			svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
 			circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
 			
 			if (i % 10 == 0) {
-				document.getElementById("circles").innerHTML += "<br><center>"
+				document.getElementById("circles").innerHTML += "<br>"
 			}
 		}
-		document.getElementById("rightpanel").innerHTML += "</center><br></div>"
+		document.getElementById("rightpanel").innerHTML += "<br></div></center>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
 		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who did not change </span>"
@@ -372,7 +372,7 @@ for (i = 0; i < acc.length; i++) {
 	
 	function reset_results(obj){
 		const circles = d3.selectAll("#circles circle").style("fill", "black");
-		document.getElementById('category').innerHTML = "Hover over a category to see its breakdown.";
+		document.getElementById('category').innerHTML = '<center> Hover over a category to see its breakdown. </center>';
 	}
 		
 	function student_results(obj){

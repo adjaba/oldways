@@ -155,7 +155,6 @@ img {
   border-radius: 5px;
   background-color: #654321;
 }
-
 /* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
@@ -169,17 +168,14 @@ img {
   color: #FFFFFF;
   font-family: Optima;
 }
-
 /* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #4f3419;
 }
-
 /* Create an active/current tablink class */
 .tab button.actively {
   background-color: #362311;
 }
-
 .rightpanel {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -192,7 +188,6 @@ img {
   right: 10px;
   font-family: Optima;  
 }
-
 .submitbutton {
   border-radius: 5px;
   background-color: #fffbed;
@@ -343,7 +338,6 @@ for (i = 0; i < acc.length; i++) {
     
   
   }
-
   function get_students(database){
     console.log("here");
     
@@ -387,7 +381,6 @@ for (i = 0; i < acc.length; i++) {
     var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
     var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
     var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
-
     console.log(category);
     console.log(num_completed);
     var circle_colors = [];
@@ -424,10 +417,16 @@ for (i = 0; i < acc.length; i++) {
       return (fraction*100).toFixed(2)+"%"
     }
     
-    function addToContainer(category_name, number, denominator, improved, same, decreased){
+    function addToContainer(category_name, number, denominator, improved, same, decreased, category_class){
       var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
       var box_end = "</div>"
-      document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + box_end;
+      if (category_class == "cooking"){
+        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + box_end;
+      }
+      else if (category_class == "stats"){
+        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + box_end;
+      } 
+
     }
     function isComplete(change){
       return ["✅", "🔻", "Remained Same","1", "0", "-1", 1, 0, -1].indexOf(change) >=0
@@ -448,7 +447,7 @@ for (i = 0; i < acc.length; i++) {
         console.log(numerator);
             //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
         var result = denominator === 0? 0: numerator/denominator;
-        addToContainer(category, toPercent(result), denominator, numerator, same, decreased);
+        addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking");
   //      document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
       })
     }
@@ -486,7 +485,7 @@ for (i = 0; i < acc.length; i++) {
       })
     
     
-    addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum);
+    addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats");
 //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
     // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
     console.log("posImpactNum", positiveImpactNum)
@@ -503,8 +502,8 @@ for (i = 0; i < acc.length; i++) {
     var atLeastOneNeg = negativeImpact.length;
     var atLeastOneSame = noImpact.length;
     var totalComplete = totalWithPrePost.length;
-    addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete));
-    addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2));
+    addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete), "stats");
+    addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2), "stats");
     
 //    var to_add = box_start + "complete:" + totalComplete + "<br>";
 //    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
@@ -518,7 +517,7 @@ for (i = 0; i < acc.length; i++) {
     }
     if (tabName == "physical"){
       document.getElementById("container").innerHTML = "";
-    function averageAndPercentage(change, pre, post, name){
+    function averageAndPercentage(change, pre, post, name, unit){
       var complete = database.filter((entry) => isComplete(entry[change]));
       var total = 0;
       
@@ -542,15 +541,15 @@ for (i = 0; i < acc.length; i++) {
 //      to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
 //      to_add += box_end
 //      document.getElementById("container").innerHTML += to_add
-      document.getElementById("container").innerHTML += box_start + name + "<br>" + "Percentage of people who improved<br>" + toPercent(count.length/complete.length) + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + box_end;
+      document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length/complete.length) + "</span>" + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + unit + box_end;
       console.log(change, 'total', total);
       console.log(change, 'complete', complete.length);
       console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
     }
     
-    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight');
-    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference');
-    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category');
+    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', 'pounds');
+    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', 'inches');
+    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', 'mmHg');
     }
     tablinks = document.getElementsByClassName("tablinks");
       for (i = 0; i < tablinks.length; i++) {
@@ -581,7 +580,6 @@ for (i = 0; i < acc.length; i++) {
     get_teachers(studentteachermapping);
     get_classes(teacher_database);
     document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
-
   }
 </script>
 </html>

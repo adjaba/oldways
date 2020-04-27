@@ -413,7 +413,7 @@ for (i = 0; i < acc.length; i++) {
 			document.getElementById("container").innerHTML += box_start + category_name + "<br>" + number + box_end;
 		}
 		function isComplete(change){
-			return ["✅", "🔻", "Remained Same","1", "0", "-1"].indexOf(change) >=0
+			return ["✅", "🔻", "Remained Same","1", "0", "-1", 1, 0, -1].indexOf(change) >=0
 		}
 		var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
 		var columns = categories.map((category) => category + '_Change');

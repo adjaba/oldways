@@ -302,7 +302,25 @@ for (i = 0; i < acc.length; i++) {
     $("input:checkbox[name=year]:checked").each(function(){
     curr_years.push($(this).val());
   });
-    console.log(curr_classes);
+
+    database = database.filter(function(row){
+    for (year in curr_years) {
+      return row['Date Filled Out'].getFullYear() == year;
+    } 
+  });
+
+
+}
+
+    console.log(database);
+
+
+    var teacher_database;
+    var studentteachermapping;
+
+
+    total_survey_count = database.filter((entry) => entry['Participant ID']).length;
+    
   }
   
   function get_classes(teacher_database) {

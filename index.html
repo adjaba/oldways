@@ -423,7 +423,7 @@ for (i = 0; i < acc.length; i++) {
       if (category_class == "cooking"){
         document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + box_end;
       }
-      else if (category_class == "stats"){
+      else {
         document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + box_end;
       } 
 
@@ -547,9 +547,9 @@ for (i = 0; i < acc.length; i++) {
       console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
     }
     
-    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', 'pounds');
-    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', 'inches');
-    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', 'mmHg');
+    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds');
+    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches');
+    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg');
     }
     tablinks = document.getElementsByClassName("tablinks");
       for (i = 0; i < tablinks.length; i++) {

@@ -525,7 +525,7 @@ for (i = 0; i < acc.length; i++) {
     if (tabName == "physical"){
      document.getElementById("rightpanel").style.visibility = "visible";
      document.getElementById("container").innerHTML = "";
-    function averageAndPercentage(change, pre, post, name, unit){
+    function averageAndPercentage(change, pre, post, name, unit, picture){
       var complete = database.filter((entry) => isComplete(entry[change]));
       var total = 0;
       
@@ -549,15 +549,15 @@ for (i = 0; i < acc.length; i++) {
 //      to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
 //      to_add += box_end
 //      document.getElementById("container").innerHTML += to_add
-      document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length/complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + unit + box_end;
+      document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length/complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
       console.log(change, 'total', total);
       console.log(change, 'complete', complete.length);
       console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);
     }
     
-    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds');
-    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches');
-    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg');
+    averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
+    averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
+    //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
     }
     tablinks = document.getElementsByClassName("tablinks");
       for (i = 0; i < tablinks.length; i++) {

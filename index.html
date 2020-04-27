@@ -428,7 +428,7 @@ for (i = 0; i < acc.length; i++) {
       else {
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
         var box_end = "</div>"
-        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
+        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>"+ "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
       } 
     }
     function isComplete(change){
@@ -493,7 +493,7 @@ for (i = 0; i < acc.length; i++) {
       })
     
     
-    addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats", 'happy.jpeg');
+    addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats", "happy.jpeg");
 //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
     // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
     console.log("posImpactNum", positiveImpactNum)
@@ -510,8 +510,8 @@ for (i = 0; i < acc.length; i++) {
     var atLeastOneNeg = negativeImpact.length;
     var atLeastOneSame = noImpact.length;
     var totalComplete = totalWithPrePost.length;
-    addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete), "stats", 'happy.jpeg');
-    addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2), "stats", 'happy.jpeg');
+    addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos/totalComplete), totalComplete, toPercent(atLeastOneSame/totalComplete), toPercent(atLeastOneNeg/totalComplete), "stats", "happy.jpeg");
+    addToContainer("Average number of categories positively impacted per person", (positiveImpactNum/totalComplete).toFixed(2), totalComplete, (noImpactNum/totalComplete).toFixed(2), (negativeImpactNum/totalComplete).toFixed(2), "stats", "happy.jpeg");
     
 //    var to_add = box_start + "complete:" + totalComplete + "<br>";
 //    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;

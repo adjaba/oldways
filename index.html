@@ -436,8 +436,6 @@ for (i = 0; i < acc.length; i++) {
 		var box_start = "<div class = 'boxed'>"
 		var box_end = "</div>"
 		// document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
-		
-		document.getElementById("container").innerHTML = "Please click on a tab above to view survey results.";
 		if (tabName == "cooking"){
 			document.getElementById("container").innerHTML = "";
 			categories.forEach(function (category){
@@ -581,6 +579,8 @@ for (i = 0; i < acc.length; i++) {
 		get_years(database);
 		get_teachers(studentteachermapping);
 		get_classes(teacher_database);
+		document.getElementById("container").innerHTML = "Please click on a tab above to view survey results.";
+
 	}
 </script>
 </html>

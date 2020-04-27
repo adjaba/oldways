@@ -320,6 +320,7 @@ for (i = 0; i < acc.length; i++) {
 
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     get_students(database);
+    document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
     
   }
   

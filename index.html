@@ -439,6 +439,7 @@ for (i = 0; i < acc.length; i++) {
     var box_end = "</div>"
     // document.getElementById("container").innerHTML += "<div class='boxed'>Test</div>"
     if (tabName == "cooking"){
+      document.getElementById("rightpanel").style.visibility = "visible";
       document.getElementById("container").innerHTML = "";
       categories.forEach(function (category){
         var column = category + '_Change';
@@ -454,7 +455,8 @@ for (i = 0; i < acc.length; i++) {
       })
     }
     
-    if (tabName == "stats"){  
+    if (tabName == "stats"){ 
+      document.getElementById("rightpanel").style.visibility = "hidden";
       document.getElementById("container").innerHTML = "";
       var positiveImpactNum = 0;
       var positiveImpact = database.filter(function(entry){
@@ -518,7 +520,8 @@ for (i = 0; i < acc.length; i++) {
     console.log("average increased categories", totalComplete === 0? 0: positiveImpactNum/totalComplete);
     }
     if (tabName == "physical"){
-      document.getElementById("container").innerHTML = "";
+     document.getElementById("rightpanel").style.visibility = "visible";
+     document.getElementById("container").innerHTML = "";
     function averageAndPercentage(change, pre, post, name, unit){
       var complete = database.filter((entry) => isComplete(entry[change]));
       var total = 0;

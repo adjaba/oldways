@@ -188,7 +188,6 @@ img {
   border-radius: 5px;
   background-color: #fffbed;
   float: right;
-  text-align: center;
   position: fixed;
   right: 10px;
   font-family: Optima; 	
@@ -364,11 +363,11 @@ for (i = 0; i < acc.length; i++) {
 			}
 		}
 		document.getElementById("rightpanel").innerHTML += "<br></div>"
-		document.getElementById("rightpanel").innerHTML += "<span style='float:left' id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
-		document.getElementById("rightpanel").innerHTML += "<span style='float:left' id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
-		document.getElementById("rightpanel").innerHTML += "<span style='float:left' id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who did not change </span>"
-		document.getElementById("rightpanel").innerHTML += "<span style='float:left' id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease </span>"
-		document.getElementById("rightpanel").innerHTML += "<span style='float:left' id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who did not change </span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease </span>"
+		document.getElementById("rightpanel").innerHTML += "<span id='help'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</span>"
 	}
 	
 	function reset_results(obj){

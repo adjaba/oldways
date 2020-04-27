@@ -349,7 +349,7 @@ for (i = 0; i < acc.length; i++) {
 		var text_to_add = '<br> <center> Number of Surveys: ';
 		
 		text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
-		text_to_add += "<span id='category'>" + selectedCategory + "<br> </span>";
+		text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
 		document.getElementById("rightpanel").innerHTML = text_to_add;
 		var svg; 
 		var circleSelection;
@@ -372,7 +372,7 @@ for (i = 0; i < acc.length; i++) {
 	
 	function reset_results(obj){
 		const circles = d3.selectAll("#circles circle").style("fill", "black");
-		document.getElementById('category').innerHTML = '<center> Hover over a category to see its breakdown. </center>';
+		document.getElementById('category').innerHTML = '<center>Hover over a category to see its breakdown.</center>';
 	}
 		
 	function student_results(obj){

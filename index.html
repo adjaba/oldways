@@ -418,23 +418,25 @@ for (i = 0; i < acc.length; i++) {
       return (fraction*100).toFixed(2)+"%"
     }
     
-    function addToContainer(category_name, number, denominator, improved, same, decreased, category_class){
+    function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture){
       if (category_class == "cooking"){
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
         var box_end = "</div>"
-        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + box_end;
+        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + +"<br>" + "<img src='" + pic + "' width=\"100px\" height=\"100px\">" + box_end;
       }
       else {
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
         var box_end = "</div>"
         document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + box_end;
       } 
-
     }
     function isComplete(change){
       return ["✅", "🔻", "Remained Same","1", "0", "-1", 1, 0, -1].indexOf(change) >=0
     }
     var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
+  
+    var pics = ["home_cooked.jpeg", "greens.jpeg", "grains.jpeg", "fruits.jpeg", "exercise.jpeg", "tubers.jpeg", "beans.jpeg", "herbsspices.jpeg", "vegetarian.jpeg"];
+
     var columns = categories.map((category) => category + '_Change');
     var box_start = "<div class = 'boxed'>"
     var box_end = "</div>"
@@ -442,7 +444,7 @@ for (i = 0; i < acc.length; i++) {
     if (tabName == "cooking"){
       document.getElementById("rightpanel").style.visibility = "visible";
       document.getElementById("container").innerHTML = "";
-      categories.forEach(function (category){
+      categories.forEach(function (category, index){
         var column = category + '_Change';
         var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
@@ -451,7 +453,7 @@ for (i = 0; i < acc.length; i++) {
         console.log(numerator);
             //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
         var result = denominator === 0? 0: numerator/denominator;
-        addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking");
+        addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking", pics[index]);
   //      document.getElementById("container").innerHTML += box_start + column + ":" + toPercent(result) + box_end;
       })
     }
@@ -547,7 +549,7 @@ for (i = 0; i < acc.length; i++) {
 //      to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
 //      to_add += box_end
 //      document.getElementById("container").innerHTML += to_add
-      document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length/complete.length) + "</span>" + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + unit + box_end;
+      document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length/complete.length) + " improved" + </span>" + "<br> Average improvement <br>" + (total/complete.length).toFixed(2) + unit + box_end;
       console.log(change, 'total', total);
       console.log(change, 'complete', complete.length);
       console.log(change, 'percent', complete.length === 0? 0: count.length/complete.length);

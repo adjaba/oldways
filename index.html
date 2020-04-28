@@ -72,8 +72,6 @@
 		width: 225px;
 		height: 225px;
 		margin: 10px;
-		/*     margin-left: 26px;
-  margin-top: 10px; */
 		padding: 5px;
 		border: 2px solid;
 		border-color: #654321;
@@ -583,7 +581,7 @@
 			if (category_class == "cooking") {
 				var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
 				var box_end = "</div>"
-				document.getElementById("container").innerHTML += box_start + box_inner_start + invisible_check + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + box_end;
+				document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + box_end;
 			}
 			else {
 				var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"

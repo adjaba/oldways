@@ -71,13 +71,62 @@ h1 {
   padding: 5px;
   border: 2px solid;
   border-color: #654321;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+   -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 .boxed:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-  
-.boxed-inner {
+ 
+  .boxed-inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+    z-index: 20;
+}
+
+    .boxed-inner div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #FFF;
+        text-align: center;
+        line-height: 200px;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 2px;
+    }
+
+    .boxed-inner .boxed-inner-back {
+        background: #222;
+        color: #FFF;
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+  .boxed:hover .boxed-inner {
+    -webkit-transform: rotateY(20deg);
+    transform: rotateY(20deg);
+    box-shadow: 0 20px 20px rgba(50,50,50,.2);
+}
+
+  :checked + .boxed-inner {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+}
+
+.boxed:hover :checked + .boxed-inner {
+    transform: rotateY(160deg);
+    -webkit-transform: rotateY(160deg);
+    box-shadow: 0 20px 20px rgba(255,255,255,.2);
+}
+/* .boxed-inner {
   position: relative;
   width: 100%;
   height: 100%;
@@ -100,7 +149,7 @@ h1 {
   
 .boxed-inner-back{
   transform: rotateY(180deg);
-}
+} */
 .panel {
   padding: 0 18px;
   display: none;
@@ -476,13 +525,14 @@ for (i = 0; i < acc.length; i++) {
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture){
       category_name = category_name.bold();
       var box_inner_start = "<div class = 'boxed-inner'>"
+      var invisible_check = "<input type='checkbox'  style='display:none'/>
       var box_front_start = "<div class = 'boxed-inner-front'>"
       var box_back_start = "<div class = 'boxed-inner-back'>"
       
       if (category_class == "cooking"){
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
         var box_end = "</div>"
-        document.getElementById("container").innerHTML += box_start + box_inner_start + box_front_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + box_end;
+        document.getElementById("container").innerHTML += box_start + box_inner_start +invisible_check + box_front_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + box_end;
       }
       else {
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"

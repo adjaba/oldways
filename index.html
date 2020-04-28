@@ -123,12 +123,12 @@
 		box-shadow: 0 20px 20px rgba(50, 50, 50, .2);
 	}
 
-	:checked+.boxed-inner {
+	#hide:checked+.boxed-inner {
 		transform: rotateY(180deg);
 		-webkit-transform: rotateY(180deg);
 	}
 
-	.boxed:hover :checked+.boxed-inner {
+	.boxed:hover #hide:checked+.boxed-inner {
 		transform: rotateY(160deg);
 		-webkit-transform: rotateY(160deg);
 		box-shadow: 0 20px 20px rgba(255, 255, 255, .2);

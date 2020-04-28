@@ -76,6 +76,28 @@ h1 {
 .boxed:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+  
+.boxed-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+ }
+
+.boxed:hover .boxed-inner {
+  transform: rotateY(180deg);
+}
+  
+.boxed-inner-front .boxed-inner-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+  
 .panel {
   padding: 0 18px;
   display: none;
@@ -450,10 +472,14 @@ for (i = 0; i < acc.length; i++) {
     
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture){
       category_name = category_name.bold();
+      var box_inner_start = "<div class = 'boxed-inner'>"
+      var box_front_start = "<div class = 'boxed-inner-front'>"
+      var box_back_start = "<div class = 'boxed-inner-back'>"
+      
       if (category_class == "cooking"){
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
         var box_end = "</div>"
-        document.getElementById("container").innerHTML += box_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end;
+        document.getElementById("container").innerHTML += box_start + box_inner_start + box_front_start + category_name +"<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + box_end;
       }
       else {
         var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"

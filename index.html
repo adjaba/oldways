@@ -126,6 +126,10 @@ h1 {
     -webkit-transform: rotateY(160deg);
     box-shadow: 0 20px 20px rgba(255,255,255,.2);
 }
+  input {
+    display: none;
+}
+
 /* .boxed-inner {
   position: relative;
   width: 100%;
@@ -525,7 +529,7 @@ for (i = 0; i < acc.length; i++) {
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture){
       category_name = category_name.bold();
       var box_inner_start = "<div class = 'boxed-inner'>"
-      var invisible_check = "<input type='checkbox'  style='display:none'/>
+      var invisible_check = "<input type='checkbox'/>
       var box_front_start = "<div class = 'boxed-inner-front'>"
       var box_back_start = "<div class = 'boxed-inner-back'>"
       

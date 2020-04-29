@@ -175,7 +175,7 @@
 	}
 
 	.help {
-		margin: 2px;
+		margin: 12px;
 	}
 	.container {
 		padding: 20px 0px;
@@ -484,11 +484,19 @@
 			}
 		}
 		document.getElementById("rightpanel").innerHTML += "<br></div></center>"
-		document.getElementById("rightpanel").innerHTML += "<span class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population</span>"
-		document.getElementById("rightpanel").innerHTML += "<span class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement</span>"
-		document.getElementById("rightpanel").innerHTML += "<span class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change </span>"
-		document.getElementById("rightpanel").innerHTML += "<span class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease </span>"
-		document.getElementById("rightpanel").innerHTML += "<span class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</span>"
+		var help_start = "<div class='help' style = 'font-size: 15px'>";
+		var legend = "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
+		legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
+		legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
+		legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
+		legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
+		document.getElementById("rightpanel").innerHTML += help_start + legend;
+		
+// 		document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
+// 		document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
+// 		document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
+// 		document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
+// 		document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
 	}
 
 	function reset_results(obj) {

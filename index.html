@@ -580,17 +580,18 @@
 			var invisible_check = "<input id = 'hide' type='checkbox'/>"
 			var box_front_start = "<div class = 'boxed-inner-front'>"
 			var box_back_start = "<div class = 'boxed-inner-back'>"
+			var box_end = "</div>"
+			var label_end = "</label>"
 
 			if (category_class == "cooking") {
 				var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
-				var box_end = "</div>"
-				var label_end = "</label>"
+				
 				document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
 			}
 			else {
 				var box_start = "<div class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
-				var box_end = "</div>"
-				document.getElementById("container").innerHTML += box_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end;
+
+				document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
 			}
 		}
 		function isComplete(change) {

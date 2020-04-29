@@ -83,7 +83,7 @@
 	}
 
 	.boxed:hover {
-		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+/* 		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
 	}
 
 	.boxed-inner {
@@ -95,6 +95,10 @@
 		-webkit-transition: all 600ms;
 		transition: all 600ms;
 		z-index: 20;
+		padding: 5px;
+		border-radius: 2px;
+		border: 2px solid;
+		border-color: #654321;
 	}
 
 	.boxed-inner div {
@@ -113,10 +117,6 @@
 		color: #FFF;
 		-webkit-transform: rotateY(180deg);
 		transform: rotateY(180deg);
-		padding: 5px;
-		border-radius: 2px;
-		border: 2px solid;
-		border-color: #654321;
 	}
 
 	.boxed:hover .boxed-inner {

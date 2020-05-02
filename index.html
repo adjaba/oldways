@@ -209,7 +209,7 @@
     animation-delay: 600ms;
   }
 
-  
+
 .dotstyle ul {
   position: relative;
   display: inline-block;
@@ -242,23 +242,35 @@
   height: 100%;
   outline: none;
   border-radius: 50%;
+  background-color: red;
   background-color: rgba(139, 69, 19, 0.3);
   text-indent: -999em; /* make the text accessible to screen readers */
   cursor: pointer;
   position: absolute;
+}
+
+.dotstyle li a:focus {
+  outline: none;
+}
+
+/* Individual styles and effects */
+
+
+/* Fill in */
+
+.dotstyle-fillin li a {
   background-color: transparent;
   box-shadow: inset 0 0 0 2px brown;
   -webkit-transition: box-shadow 0.3s ease;
   transition: box-shadow 0.3s ease;
 }
 
-.dotstyle li a:hover,
-.dotstyle li a:focus {
-  outline: none;
-  box-shadow: inset 0 0 0 2px rgba(139, 69, 19, 0.6)
+.dotstyle-fillin li a:hover,
+.dotstyle-fillin li a:focus {
+  box-shadow: inset 0 0 0 2px rgba(139, 69, 19, 0.6);
 }
 
-.dotstyle li.current a {
+.dotstyle-fillin li.current a {
   box-shadow: inset 0 0 0 8px brown;
 }
 
@@ -420,7 +432,7 @@
           }
         } );
       } );
-  
+
   function changedisplays() {
     document.getElementById('mainpage').style.display = 'block';
     document.getElementById('loader').style.display = 'none';

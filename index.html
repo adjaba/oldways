@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -612,6 +613,15 @@
       var box_back_start = "<div class = 'boxed-inner-back'>"
       var box_end = "</div>"
       var label_end = "</label>"
+
+
+      [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
+        new DotNav( nav, {
+          callback : function( idx ) {
+            //console.log( idx )
+          }
+        } );
+      } );
       
       document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + back + box_end + label_end;
     }
@@ -807,14 +817,6 @@
     get_classes(teacher_database);
     viewfiltereddata();
   }
-
-  [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
-        new DotNav( nav, {
-          callback : function( idx ) {
-            //console.log( idx )
-          }
-        } );
-      } );
 </script>
 
 </html>

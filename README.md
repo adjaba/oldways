@@ -3,7 +3,7 @@
  
  Please view visualization here: https://github.mit.edu/pages/6894-sp20/FP-Oldways-Data-Visualization/
  
- The work was split among group members in the following way:
+Each member equally contributed to each part of the project. Work was primarily split among group members in the following way:
  
  ## Mattie
  * Generating Dummy Data for the purpose of visualization

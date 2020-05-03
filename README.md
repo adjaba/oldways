@@ -1,5 +1,6 @@
  # Oldways Survey Visualization
  Team Members: Mattie Wasiak, Andrea Jaba and Haripriya Mehta
+ 
  Please view visualization here: https://github.mit.edu/pages/6894-sp20/FP-Oldways-Data-Visualization/
  
  

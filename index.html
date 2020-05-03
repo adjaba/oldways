@@ -531,7 +531,7 @@
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                 // document.getElementById("middle").innerHTML = "MEOW";//this.id + " " + category_name;
+                  document.getElementById("middle").innerHTML = this.id + " " + category_name;
                   markedbuttons[color] = this;
                 }
               }

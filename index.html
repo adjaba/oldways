@@ -505,7 +505,8 @@
       var box_front_start = "<div class = 'boxed-inner-front'>";
       var box_back_start = "<div class = 'boxed-inner-back'>";
       var box_end = "</div>";
-     var middle= "<div id = 'middle'>MEOW</div>";
+      var middle_beg = "<div id = 'middle'>";
+      var middle_end = "</div>";
       var label_end = "</label>";
 
 
@@ -531,7 +532,7 @@
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                  document.getElementById("middle").innerHTML = this.id + " " + category_name;
+                  document.getElementById("middle").innerHTML = this.id + " " + this.className;
                   markedbuttons[color] = this;
                 }
               }

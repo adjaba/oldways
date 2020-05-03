@@ -500,16 +500,16 @@
       return (fraction * 100).toFixed(2) + "%"
     }
     function flippingCool(box_start, front, category_name, back){
-      var box_inner_start = "<div class = 'boxed-inner'>"
-      var invisible_check = "<input id = 'hide' type='checkbox'/>"
-      var box_front_start = "<div class = 'boxed-inner-front'>"
-      var box_back_start = "<div class = 'boxed-inner-back'>"
-      var box_end = "</div>"
-      var middle_beg= "<div id = 'middle'>"
-      var middle_end = "</div>"
-      var label_end = "</label>"
+      var box_inner_start = "<div class = 'boxed-inner'>";
+      var invisible_check = "<input id = 'hide' type='checkbox'/>";
+      var box_front_start = "<div class = 'boxed-inner-front'>";
+      var box_back_start = "<div class = 'boxed-inner-back'>";
+      var box_end = "</div>";
+      var middle_beg= "<div id = 'middle'>";
+      var middle_end = "</div>";
+      var label_end = "</label>";
       
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + middle_beg + middle_end + back + box_end + label_end;
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + back + box_end + label_end;
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });

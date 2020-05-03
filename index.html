@@ -499,6 +499,25 @@
     function toPercent(fraction) {
       return (fraction * 100).toFixed(2) + "%"
     }
+
+  function createGraphs(filter_name, category_name){
+    var middleID= "middle- " + category_name;
+    var graph;
+
+    if(filter_name == "classfilt"){
+      graph = "MEOW";
+    }
+    elif(filter_name == "teacherfilt"){
+      graph = "WOOF";
+    }
+    elif(filter_name == "yearfilt"){
+      graph = "HEEHAW";
+    }
+
+    document.getElementById(middleID).innerHTML = graph;
+  }
+
+
     function flippingCool(box_start, front, category_name, middle, back){
       var box_inner_start = "<div class = 'boxed-inner'>";
       var invisible_check = "<input id = 'hide' type='checkbox'/>";
@@ -529,9 +548,9 @@
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                  var middleID= "middle- " + this.className.slice(16, -10);
-                  console.log(middleID);
-                  document.getElementById(middleID).innerHTML = this.id + " " + this.className;
+                  newClassName = this.className.slice(16, -10);
+                  var middleID= "middle- " + newClassName;
+                  createGraphs(this.id, newClassName);
                   markedbuttons[color] = this;
                 }
               }

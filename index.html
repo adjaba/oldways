@@ -510,16 +510,12 @@
       var box_back_start = "<div class = 'boxed-inner-back'>";
       var box_end = "</div>";
       var label_end = "</label>";
-
-      var middle = "MEOW";
-      
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + middle + back + box_end + label_end;
+      var middle = "";
 
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });
 
-      console.log(classes);
       var markedbuttons = [];
 
       // Filter only unique ones
@@ -541,13 +537,14 @@
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                  console.log(this.id);
                   markedbuttons[color] = this;
+                  middle = this.id;
                 }
               }
             }
           }
       }
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + "<br>" + middle + back + box_end + label_end;
     }
     
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
@@ -572,7 +569,7 @@
         
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
         
-        var back = category_name + "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
+        var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
         
         flippingCool(box_start, front, category_name, back);
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;

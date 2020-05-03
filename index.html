@@ -523,7 +523,7 @@
       var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
       var denominator = database.filter((entry) => isComplete(entry[column])).length;
       var result = denominator === 0 ? 0 : numerator / denominator;
-      console.log(category_name);
+      console.log(column);
       console.log(result);
       console.log(curr_years);
     }

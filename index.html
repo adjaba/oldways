@@ -507,32 +507,48 @@
     var middleID= "middle- " + category_name;
     category_name = category_name.slice(3,-4);
     var graph;
+    x_axis = [];
+    all_objs = [];
 
     if(filter_name == "classfilt"){
       graph = "MEOW";
-      console.log(curr_classes);
+      x_axis = curr_classes;
     }
     else if(filter_name == "teacherfilt"){
       graph = "WOOF";
-      console.log(curr_teachers);
+      x_axis = curr_teachers; 
     }
     else if(filter_name == "yearfilt"){
       graph = "HEEHAW";
-      all_years = [];
-      curr_years.forEach(function (each_year, index) {
+      x_axis = curr_years;
+    }
+
+    x_axis.forEach(function (each_item, index) {
         var column = category_name + '_Change';
-        var temp_database = database.filter(function (entry) { return [each_year].includes(new Date(entry['Date Filled Out']).getFullYear()); });
+        var temp_database;
+        if (filter_name == "yearfilt"){
+          temp_database = database.filter(function (entry) { return [each_item].includes(new Date(entry['Date Filled Out']).getFullYear()); });
+        }
+        else if (filter_name == "classfilt"){
+          var inter_map_classes = studentteachermapping.filter(function (row) { return [each_item].includes(row['Class']) });
+          var inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
+          temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+        }
+        else if (filter_name == "teacherfilt"){
+          var inter_map_teachers = studentteachermapping.filter(function (row) { return [each_item].includes(row['Teacher Participant ID'])});
+          var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
+          temp_database = database.filter(function (row) { return inter_students_of_teachers.includes(row['Participant ID']) });
+        }
         var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
         var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
         var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
         var result = denominator === 0 ? 0 : numerator / denominator;
-        all_years.push(result);
+        all_objs.push(result);
       });
 
-      console.log(all_years);
-      console.log(curr_years);
-    }
+    console.log(x_axis);
+    console.log(all_objs)
 
     document.getElementById(middleID).innerHTML = graph;
   }

@@ -543,6 +543,7 @@
       for(var k= yourbuttons.length - 1; k >= 0; k--){
         for (var i = yourbuttons[k].length - 1; i >= 0; i--) {
             yourbuttons[k][0].classList.add("highlight");
+            createGraphs("classfilt", yourbuttons[k][0].className.slice(16, -10));
             yourbuttons[k][i].onclick=function(){
               for (var color = markedbuttons.length - 1; color >= 0; color--) {
                 if (markedbuttons[color].className == this.className + " highlight"){

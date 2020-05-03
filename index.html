@@ -530,7 +530,7 @@
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                  var middleID= "middle- " + this.className.substring(16);
+                  var middleID= "middle- " + this.className.slice(16, -10);
                   console.log(middleID);
                   document.getElementById(middleID).innerHTML = this.id + " " + this.className;
                   markedbuttons[color] = this;
@@ -557,6 +557,8 @@
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
 
         var middle= "<div id = 'middle- " + category_name + "'>" + "</div>";
+        console.log("MEOW");
+        console.log(middle);
 
         flippingCool(box_start, front, category_name, middle, back)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;

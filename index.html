@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <style>
@@ -8,7 +7,6 @@
     color: #654321;
     text-align: center;
   }
-
   /* Fixed sidenav, full height */
   .sidenav {
     height: 100%;
@@ -21,7 +19,6 @@
     overflow-x: hidden;
     padding-top: 20px;
   }
-
   /* Style the sidenav links and the dropdown button */
   .sidenav a {
     padding: 6px 8px 6px 16px;
@@ -32,25 +29,21 @@
     cursor: pointer;
     outline: none;
   }
-
   /* On mouse-over */
   .active,
   .accordion:hover {
     color: #FFF2EB;
   }
-
   .accordion:after {
     color: #818181;
     content: ""attr(id) " \25B8";
     font-size: 20px;
   }
-
   .active:after {
     content: ""attr(id) "  \25BE";
     color: #FFF2EB;
     font-size: 20px;
   }
-
   .accordion {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -66,7 +59,6 @@
     font-family: Optima;
     transition: 0.4s;
   }
-
   .boxed {
 /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
     float: left;
@@ -82,7 +74,6 @@
     transform-style: preserve-3d;
     cursor: pointer;
   }
-
   .boxed-inner {
     position: relative;
     height: 100%;
@@ -97,7 +88,6 @@
     border: 2px solid;
     border-color: #654321;
   }
-
   .boxed-inner div {
     position: absolute;
     height: 100%;
@@ -109,33 +99,27 @@
     border-radius: 2px;
     background-color: transparent;
   }
-
   .boxed-inner .boxed-inner-back {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
-
   .boxed:hover .boxed-inner {
     -webkit-transform: rotateY(20deg);
     transform: rotateY(20deg);
     box-shadow: 0 20px 20px rgba(50, 50, 50, .2);
   }
-
   #hide:checked+.boxed-inner {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
   }
-
   .boxed:hover #hide:checked+.boxed-inner {
     transform: rotateY(160deg);
     -webkit-transform: rotateY(160deg);
     box-shadow: 0 20px 20px rgba(255, 255, 255, .2);
   }
-
   #hide {
     display: none;
   }
-
   .panel {
     padding: 0 18px;
     display: none;
@@ -145,14 +129,12 @@
     color: #FCFCFC;
     overflow: hidden;
   }
-
   #heading {
     color: #FFF2EB;
     text-align: center;
     font-family: Optima;
     font-size: 25px;
   }
-
   /* Main content */
   .main {
     margin-left: 200px;
@@ -161,7 +143,6 @@
     /* Increased text to enable scrolling */
     padding: 0px 10px;
   }
-
   .card {
     transition: 0.3s;
     float: left;
@@ -170,11 +151,9 @@
     border-radius: 5px;
     background-color: #FCFCFC;
   }
-
   img {
     border-radius: 5px 5px 0 0;
   }
-
   .help {
     margin: 12px;
   }
@@ -186,123 +165,67 @@
     font-family: Optima;
     color: #362311;
   }
-
   .jumping-dots span {
     position: relative;
     bottom: 0px;
     -webkit-animation: jump 1500ms infinite;
     animation: jump 2s infinite;
   }
-
   .jumping-dots .dot-1 {
     -webkit-animation-delay: 200ms;
     animation-delay: 200ms;
   }
-
   .jumping-dots .dot-2 {
     -webkit-animation-delay: 400ms;
     animation-delay: 400ms;
   }
-
   .jumping-dots .dot-3 {
     -webkit-animation-delay: 600ms;
     animation-delay: 600ms;
   }
-
 /* Common styles and resets */
 
-.dotstyle-fillin ul {
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  cursor: default;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.highlight{
+  background: brown;
 }
 
-.dotstyle-fillin li {
-  position: relative;
-  display: block;
-  float: left;
-  margin: 0 16px;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-
-.dotstyle-fillin li a {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
+.highlight-hover{
+  height: 15px;
   border-radius: 50%;
-  text-indent: -999em; /* make the text accessible to screen readers */
+  border: 1px solid brown;
+  outline:none;
   cursor: pointer;
-  position: absolute;
-  background-color: rgba(187, 39, 39, 0.2);
-  -webkit-transition: box-shadow 0.3s ease;
-  transition: box-shadow 0.3s ease;
 }
-/* Individual styles and effects */
-
-
-/* Fill in */
-.dotstyle-fillin li a:hover,
-.dotstyle-fillin li a:focus {
-  outline: none;
-  background-color: brown;
-  box-shadow: inset 0 0 0 2px brown;
-}
-
-.dotstyle-fillin li.current a {
-  background-color: brown;
-  box-shadow: inset 0 0 0 8px brown;
-}
-
 
 
   @-webkit-keyframes jump {
     0% {
       bottom: 0px;
     }
-
     20% {
       bottom: 30px;
     }
-
     40% {
       bottom: 0px;
     }
   }
-
   @keyframes jump {
     0% {
       bottom: 0px;
     }
-
     20% {
       bottom: 30px;
     }
-
     40% {
       bottom: 0px;
     }
   }
-
   .tab {
     overflow: hidden;
     border: 1px solid #FFF2EB;
     border-radius: 5px;
     background-color: #654321;
   }
-
   /* Style the buttons inside the tab */
   .tab button {
     background-color: inherit;
@@ -316,17 +239,14 @@
     color: #FFFFFF;
     font-family: Optima;
   }
-
   /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #4f3419;
   }
-
   /* Create an active/current tablink class */
   .tab button.actively {
     background-color: #362311;
   }
-
   .rightpanel {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -340,7 +260,6 @@
     font-family: Optima;
     visibility: hidden;
   }
-
   .submitbutton {
     border-radius: 5px;
     background-color: #fffbed;
@@ -443,7 +362,6 @@
       }
     });
   }
-
   function viewfiltereddata() {
     document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
     var curr_classes = [];
@@ -455,28 +373,20 @@
     $("input:checkbox[name=teacher]:checked").each(function () {
       curr_teachers.push($(this).val());
     });
-
     $("input:checkbox[name=year]:checked").each(function () {
       curr_years.push($(this).val());
     });
-
     curr_years = curr_years.map((year) => Number(year));
     database = original_database.filter(function (row) { return curr_years.includes(new Date(row['Date Filled Out']).getFullYear()); });
-
     map_teachers = studentteachermapping.filter(function (row) { return curr_teachers.includes(row['Teacher Participant ID']) });
     map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
-
     students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
     students_in_classes = map_classes.map((row) => row['Student Participant ID']);
-
     database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
     database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
-
     total_survey_count = database.filter((entry) => entry['Participant ID']).length;
     get_students(database);
-
   }
-
   function get_classes(teacher_database) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
@@ -490,8 +400,6 @@
     }
     document.getElementById("class-panel").innerHTML = text_to_add;
   }
-
-
   function get_teachers(studentteachermapping) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
@@ -505,7 +413,6 @@
     }
     document.getElementById("teacher-panel").innerHTML = text_to_add;
   }
-
   function get_years(database) {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
@@ -521,14 +428,10 @@
       text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
     }
     document.getElementById("year-panel").innerHTML = text_to_add;
-
-
   }
   function get_students(database) {
     console.log("here");
-
     var text_to_add = '<br> <center> Number of Surveys: ';
-
     text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
     text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
     document.getElementById("rightpanel").innerHTML = text_to_add;
@@ -538,7 +441,6 @@
     for (var i = 1; i < 100 + 1; i++) {
       svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
       circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
-
       if (i % 10 == 0) {
         document.getElementById("circles").innerHTML += "<br>"
       }
@@ -558,17 +460,14 @@
 //    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
 //    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
   }
-
   function reset_results(obj) {
     const circles = d3.selectAll("#circles circle").style("fill", "black");
     document.getElementById('category').innerHTML = '<center>Hover over a category to see its breakdown.</center>';
   }
-
   function student_results(obj) {
     function isComplete(change) {
       return ["✅", "🔻", "Remained Same", "1", "0", "-1"].indexOf(change) >= 0
     }
-
     // change the color to grey
     var category = obj.id;
     var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
@@ -581,7 +480,6 @@
     // var cur_students = database.filter((entry) => entry['Participant ID']).length;
     // var num_completed = database.filter((entry) => isComplete(entry[category])).length;
     console.log(num_completed);
-
     d3.selectAll('#circles circle').each(function (d, i) {
       if (i < num_increase) {
         d3.select(this).style("fill", "#0bb839");
@@ -596,21 +494,15 @@
         d3.select(this).style("fill", "#b3b3b3");
       }
     });
-
     document.getElementById('category').innerHTML = "<b> Category: </b>" + category + "<br>";
-
-
-
     /*console.log("changed rightpanel?");
     console.log(rightpanel);
     console.log(rightpanel.selectAll("svg"));*/
-
   }
   function all_statistics(evt, tabName) {
     function toPercent(fraction) {
       return (fraction * 100).toFixed(2) + "%"
     }
-
     function flippingCool(box_start, front, back){
       var box_inner_start = "<div class = 'boxed-inner'>"
       var invisible_check = "<input id = 'hide' type='checkbox'/>"
@@ -630,14 +522,12 @@
       var box_back_start = "<div class = 'boxed-inner-back'>"
       var box_end = "</div>"
       var label_end = "</label>"
-
       if (category_class == "cooking") {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
         
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
-        var back = category_name + "<br>" + "<div class = 'dotstyle-fillin'>" + "<ul>" + "<li>" + "<a href='#'>" + "Class" +"</a>" + "</li>" + "<li>" + "<a href='#'>" + "Teacher" + "</a>" + "</li>" + "<li>" + "<a href='#'>" + "Year" + "</a>" + "</li>" + "</ul>" + "</div>";
-
+        var back = category_name + "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
         flippingCool(box_start, front, back)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
       }
@@ -646,7 +536,7 @@
         
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
         
-        var back = category_name + "<br>" + "<div class = 'dotstyle-fillin'>" + "<ul>" + "<li>" + "<a href='#'>" + "Class" +"</a>" + "</li>" + "<li>" + "<a href='#'>" + "Teacher" + "</a>" + "</li>" + "<li>" + "<a href='#'>" + "Year" + "</a>" + "</li>" + "</ul>" + "</div>";
+        var back = category_name + "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
         
         flippingCool(box_start, front, back);
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
@@ -656,13 +546,10 @@
       return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
     }
     var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
-
     var pics = ["home_cooked.jpeg", "greens.jpeg", "grains.jpeg", "fruits.jpeg", "exercise.jpeg", "tubers.jpeg", "beans.jpeg", "herbsspices.jpeg", "vegetarian.jpeg"];
-
     var columns = categories.map((category) => category + '_Change');
     var box_start = "<div class = 'boxed'>"
     var box_end = "</div>"
-
     if (tabName == "cooking") {
       document.getElementById("rightpanel").style.visibility = "visible";
       document.getElementById("container").innerHTML = "";
@@ -679,7 +566,6 @@
         
       })
     }
-
     if (tabName == "stats") {
       document.getElementById("rightpanel").style.visibility = "hidden";
       document.getElementById("container").innerHTML = "";
@@ -692,7 +578,6 @@
         })
         return positivelyImpacted
       })
-
       var negativeImpactNum = 0;
       var negativeImpact = database.filter(function (entry) {
         var negativelyImpacted = false;
@@ -702,7 +587,6 @@
         })
         return negativelyImpacted
       })
-
       var noImpactNum = 0;
       var noImpact = database.filter(function (entry) {
         var noImpacted = false;
@@ -712,8 +596,6 @@
         })
         return noImpacted
       })
-
-
       addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats", "happy.jpeg");
       //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
       // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
@@ -733,7 +615,6 @@
       var totalComplete = totalWithPrePost.length;
       addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos / totalComplete), totalComplete, toPercent(atLeastOneSame / totalComplete), toPercent(atLeastOneNeg / totalComplete), "stats", "happy.jpeg");
       addToContainer("Average number of categories positively impacted per person", (positiveImpactNum / totalComplete).toFixed(2), totalComplete, (noImpactNum / totalComplete).toFixed(2), (negativeImpactNum / totalComplete).toFixed(2), "stats", "happy.jpeg");
-
       //    var to_add = box_start + "complete:" + totalComplete + "<br>";
       //    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
       //    to_add += "<br>"
@@ -750,20 +631,16 @@
       function averageAndPercentage(change, pre, post, name, unit, picture) {
         var complete = database.filter((entry) => isComplete(entry[change]));
         var total = 0;
-
         var count = database.filter(function (entry) {
           total += entry[change] === "✅" || entry[change] === "1" ? entry[pre] - entry[post] : 0;
           return entry[change] === "✅" || entry[change] === "1"
         })
-
         var same = database.filter(function (entry) {
           return entry[change] === "Remained Same" || entry[change] === "0"
         })
-
         var decreased = database.filter(function (entry) {
           return entry[change] === "🔻" || entry[change] === "-1"
         })
-
         var box_start = "<label class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
         //      to_add = ""
         //      to_add += box_start + change + "total: " + total + "<br>";
@@ -779,7 +656,6 @@
         console.log(change, 'complete', complete.length);
         console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);
       }
-
       averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
       averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
       //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
@@ -799,6 +675,41 @@
     .defer(d3.csv, "atoah_teacher.csv")
     .await(loaddata);
 
+
+  var classes = $('[class^=highlight]').map(function() {
+    return $(this).attr('class');
+});
+
+console.log(classes);
+var markedbuttons = [];
+
+// Filter only unique ones
+var uniqueClasses = $.unique(classes);
+
+var yourbuttons = [];
+for (let hoverish of uniqueClasses) {
+  yourbuttons.push(document.getElementsByClassName(hoverish));
+  markedbuttons.push(document.getElementsByClassName(hoverish)[0]);
+}
+
+
+for(var k= yourbuttons.length - 1; k >= 0; k--){
+  for (var i = yourbuttons[k].length - 1; i >= 0; i--) {
+      var currentbtn;
+      yourbuttons[k][0].classList.add("highlight");
+      yourbuttons[k][i].onclick=function(){
+        for (var color = markedbuttons.length - 1; color >= 0; color--) {
+          if (markedbuttons[color].className == this.className + " highlight"){
+            markedbuttons[color].classList.remove("highlight");
+            this.classList.add("highlight");
+            console.log(this.id);
+            markedbuttons[color] = this;
+          }
+        }
+      }
+    }
+}
+
   function loaddata(error, atoahstudent, mapping, atoahteacher) {
     //setTimeout("changedisplays()", 5000);
     setTimeout("changedisplays()", 1000); 
@@ -813,7 +724,6 @@
     get_classes(teacher_database);
     viewfiltereddata();
   }
-
 </script>
 
 </html>

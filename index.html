@@ -499,14 +499,12 @@
     function toPercent(fraction) {
       return (fraction * 100).toFixed(2) + "%"
     }
-    function flippingCool(box_start, front, category_name, back){
+    function flippingCool(box_start, front, category_name, middle, back){
       var box_inner_start = "<div class = 'boxed-inner'>";
       var invisible_check = "<input id = 'hide' type='checkbox'/>";
       var box_front_start = "<div class = 'boxed-inner-front'>";
       var box_back_start = "<div class = 'boxed-inner-back'>";
       var box_end = "</div>";
-      var middle_beg = "<div id = 'middle'>";
-      var middle_end = "</div>";
       var label_end = "</label>";
 
 
@@ -532,7 +530,9 @@
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                  document.getElementById("middle").innerHTML = this.id + " " + this.className;
+                  var middleID= "middle- " + this.className.substring(16);
+                  console.log(middleID);
+                  document.getElementById(middleID).innerHTML = this.id + " " + this.className;
                   markedbuttons[color] = this;
                 }
               }
@@ -555,7 +555,10 @@
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
-        flippingCool(box_start, front, category_name, back)
+
+        var middle= "<div id = 'middle- " + category_name + "'>" + "</div>";
+
+        flippingCool(box_start, front, category_name, middle, back)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
       }
       else {
@@ -565,7 +568,10 @@
         
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
         
-        flippingCool(box_start, front, category_name, back);
+        var middle= "<div id = 'middle- " + category_name + "'>" + "</div>";
+
+
+        flippingCool(box_start, front, category_name, middle, back);
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
       }
     }
@@ -679,7 +685,9 @@
 //        document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
         var front = name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">"
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + name + "'>" +"</center>";
-        flippingCool(box_start, front, name, back);
+        var middle= "<div id = 'middle- " + name + "'>" + "</div>";
+
+        flippingCool(box_start, front, name, middle, back);
         console.log(change, 'total', total);
         console.log(change, 'complete', complete.length);
         console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);

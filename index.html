@@ -512,7 +512,13 @@
       var label_end = "</label>";
       var middle = "";
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + "<br>" + middle + back + box_end + label_end;
+      var unchanged = box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + "<br>";
+
+      document.getElementById("container").innerHTML += unchanged;
+      
+      unchanged = document.getElementById("container").innerHTML;
+
+      document.getElementById("container").innerHTML += middle + back + box_end + label_end;
 
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
@@ -547,7 +553,7 @@
           }
       }
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + "<br>" + middle + back + box_end + label_end;
+      document.getElementById("container").innerHTML = unchanged + middle + back + box_end + label_end;
     }
     
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {

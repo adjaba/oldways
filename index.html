@@ -504,6 +504,7 @@
     }
 
   function createGraphs(filter_name, category_name){
+    console.log(filter_name, category_name);
     var middleID= "middle- " + category_name;
     category_name = category_name.slice(3,-4);
     var graph;
@@ -548,7 +549,7 @@
       });
 
     console.log(x_axis);
-    console.log(all_objs)
+    console.log(all_objs);
 
     document.getElementById(middleID).innerHTML = graph;
   }

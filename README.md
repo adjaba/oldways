@@ -6,21 +6,21 @@
  
  The work was split among group members in the following way:
  
- # Mattie
+ ## Mattie
  * Generating Dummy Data for the purpose of visualization
  * Green, Yellow, Red Dot Student Distribution Summary Panel
  * Warning Sign on categories that need to be observed
  * Communicating with Oldways Organization
 
 
- # Andrea
+ ## Andrea
  * Creating cards for each category
  * Generating statistics for Data on front side of the card
  * Flipping effect of individual cards
  * Graphs for the backside of the card
  
  
-# Haripriya
+## Haripriya
 * Loading Page, Page Layout & Images
 * Filtering 
 * Tabs for Different Categories 

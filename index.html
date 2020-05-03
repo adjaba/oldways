@@ -517,6 +517,13 @@
     }
     else if(filter_name == "yearfilt"){
       graph = "HEEHAW";
+      var column = category_name + '_Change';
+      var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+      var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+      var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+      var denominator = database.filter((entry) => isComplete(entry[column])).length;
+      var result = denominator === 0 ? 0 : numerator / denominator;
+      console.log(result);
       console.log(curr_years);
     }
 

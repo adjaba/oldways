@@ -347,6 +347,9 @@
   var ogContainer = document.getElementById("container").innerHTML;
   var oldContainer = ogContainer.innerHTML;
   var i;
+  var curr_classes;
+  var curr_teachers;
+  var curr_years;
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
       this.classList.toggle("active");
@@ -360,9 +363,9 @@
   }
   function viewfiltereddata() {
     document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
-    var curr_classes = [];
-    var curr_teachers = [];
-    var curr_years = [];
+    curr_classes = [];
+    curr_teachers = [];
+    curr_years = [];
     $("input:checkbox[name=class]:checked").each(function () {
       curr_classes.push($(this).val());
     });
@@ -506,12 +509,15 @@
 
     if(filter_name == "classfilt"){
       graph = "MEOW";
+      console.log(curr_classes);
     }
     else if(filter_name == "teacherfilt"){
       graph = "WOOF";
+      console.log(curr_teachers);
     }
     else if(filter_name == "yearfilt"){
       graph = "HEEHAW";
+      console.log(curr_years);
     }
 
     document.getElementById(middleID).innerHTML = graph;

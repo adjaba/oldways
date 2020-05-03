@@ -6,22 +6,22 @@
  The work was split among group members in the following way:
  
  # -- Mattie --
- Generating Dummy Data for the purpose of visualization
- Green, Yellow, Red Dot Student Distribution Summary Panel
- Warning Sign on categories that need to be observed
- Communicating with Oldways Organization
+ * Generating Dummy Data for the purpose of visualization
+ * Green, Yellow, Red Dot Student Distribution Summary Panel
+ * Warning Sign on categories that need to be observed
+ * Communicating with Oldways Organization
 
 
  # -- Andrea --
- Creating cards for each category
- Generating statistics for Data on front side of the card
- Flipping effect of individual cards
- Graphs for the backside of the card
+ * Creating cards for each category
+ * Generating statistics for Data on front side of the card
+ * Flipping effect of individual cards
+ * Graphs for the backside of the card
  
  
 # -- Haripriya --
-Loading Page, Page Layout & Images
-Filtering 
-Tabs for Different Categories 
-Channeling Data to backside of the card and Horizontal Navigation Dots
+* Loading Page, Page Layout & Images
+* Filtering 
+* Tabs for Different Categories 
+* Channeling Data to backside of the card and Horizontal Navigation Dots
 

@@ -512,6 +512,40 @@
       var label_end = "</label>"
       
       document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + back + box_end + label_end;
+
+      var classes = $('[class^=highlight]').map(function() {
+      return $(this).attr('class');
+      });
+
+      console.log(classes);
+      var markedbuttons = [];
+
+      // Filter only unique ones
+      var uniqueClasses = $.unique(classes);
+
+      var yourbuttons = [];
+      for (let hoverish of uniqueClasses) {
+        yourbuttons.push(document.getElementsByClassName(hoverish));
+        markedbuttons.push(document.getElementsByClassName(hoverish)[0]);
+      }
+
+
+      for(var k= yourbuttons.length - 1; k >= 0; k--){
+        for (var i = yourbuttons[k].length - 1; i >= 0; i--) {
+            var currentbtn;
+            yourbuttons[k][0].classList.add("highlight");
+            yourbuttons[k][i].onclick=function(){
+              for (var color = markedbuttons.length - 1; color >= 0; color--) {
+                if (markedbuttons[color].className == this.className + " highlight"){
+                  markedbuttons[color].classList.remove("highlight");
+                  this.classList.add("highlight");
+                  console.log(this.id);
+                  markedbuttons[color] = this;
+                }
+              }
+            }
+          }
+      }
     }
     
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
@@ -674,41 +708,6 @@
     .defer(d3.csv, "mapping.csv")
     .defer(d3.csv, "atoah_teacher.csv")
     .await(loaddata);
-
-
-  var classes = $('[class^=highlight]').map(function() {
-    return $(this).attr('class');
-});
-
-console.log(classes);
-var markedbuttons = [];
-
-// Filter only unique ones
-var uniqueClasses = $.unique(classes);
-
-var yourbuttons = [];
-for (let hoverish of uniqueClasses) {
-  yourbuttons.push(document.getElementsByClassName(hoverish));
-  markedbuttons.push(document.getElementsByClassName(hoverish)[0]);
-}
-
-
-for(var k= yourbuttons.length - 1; k >= 0; k--){
-  for (var i = yourbuttons[k].length - 1; i >= 0; i--) {
-      var currentbtn;
-      yourbuttons[k][0].classList.add("highlight");
-      yourbuttons[k][i].onclick=function(){
-        for (var color = markedbuttons.length - 1; color >= 0; color--) {
-          if (markedbuttons[color].className == this.className + " highlight"){
-            markedbuttons[color].classList.remove("highlight");
-            this.classList.add("highlight");
-            console.log(this.id);
-            markedbuttons[color] = this;
-          }
-        }
-      }
-    }
-}
 
   function loaddata(error, atoahstudent, mapping, atoahteacher) {
     //setTimeout("changedisplays()", 5000);

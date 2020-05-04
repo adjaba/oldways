@@ -468,6 +468,7 @@
       return ["✅", "🔻", "Remained Same", "1", "0", "-1"].indexOf(change) >= 0
     }
     // change the color to grey
+    reset_results(database);
     var category = obj.id;
     var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
     var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
@@ -606,7 +607,7 @@
       var box_end = "</div>"
       var label_end = "</label>"
       if (category_class == "cooking") {
-        var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
+        var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
         
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
@@ -732,7 +733,7 @@
         var decreased = database.filter(function (entry) {
           return entry[change] === "🔻" || entry[change] === "-1"
         })
-        var box_start = "<label class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)' onmouseout='reset_results(database)'>"
+        var box_start = "<label class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)'>"
         //      to_add = ""
         //      to_add += box_start + change + "total: " + total + "<br>";
         //      to_add += change + "complete: " + complete.length + "<br>";

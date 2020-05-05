@@ -612,7 +612,7 @@
           years.push($(this).val());
         });
       years = years.map((year) => Number(year));
-      var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length; / original_database.filter((entry) => isComplete(entry[column])).length; 
+      var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length; 
       var cur_year;
       var cur_years_info;
       var percent;

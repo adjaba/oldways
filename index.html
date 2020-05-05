@@ -607,7 +607,7 @@
       }
       var column = category_name.substring(3, category_name.length - 4) + '_Change';
       var years = [];
-      var lagged = [];
+      // var lagged = [];
       $("input:checkbox[name=year]").each(function () {
           years.push($(this).val());
         });
@@ -618,6 +618,8 @@
       var percent;
       var numerator;
       var denominator;
+      var worst_year = 'all';
+      var worst_percent = desired_percent;
       for(var i = 0; i < years.length; i++) {
         cur_year = years[i];
         cur_years_info = original_database.filter(function (row) {return cur_year == (new Date(row['Date Filled Out']).getFullYear());});
@@ -628,10 +630,13 @@
         console.log("percent " + percent);
         console.log("desired " + desired_percent + "\n");
         if (percent < desired_percent) {
-          lagged.push(cur_year);
+          if (percent < worst_percent) {
+            worst_year = cur_year;
+            worst_percent = percent;
+          }
         }        
       }
-      console.log('lagged ' + lagged);
+      lagged.push(worst_year + ": " worst_percent);
       return lagged
       
     }

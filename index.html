@@ -659,11 +659,11 @@
       //var label_end = "</label>"
       if (category_class == "cooking") {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
-        var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved!!" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
+        var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
+        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
         /*for (var i = 0; i < lagged_years.length; i++) {
           poss_exclamation += lagged_years[i] + "<br>"
         }*/

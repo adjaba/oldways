@@ -422,7 +422,7 @@
     dates = dates.map((entry) => entry.getFullYear())
     dates = dates.filter(onlyUnique);
     dates = dates.sort().reverse();
-    console.log(dates[0]);
+    // console.log(dates[0]);
     var text_to_add = "";
     for (var i = 0; i < dates.length; i++) {
       text_to_add += "<input type = 'checkbox' name = 'year" + "' value = '" + dates[i] + "' checked>"
@@ -431,7 +431,7 @@
     document.getElementById("year-panel").innerHTML = text_to_add;
   }
   function get_students(database) {
-    console.log("here");
+    // console.log("here");
     var text_to_add = '<br> <center> Number of Surveys: ';
     text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
     text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
@@ -476,12 +476,12 @@
     var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
     var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
     var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
-    console.log(category);
-    console.log(num_completed);
+    // console.log(category);
+    // console.log(num_completed);
     var circle_colors = [];
     // var cur_students = database.filter((entry) => entry['Participant ID']).length;
     // var num_completed = database.filter((entry) => isComplete(entry[category])).length;
-    console.log(num_completed);
+    // console.log(num_completed);
     d3.selectAll('#circles circle').each(function (d, i) {
       if (i < num_increase) {
         d3.select(this).style("fill", "#0bb839");
@@ -507,7 +507,7 @@
     }
 
   function createGraphs(filter_name, category_name){
-    console.log(filter_name, category_name);
+    // console.log(filter_name, category_name);
     var middleID= "middle- " + category_name;
     category_name = category_name.slice(3,-4);
     var graph;
@@ -551,8 +551,8 @@
         all_objs.push(result);
       });
 
-    console.log(x_axis);
-    console.log(all_objs);
+    // console.log(x_axis);
+    // console.log(all_objs);
 
     document.getElementById(middleID).innerHTML = graph;
   }
@@ -572,7 +572,7 @@
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });
-      console.log(classes);
+      // console.log(classes);
       var markedbuttons = [];
       // Filter only unique ones
       var uniqueClasses = $.unique(classes);
@@ -657,8 +657,8 @@
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
 
         var middle= "<div id = 'middle- " + category_name + "'>" + "</div>";
-        console.log("MEOW");
-        console.log(middle);
+        // console.log("MEOW");
+        // console.log(middle);
 
         flippingCool(box_start, front, category_name, middle, back, poss_exclamation)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
@@ -694,7 +694,7 @@
         var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
         var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
         var denominator = database.filter((entry) => isComplete(entry[column])).length;
-        console.log(numerator);
+        // console.log(numerator);
         //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
         var result = denominator === 0 ? 0 : numerator / denominator;
         addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking", pics[index]);
@@ -734,8 +734,8 @@
       addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats", "happy.jpeg");
       //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
       // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
-      console.log("posImpactNum", positiveImpactNum)
-      console.log("posImpact", positiveImpact.length);
+      // console.log("posImpactNum", positiveImpactNum)
+      // console.log("posImpact", positiveImpact.length);
       var totalWithPrePost = database.filter(function (entry) {
         var complete = false;
         columns.forEach(function (column) {
@@ -756,9 +756,9 @@
       //    to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
       //    to_add += box_end
       //    document.getElementById("container").innerHTML += to_add
-      console.log("complete", totalComplete);
+      /*console.log("complete", totalComplete);
       console.log("show increase in at least one", totalComplete === 0 ? 0 : atLeastOnePos / totalComplete);
-      console.log("average increased categories", totalComplete === 0 ? 0 : positiveImpactNum / totalComplete);
+      console.log("average increased categories", totalComplete === 0 ? 0 : positiveImpactNum / totalComplete);*/
     }
     if (tabName == "physical") {
       document.getElementById("rightpanel").style.visibility = "visible";
@@ -790,9 +790,9 @@
         var middle= "<div id = 'middle- " + name + "'>" + "</div>";
 
         flippingCool(box_start, front, name, middle, back);
-        console.log(change, 'total', total);
+        /*console.log(change, 'total', total);
         console.log(change, 'complete', complete.length);
-        console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);
+        console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);*/
       }
       averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
       averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
@@ -803,7 +803,7 @@
       tablinks[i].className = tablinks[i].className.replace(" actively", "");
     }
     evt.currentTarget.className += " actively";
-    console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
+    //console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
     //document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
     //document.getElementById("container").innerHTML += "test";
   }

@@ -601,11 +601,10 @@
       }
     }
     
-    function get_cooking_lagged_years(category_name, completed, improved) {
+    function get_cooking_lagged_years(column) {
       function isComplete(change) {
         return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
       }
-      var column = category_name.substring(3, category_name.length - 4) + '_Change';
       var years = [];
       var lagged = [];
       $("input:checkbox[name=year]").each(function () {
@@ -638,11 +637,14 @@
       }
       lagged.push(worst_year);
       lagged.push(worst_percent);
-      return lagged
+      document.getElementById("container").innerHTML += worst_year + ": " + worst_percent;
+      
       
     }
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
       category_name = category_name.bold();
+      var column = category_name.substring(3, category_name.length - 4) + '_Change';
+      
       //var box_inner_start = "<div class = 'boxed-inner'>"
       //var invisible_check = "<input id = 'hide' type='checkbox'/>"
       //var box_front_start = "<div class = 'boxed-inner-front'>"
@@ -654,11 +656,11 @@
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
         // iterate through years and determine if any are lagging        
-        var lagged_years = get_cooking_lagged_years(category_name, denominator, improved); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;'><img src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
-        for (var i = 0; i < lagged_years.length; i++) {
+        // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
+        var poss_exclamation = "<div id = '" + column + "lagged' style = 'text-align:right; right:12px;'><img src='red_exclamation.png' onmouseover='get_cooking_lagged_years(" + column + ")' width=\"25px\" height=\"25px\"><br>"
+        /*for (var i = 0; i < lagged_years.length; i++) {
           poss_exclamation += lagged_years[i] + "<br>"
-        }
+        }*/
         poss_exclamation += "</div>"      
         
         

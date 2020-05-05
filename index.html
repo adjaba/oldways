@@ -625,7 +625,8 @@
         numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
         percent = numerator / denominator;
-        
+        console.log(percent);
+        console.log(desired_percent + "\n");
         if (percent < 0.5 * desired_percent) {
           lagged.push(cur_year);
         }        

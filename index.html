@@ -619,13 +619,13 @@
       var numerator;
       var denominator;
       for(var i = 0; i < years.length; i++) {
-        cur_year = years[i];
-        cur_years_info = original_database.filter(function (row) {return curr_years.includes(new Date(row['Date Filled Out']).getFullYear());});
+        cur_year = [years[i]];
+        cur_years_info = original_database.filter(function (row) {return cur_year.includes(new Date(row['Date Filled Out']).getFullYear());});
         numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
         percent = numerator / denominator;
         
-        if (percent < 0.5 * desired) {
+        if (percent < 0.5 * desired_percent) {
           lagged.push(cur_year);
         }        
       }

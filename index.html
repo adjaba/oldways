@@ -618,12 +618,15 @@
       var percent;
       var numerator;
       var denominator;
+      console.log('desired percent ' + desired_percent);
       for(var i = 0; i < years.length; i++) {
         cur_year = [years[i]];
         cur_years_info = original_database.filter(function (row) {return cur_year.includes(new Date(row['Date Filled Out']).getFullYear());});
         numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
         percent = numerator / denominator;
+        console.log(cur_year);
+        console.log(percent);
         
         if (percent < 0.5 * desired_percent) {
           lagged.push(cur_year);
@@ -644,7 +647,6 @@
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
-        var lagged = []
         // iterate through years and determine if any are lagging        
         var lagged_years = get_cooking_lagged_years(category_name, denominator, improved); // denominator = completed
         var poss_exclamation = "<div style = 'text-align:right; right:12px;'><img src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"

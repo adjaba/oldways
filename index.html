@@ -364,7 +364,14 @@
     });
   }
   
-  
+  function clear_exclamation_point(obj) {
+    var column = obj.id;
+    var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' onmouseout = 'clear_exclamation_point(this)' width=\"25px\" height=\"25px\"><br>"
+
+        poss_exclamation += "</div>" 
+        
+    document.getElementById(column + "lagged").innerHTML = poss_exclamation;
+  }
   function get_cooking_lagged_years(obj) {
       var column = obj.id;
       function isComplete(change) {

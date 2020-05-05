@@ -606,7 +606,6 @@
         return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
       }
       var column = category_name.substring(3, category_name.length - 4) + '_Change';
-      console.log(column);
       var years = [];
       var lagged = [];
       $("input:checkbox[name=year]").each(function () {
@@ -619,8 +618,6 @@
       var percent;
       var numerator;
       var denominator;
-      console.log(years);
-      console.log('desired percent ' + desired_percent);
       for(var i = 0; i < years.length; i++) {
         cur_year = years[i];
         cur_years_info = original_database.filter(function (row) {return cur_year == (new Date(row['Date Filled Out']).getFullYear());});
@@ -628,14 +625,12 @@
         numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
         percent = numerator / denominator;
-        console.log(cur_year);
-        console.log(numerator + " " + denominator);
-        console.log(percent);
         
         if (percent < 0.5 * desired_percent) {
           lagged.push(cur_year);
         }        
       }
+      console.log('lagged ' + lagged);
       return lagged
       
     }

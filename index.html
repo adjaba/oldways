@@ -607,7 +607,7 @@
       }
       var column = category_name.substring(3, category_name.length - 4) + '_Change';
       var years = [];
-      // var lagged = [];
+      var lagged = [];
       $("input:checkbox[name=year]").each(function () {
           years.push($(this).val());
         });

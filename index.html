@@ -363,6 +363,49 @@
       }
     });
   }
+  
+  
+  function get_cooking_lagged_years(obj) {
+      var column = obj.id;
+      function isComplete(change) {
+        return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
+      }
+      var years = [];
+      var lagged = [];
+      $("input:checkbox[name=year]").each(function () {
+          years.push($(this).val());
+        });
+      years = years.map((year) => Number(year));
+      var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length; 
+      var cur_year;
+      var cur_years_info;
+      var percent;
+      var numerator;
+      var denominator;
+      var worst_year = 'all';
+      var worst_percent = desired_percent;
+      for(var i = 0; i < years.length; i++) {
+        cur_year = years[i];
+        cur_years_info = original_database.filter(function (row) {return cur_year == (new Date(row['Date Filled Out']).getFullYear());});
+        // console.log(cur_years_info)
+        numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+        denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
+        percent = numerator / denominator;
+        console.log("percent " + percent);
+        console.log("desired " + desired_percent + "\n");
+        if (percent < desired_percent) {
+          if (percent < worst_percent) {
+            worst_year = cur_year;
+            worst_percent = percent;
+          }
+        }        
+      }
+      lagged.push(worst_year);
+      lagged.push(worst_percent);
+      // document.getElementById(column + "lagged").innerHTML += worst_year;
+      
+      
+    }
   function viewfiltereddata() {
     document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results.";
     curr_classes = [];
@@ -601,47 +644,7 @@
       }
     }
     
-    function get_cooking_lagged_years(obj) {
-      var column = obj.id;
-      function isComplete(change) {
-        return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
-      }
-      var years = [];
-      var lagged = [];
-      $("input:checkbox[name=year]").each(function () {
-          years.push($(this).val());
-        });
-      years = years.map((year) => Number(year));
-      var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length; 
-      var cur_year;
-      var cur_years_info;
-      var percent;
-      var numerator;
-      var denominator;
-      var worst_year = 'all';
-      var worst_percent = desired_percent;
-      for(var i = 0; i < years.length; i++) {
-        cur_year = years[i];
-        cur_years_info = original_database.filter(function (row) {return cur_year == (new Date(row['Date Filled Out']).getFullYear());});
-        // console.log(cur_years_info)
-        numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-        denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
-        percent = numerator / denominator;
-        console.log("percent " + percent);
-        console.log("desired " + desired_percent + "\n");
-        if (percent < desired_percent) {
-          if (percent < worst_percent) {
-            worst_year = cur_year;
-            worst_percent = percent;
-          }
-        }        
-      }
-      lagged.push(worst_year);
-      lagged.push(worst_percent);
-      // document.getElementById(column + "lagged").innerHTML += worst_year;
-      
-      
-    }
+    
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
       category_name = category_name.bold();
       var column = category_name.substring(3, category_name.length - 4) + '_Change';

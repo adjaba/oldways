@@ -612,7 +612,7 @@
           years.push($(this).val());
         });
       years = years.map((year) => Number(year));
-      var desired_percent = improved / completed; 
+      var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length; / original_database.filter((entry) => isComplete(entry[column])).length; 
       var cur_year;
       var cur_years_info;
       var percent;
@@ -627,7 +627,7 @@
         percent = numerator / denominator;
         console.log("percent " + percent);
         console.log("desired " + desired_percent + "\n");
-        if (percent < 0.5 * desired_percent) {
+        if (percent < desired_percent) {
           lagged.push(cur_year);
         }        
       }

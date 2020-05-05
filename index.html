@@ -556,13 +556,13 @@
 
     document.getElementById(middleID).innerHTML = graph;
   }
+    
+  
 
-
-    function flippingCool(box_start, front, category_name, middle, back){
+    function flippingCool(box_start, front, category_name, middle, back, poss_exclamation){
       var box_inner_start = "<div class = 'boxed-inner'>";
       var invisible_check = "<input id = 'hide' type='checkbox'/>";
       var box_front_start = "<div class = 'boxed-inner-front'>";
-      var poss_exclamation = "<div style = 'text-align:right; right:12px;'><img src='red_exclamation.png' width=\"25px\" height=\"25px\"></div>"
       var box_back_start = "<div class = 'boxed-inner-back'>";
       var box_end = "</div>";
       var label_end = "</label>";
@@ -601,17 +601,58 @@
       }
     }
     
+    function get_cooking_lagged_years(category_name, completed, improved) {
+      function isComplete(change) {
+        return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
+      }
+      var column = category + '_Change';
+      var years = [];
+      var lagged = [];
+      $("input:checkbox[name=year]").each(function () {
+          years.push($(this).val());
+        });
+      years = years.map((year) => Number(year));
+      var desired_percent = improved / completed; 
+      var cur_year;
+      var cur_years_info;
+      var percent;
+      var numerator;
+      var denominator;
+      for(var i = 0; i < years.length; i++) {
+        cur_year = years[i];
+        cur_years_info = original_database.filter(function (row) {return curr_years.includes(new Date(row['Date Filled Out']).getFullYear());});
+        numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+        denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
+        percent = numerator / denominator;
+        
+        if (percent < 0.5 * desired) {
+          lagged.push(cur_year);
+        }        
+      }
+      return lagged
+      
+    }
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
       category_name = category_name.bold();
-      var box_inner_start = "<div class = 'boxed-inner'>"
-      var invisible_check = "<input id = 'hide' type='checkbox'/>"
-      var box_front_start = "<div class = 'boxed-inner-front'>"
-      var box_back_start = "<div class = 'boxed-inner-back'>"
-      var box_end = "</div>"
-      var label_end = "</label>"
+      //var box_inner_start = "<div class = 'boxed-inner'>"
+      //var invisible_check = "<input id = 'hide' type='checkbox'/>"
+      //var box_front_start = "<div class = 'boxed-inner-front'>"
+      //var box_back_start = "<div class = 'boxed-inner-back'>"
+      //var box_end = "</div>"
+      //var label_end = "</label>"
       if (category_class == "cooking") {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
         var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
+        
+        var lagged = []
+        // iterate through years and determine if any are lagging        
+        var lagged_years = get_cooking_lagged_years(category_name, denominator, improved); // denominator = completed
+        var poss_exclamation = "<div style = 'text-align:right; right:12px;'><img src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
+        for (var i = 0; i < lagged_years.length; i++) {
+          poss_exclamation += lagged_years[i] + "<br>"
+        }
+        poss_exclamation += "</div>"      
+        
         
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
 
@@ -619,7 +660,7 @@
         console.log("MEOW");
         console.log(middle);
 
-        flippingCool(box_start, front, category_name, middle, back)
+        flippingCool(box_start, front, category_name, middle, back, poss_exclamation)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
       }
       else {

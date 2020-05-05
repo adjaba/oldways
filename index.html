@@ -391,8 +391,10 @@
         numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
         percent = numerator / denominator;
+        console.log("cat " + column;
         console.log("percent " + percent);
         console.log("desired " + desired_percent + "\n");
+        
         if (percent < desired_percent) {
           if (percent < worst_percent) {
             worst_year = cur_year;

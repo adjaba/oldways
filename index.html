@@ -601,7 +601,8 @@
       }
     }
     
-    function get_cooking_lagged_years(column) {
+    function get_cooking_lagged_years(obj) {
+      var column = obj.id;
       function isComplete(change) {
         return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
       }
@@ -657,7 +658,7 @@
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years('" + column + "')' width=\"25px\" height=\"25px\"><br>"
+        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' width=\"25px\" height=\"25px\"><br>"
         /*for (var i = 0; i < lagged_years.length; i++) {
           poss_exclamation += lagged_years[i] + "<br>"
         }*/

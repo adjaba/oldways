@@ -427,9 +427,8 @@ div.tooltip {
       lagged.push(worst_year);
       lagged.push(worst_percent);
       d3.select(column + "lagged")
-		    .append("div")   
-    		.attr("class", "tooltip")               
-    		.style("opacity", 0);
+		.append("div")   
+    		.attr("class", "tooltip");
       // document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
       
       
@@ -639,7 +638,7 @@ div.tooltip {
       var label_end = "</label>";
 
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + + poss_exclamation + category_name + back + middle + box_end + label_end;
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + poss_exclamation + category_name + back + middle + box_end + label_end;
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });

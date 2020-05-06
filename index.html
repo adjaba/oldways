@@ -649,24 +649,9 @@ div.tooltip {
 	    var div = d3.select("div[id = '" + column + "lagged']").append("div")	
     .attr("class", "tooltip")				
     .style("opacity", 0);   
-	    
-	    
-	    var svgContainer = d3_exclam.append("svg")
-                                     .attr("width", 200)
-                                     .attr("height", 200);
- 
- //Draw the Rectangle
- var rectangle = svgContainer.append("rect")
-                             .attr("x", 10)
-                             .attr("y", 10)
-                            .attr("width", 50)
-                           .attr("height", 100).on("mouseover", function(d) {		
-            console.log('test');	
-            });
 
 	    
-	//console.log(d3_exclam);
-	/*var imgs = d3_exclam.selectAll("image").data([0]);
+	var imgs = d3_exclam.selectAll("image").data([0]);
         imgs.enter()
                 .append("svg:img")
 	    	.attr("id", column)
@@ -675,16 +660,16 @@ div.tooltip {
                 .attr("height", "25")
 	    	.on("mouseover", function() { 
           console.log("here");
-    });*/
-	/*var div = d3.select("img[id = '" + column + "']").append("div")	
+    });
+	var div = d3.select("img[id = '" + column + "']").append("div")	
     		.attr("class", "tooltip")				
-    		.style("opacity", 0);*/
-	/*d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
+    		.style("opacity", 0);
+	d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
             div.html(formatTime(d.date) + "<br/>");	
-           });*/
+           });
 	    
 	 
 	    

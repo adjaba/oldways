@@ -644,7 +644,7 @@ div.tooltip {
       document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
 
       var lagged = get_cooking_lagged_years(column);
-	var d3_exclam = d3.select("[id = 'column + \"lagged\"']");
+	var d3_exclam = d3.select("div[id = '" + column + "lagged']");
 	console.log(d3_exclam);
 	var imgs = d3_exclam.selectAll("image").data([0]);
         imgs.enter()
@@ -653,7 +653,7 @@ div.tooltip {
                 .attr("xlink:href", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25");
-	var div = d3.select("[id = 'column']").append("div")	
+	var div = d3.select("image[id = '" + column + "']").append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);
       	imgs.on("mouseover", function(d) {		

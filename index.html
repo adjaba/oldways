@@ -632,7 +632,7 @@ div.tooltip {
     
   
 
-    function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover){
+    function flippingCool(box_start, front, category_name, middle, back, column, poss_exclamation, poss_exclamation_no_hover){
       var box_inner_start = "<div class = 'boxed-inner'>";
       var invisible_check = "<input id = 'hide' type='checkbox'/>";
       var box_front_start = "<div class = 'boxed-inner-front'>";
@@ -641,8 +641,28 @@ div.tooltip {
       var label_end = "</label>";
 
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
-      var classes = $('[class^=highlight]').map(function() {
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
+      
+      var lagged = get_cooking_lagged_years(column);
+	var d3_exclam = d3.select(column + "lagged");
+	console.log(d3_exclam);
+	var imgs = d3_exclam.selectAll("image").data([0]);
+        imgs.enter()
+                .append("svg:img")
+                .attr("xlink:href", "red_exclamation.png")
+                .attr("width", "25")
+                .attr("height", "25");
+	var div = d3.select(column).append("div")	
+    		.attr("class", "tooltip")				
+    		.style("opacity", 0);
+      	imgs.on("mouseover", function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div.html(formatTime(d.date) + "<br/>");	
+           })	
+	    
+	var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });
       // console.log(classes);
@@ -692,27 +712,9 @@ div.tooltip {
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
+        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'>" //<img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
         // onmouseover = 'get_cooking_lagged_years(this)';
-	var lagged = get_cooking_lagged_years(column);
-	      
-	var d3_exclam = d3.select(column + "lagged");
-	console.log(d3_exclam);
-	var imgs = d3_exclam.selectAll("image").data([0]);
-        imgs.enter()
-                .append("svg:img")
-                .attr("xlink:href", "red_exclamation.png")
-                .attr("width", "25")
-                .attr("height", "25");
-	var div = d3.select(column).append("div")	
-    		.attr("class", "tooltip")				
-    		.style("opacity", 0);
-      	imgs.on("mouseover", function(d) {		
-            div.transition()		
-                .duration(200)		
-                .style("opacity", .9);		
-            div.html(formatTime(d.date) + "<br/>");	
-           })	
+	
 	
 	var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
         
@@ -732,7 +734,7 @@ div.tooltip {
         // console.log("MEOW");
         // console.log(middle);
 
-        flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover)
+        flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
       }
       else {

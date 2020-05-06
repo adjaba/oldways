@@ -674,8 +674,8 @@ div.tooltip {
         .data([1,2,3,4])			
     .enter().append("circle")								
         .attr("r", 5)		
-        .attr("cx", function(d) { return x(d.date); })		 
-        .attr("cy", function(d) { return y(d.close); })		
+        .attr("cx", 10)		 
+        .attr("cy", 10)		
         .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		

@@ -650,18 +650,23 @@ div.tooltip {
     .attr("class", "tooltip")				
     .style("opacity", 0);   
 	    
-	    d3_exclam.selectAll("dot")	
-        .data([1,2,3,4])			
-    .enter().append("circle")								
-        .attr("r", 5)		
-        .attr("width", 10)		 
-        .attr("height", 10)		
-        .on("mouseover", function(d) {		
+	    
+	    var svgContainer = d3_exclam.append("svg")
+                                     .attr("width", 200)
+                                     .attr("height", 200);
+ 
+ //Draw the Rectangle
+ var rectangle = svgContainer.append("rect")
+                             .attr("x", 10)
+                             .attr("y", 10)
+                            .attr("width", 50)
+                           .attr("height", 100).on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
             div	.html("hi");	
             });
+
 	    
 	//console.log(d3_exclam);
 	/*var imgs = d3_exclam.selectAll("image").data([0]);

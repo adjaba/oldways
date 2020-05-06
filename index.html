@@ -698,7 +698,7 @@ div.tooltip {
 	      
 	var d3_exclam = d3.select(column + "lagged");
 	console.log(d3_exclam);
-	var imgs = d3_exclam.selectAll("image");
+	var imgs = d3_exclam.selectAll("image").data([0]);
         imgs.enter()
                 .append("svg:img")
                 .attr("xlink:href", "red_exclamation.png")

@@ -272,7 +272,19 @@
     font-family: Optima;
     cursor: pointer;
   }
-
+	
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
 
   
 </style>
@@ -419,9 +431,8 @@
       lagged.push(worst_year);
       lagged.push(worst_percent);
       //document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
-      d3.select(column + "lagged")
-		.append("div")   
-    		.attr("class", "tooltip");
+	
+	return lagged
       
       
     }
@@ -630,7 +641,7 @@
       var label_end = "</label>";
 
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });
@@ -676,12 +687,19 @@
       //var label_end = "</label>"
       if (category_class == "cooking") {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
-        var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
+        var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved!" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
         var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' width=\"25px\" height=\"25px\"><br>"
-        var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
+        var div = d3.select("body").append("div")	
+    		.attr("class", "tooltip")				
+    		.style("opacity", 0);
+      	d3.select(column + "lagged")
+		.append("div")   
+    		.attr("class", "tooltip");
+	
+	var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
         
 	/*for (var i = 0; i < lagged_years.length; i++) {
           poss_exclamation += lagged_years[i] + "<br>"

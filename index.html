@@ -380,7 +380,7 @@ div.tooltip {
     });
   }
   
-  function clear_point(obj) {
+  /*function clear_point(obj) {
     console.log("HERE");
     var column = obj.id;
     
@@ -389,9 +389,9 @@ div.tooltip {
     poss_exclamation += "</div>" 
         
     document.getElementById(column + "lagged").innerHTML = poss_exclamation;
-  }
+  }*/
   function get_cooking_lagged_years(obj) {
-      clear_point(obj);
+      // clear_point(obj);
       var column = obj.id;
       function isComplete(change) {
         return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
@@ -678,6 +678,7 @@ div.tooltip {
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
       category_name = category_name.bold();
       var column = category_name.substring(3, category_name.length - 4) + '_Change';
+	   
       
       //var box_inner_start = "<div class = 'boxed-inner'>"
       //var invisible_check = "<input id = 'hide' type='checkbox'/>"
@@ -691,13 +692,20 @@ div.tooltip {
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' width=\"25px\" height=\"25px\"><br>"
-        var div = d3.select("body").append("div")	
+        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
+        // onmouseover = 'get_cooking_lagged_years(this)';
+	var lagged = get_cooking_lagged_years(column);
+	      
+	var d3_column = d3.select(column);
+	var div = d3.select(column).append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);
-      	d3.select(column)
-		.append("div")   
-    		.attr("class", "tooltip");
+      	d3_column.on("mouseover", function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html(formatTime(d.date) + "<br/>");	
+           })	
 	
 	var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
         

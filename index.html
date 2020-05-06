@@ -653,16 +653,18 @@ div.tooltip {
                 .attr("src", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25")
-	    	.on("mouseover", function(d) { console.log("testing");});
+	    	.on("mouseover", function(d) {		
+            console.log("testing");	
+            })	;
 	var div = d3.select("img[id = '" + column + "']").append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);
-	d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
+	/*d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
             div.html(formatTime(d.date) + "<br/>");	
-           });	
+           });*/
 	    
 	var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');

@@ -653,7 +653,7 @@ div.tooltip {
                 .attr("xlink:href", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25");
-	var div = d3.select(column).append("div")	
+	var div = d3.select("[id = 'column']").append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);
       	imgs.on("mouseover", function(d) {		

@@ -270,18 +270,7 @@
     cursor: pointer;
   }
 
-div.tooltip {   
- 	position: absolute;           
-	text-align: center;           
-	width: 80px;                  
-	height: 30px;                 
-	padding: 2px;             
-	font: 12px sans-serif;        
-	background: blue;   
-	border: 1px;      
-	border-radius: 8px;           
-	//pointer-events: none;         
-}
+
   
 </style>
 
@@ -426,10 +415,10 @@ div.tooltip {
       }
       lagged.push(worst_year);
       lagged.push(worst_percent);
+      //document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
       d3.select(column + "lagged")
 		.append("div")   
     		.attr("class", "tooltip");
-      // document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
       
       
     }
@@ -629,7 +618,7 @@ div.tooltip {
     
   
 
-    function flippingCool(box_start, front, category_name, middle, back, poss_exclamation){
+    function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover){
       var box_inner_start = "<div class = 'boxed-inner'>";
       var invisible_check = "<input id = 'hide' type='checkbox'/>";
       var box_front_start = "<div class = 'boxed-inner-front'>";
@@ -638,7 +627,7 @@ div.tooltip {
       var label_end = "</label>";
 
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + poss_exclamation + category_name + back + middle + box_end + label_end;
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation_no_hover + front + box_end + box_back_start + poss_exclamation + category_name + back + middle + box_end + label_end;
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });
@@ -688,8 +677,10 @@ div.tooltip {
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'clear_point(this)' onmouseleave = 'clear_point(this)' width=\"25px\" height=\"25px\"><br>"
-        /*for (var i = 0; i < lagged_years.length; i++) {
+        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' width=\"25px\" height=\"25px\"><br>"
+        var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
+        
+	/*for (var i = 0; i < lagged_years.length; i++) {
           poss_exclamation += lagged_years[i] + "<br>"
         }*/
         poss_exclamation += "</div>" 
@@ -705,7 +696,7 @@ div.tooltip {
         // console.log("MEOW");
         // console.log(middle);
 
-        flippingCool(box_start, front, category_name, middle, back, poss_exclamation)
+        flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
       }
       else {

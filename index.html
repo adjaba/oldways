@@ -645,28 +645,8 @@ div.tooltip {
 
       var lagged = get_cooking_lagged_years(column);
 	var d3_exclam = d3.select("div[id = '" + column + "lagged']");
-	//console.log(d3_exclam);
-	var imgs = d3_exclam.selectAll("image").data([0]);
-        imgs.enter()
-                .append("svg:img")
-	    	.attr("id", column)
-                .attr("src", "red_exclamation.png")
-                .attr("width", "25")
-                .attr("height", "25")
-	    	.on("mouseover", function() { 
-          console.log("here");
-    });
-	/*var div = d3.select("img[id = '" + column + "']").append("div")	
-    		.attr("class", "tooltip")				
-    		.style("opacity", 0);*/
-	/*d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
-            div.transition()		
-                .duration(200)		
-                .style("opacity", .9);		
-            div.html(formatTime(d.date) + "<br/>");	
-           });*/
 	    
-	 var div = d3.select("div[id = '" + column + "lagged']").append("div")	
+	    var div = d3.select("div[id = '" + column + "lagged']").append("div")	
     .attr("class", "tooltip")				
     .style("opacity", 0);   
 	    
@@ -682,6 +662,29 @@ div.tooltip {
                 .style("opacity", .9);		
             div	.html("hi");	
             });
+	    
+	//console.log(d3_exclam);
+	/*var imgs = d3_exclam.selectAll("image").data([0]);
+        imgs.enter()
+                .append("svg:img")
+	    	.attr("id", column)
+                .attr("src", "red_exclamation.png")
+                .attr("width", "25")
+                .attr("height", "25")
+	    	.on("mouseover", function() { 
+          console.log("here");
+    });*/
+	/*var div = d3.select("img[id = '" + column + "']").append("div")	
+    		.attr("class", "tooltip")				
+    		.style("opacity", 0);*/
+	/*d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div.html(formatTime(d.date) + "<br/>");	
+           });*/
+	    
+	 
 	    
 	    
 	    

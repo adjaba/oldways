@@ -641,7 +641,7 @@ div.tooltip {
       var label_end = "</label>";
 
 
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
+      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
       var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');
       });
@@ -696,7 +696,14 @@ div.tooltip {
         // onmouseover = 'get_cooking_lagged_years(this)';
 	var lagged = get_cooking_lagged_years(column);
 	      
-	var d3_column = d3.select(column);
+	var d3_exclam = d3.select(column + "lagged");
+	console.log(d3_exclam);
+	var imgs = d3_exclam.selectAll("image");
+        imgs.enter()
+                .append("svg:img")
+                .attr("xlink:href", "red_exclamation.png")
+                .attr("width", "25")
+                .attr("height", "25");
 	var div = d3.select(column).append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);
@@ -704,7 +711,7 @@ div.tooltip {
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html(formatTime(d.date) + "<br/>");	
+            div.html(formatTime(d.date) + "<br/>");	
            })	
 	
 	var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"

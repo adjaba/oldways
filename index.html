@@ -653,9 +653,9 @@ div.tooltip {
                 .attr("src", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25")
-	    	.on("mouseover", function() {		
-            console.log("testing");	
-            })	;
+	    	.on("click", function() { 
+          console.log("here");
+    });
 	var div = d3.select("img[id = '" + column + "']").append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);

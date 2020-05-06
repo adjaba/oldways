@@ -645,15 +645,15 @@ div.tooltip {
 
       var lagged = get_cooking_lagged_years(column);
 	var d3_exclam = d3.select("div[id = '" + column + "lagged']");
-	console.log(d3_exclam);
+	//console.log(d3_exclam);
 	var imgs = d3_exclam.selectAll("image").data([0]);
         imgs.enter()
                 .append("svg:img")
 	    .attr("id", column)
-                .attr("xlink:href", "red_exclamation.png")
+                .attr("href", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25");
-	var div = d3.select("image[id = '" + column + "']").append("div")	
+	var div = d3.select("img[id = '" + column + "']").append("div")	
     		.attr("class", "tooltip")				
     		.style("opacity", 0);
       	imgs.on("mouseover", function(d) {		

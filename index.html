@@ -286,7 +286,38 @@ div.tooltip {
     border-radius: 8px;			
     pointer-events: none;			
 }
+.check {
+    position: relative;
+    display: inline-block;
+    background-color: #5890ff;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    color: #000;
+    text-decoration: none;
+}
 
+.check:after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 0;
+    left: 14px;
+    width: 100px;
+    background-color: #000;
+    color: #FFF;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease-in-out;
+    will-change: opacity;
+}
+
+.check:hover:after {
+    opacity: 1;
+    pointer-events: auto;
+}
   
 </style>
 
@@ -647,9 +678,10 @@ div.tooltip {
       var lagged = get_cooking_lagged_years(column);
 	var d3_exclam = d3.select("div[id = '" + column + "lagged']");
 	    
-	    var div = d3.select("div[id = '" + column + "lagged']").append("div")	
-    .attr("class", "tooltip")				
-    .style("opacity", 0);   
+	    var div = d3.select("div[id = '" + column + "lagged']").append("a")	
+    .attr("class", "check")	
+	.attr("href", "#")
+	.attr("data-tooltip", "here"); 
 
 	    
 	var imgs = d3_exclam.selectAll("image").data([0]);
@@ -730,7 +762,8 @@ div.tooltip {
       //var label_end = "</label>"
       if (category_class == "cooking") {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
-        var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
+	
+	var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed

@@ -772,6 +772,7 @@ div.tooltip {
                 if (markedbuttons[color].className == this.className + " highlight"){
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
+	          console.log('className',this.className);
                   newClassName = this.className.slice(16, -10);
 	          console.log(newClassName);
 		  cleanName = newClassName.slice(4, -4);
@@ -787,8 +788,9 @@ div.tooltip {
     
     
     function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
-      category_name = category_name.bold();
-      var column = category_name.substring(3, category_name.length - 4) + '_Change';
+//       category_name = category_name.bold();
+//       var column = category_name.substring(3, category_name.length - 4) + '_Change';
+      var column = category_name+'_Change';
 	   
       
       //var box_inner_start = "<div class = 'boxed-inner'>"
@@ -800,7 +802,7 @@ div.tooltip {
       if (category_class == "cooking") {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
 	
-	var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
+	var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
         
         // iterate through years and determine if any are lagging        
         // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
@@ -832,7 +834,7 @@ div.tooltip {
       else {
         var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
         
-        var front = category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
+        var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
         
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
         

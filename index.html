@@ -643,11 +643,11 @@ div.tooltip {
 					console.log(temp_database);
 					console.log(temp_filtered_database);
 					console.log(curr_years);
+					curr_years.sort()
 					var svg = d3.select("#"+middleID)
 						.append("svg")
 						.attr("width", "100%")
-						.attr("height", "100%")
-						.append("g");
+						.attr("height", "100%");
 
 					var x = d3.time.scale()
       			.domain([curr_years[0], curr_years[-1]])

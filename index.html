@@ -650,7 +650,7 @@ div.tooltip {
 	    
     }
 
-    /*x_axis.forEach(function (each_item, index) {
+    x_axis.forEach(function (each_item, index) {
         var column = category_name + '_Change';
         var temp_database;
         if (filter_name == "yearfilt"){
@@ -660,7 +660,7 @@ div.tooltip {
 					console.log(temp_filtered_database);
 					console.log(curr_years);
 					curr_years.sort()
-					var svg = d3.select("#"+middleID)
+					/*var svg = d3.select("#"+middleID)
 						.append("svg")
 						.attr("width", "100%")
 						.attr("height", "100%");
@@ -670,7 +670,7 @@ div.tooltip {
       			.range([ 0, "200px" ]);
 					
 					svg.append("g")
-						.call(d3.svg.axis().scale(x));
+						.call(d3.svg.axis().scale(x));*/
 // 					// Add Y axis
 // 					var y = d3.scaleLinear()
 // 						.domain( [0, Math.max(])
@@ -718,11 +718,17 @@ div.tooltip {
         var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
         var result = denominator === 0 ? 0 : numerator / denominator;
         all_objs.push(result);
-      });*/
+      });
 
     // console.log(x_axis);
     // console.log(all_objs);
 		console.log(middleID);
+	  var y = d3.scale.linear()
+                  .domain([d3.min(all_obj), d3.max(all_obj)])
+                  .range([0, width - 100]);
+	  var yaxis = d3.svg.axis().scale(y).orient('left');
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(0, 0)").call(x_axis);
+	    
     // document.getElementById(middleID).innerHTML = graph;
   }
     

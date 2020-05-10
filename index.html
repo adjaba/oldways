@@ -631,10 +631,16 @@ div.tooltip {
     else if(filter_name == "yearfilt"){
       graph = "HEEHAW";
       console.log("here");
-      x_axis = curr_years;
+      // x_axis = curr_years;
+      curr_years.sort();
+      var svg = d3.select("#"+middleID).append("svg").attr("width", "100%").attr("height", "100%");
+	    console.log(svg);
+      var x = d3.time.scale().domain([curr_years[0], curr_years[-1]]).range([0, "200px"]);
+	    svg.append("g").call(d3.svg.axis().scale(x));
+	    
     }
 
-    x_axis.forEach(function (each_item, index) {
+    /*x_axis.forEach(function (each_item, index) {
         var column = category_name + '_Change';
         var temp_database;
         if (filter_name == "yearfilt"){
@@ -685,7 +691,7 @@ div.tooltip {
 					
 // 						.attr("transform",
 // 									"translate(" + margin.left + "," + margin.top + ")");
-				}
+				}*/
         else if (filter_name == "classfilt"){
           var inter_map_classes = studentteachermapping.filter(function (row) { return [each_item].includes(row['Class']) });
           var inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);

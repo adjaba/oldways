@@ -627,10 +627,12 @@ div.tooltip {
 
     if(filter_name == "classfilt"){
       graph = "MEOW";
+	    d3.select("div[id='"+middleID+"']").html("");
       x_axis = curr_classes;
     }
     else if(filter_name == "teacherfilt"){
       graph = "WOOF";
+	    d3.select("div[id='"+middleID+"']").html("");
       x_axis = curr_teachers; 
     }
     else if(filter_name == "yearfilt"){
@@ -638,6 +640,7 @@ div.tooltip {
       console.log("here");
       x_axis = curr_years;
       curr_years.sort();
+	d3.select("div[id='"+middleID+"']").html("");	
       d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
 	    console.log(curr_years);
       var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 2).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);

@@ -633,9 +633,9 @@ div.tooltip {
       console.log("here");
       // x_axis = curr_years;
       curr_years.sort();
-      var d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "100%").attr("height", "100%");
+      var d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "100%").attr("height", "100%").attr("padding", "20px");
 	    //console.log(svg);
-      var x = d3.time.scale().domain([curr_years[0], curr_years[-1]]).range([0, 200]);
+      var x = d3.time.scale().domain([d3.min(curr_years), d3.max(curr_years)]).range([0, 400]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
 	    var x_axis = d3.svg.axis().scale(x);
 	    d3_svg.append("g").call(x_axis);

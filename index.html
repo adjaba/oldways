@@ -623,6 +623,7 @@ div.tooltip {
     var graph;
     x_axis = [];
     all_objs = [];
+	  var d3_svg;
 
     if(filter_name == "classfilt"){
       graph = "MEOW";
@@ -637,7 +638,7 @@ div.tooltip {
       console.log("here");
       // x_axis = curr_years;
       curr_years.sort();
-      var d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
+      d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
 	    console.log(curr_years);
       var x = d3.time.scale().domain([new Date(d3.min(curr_years).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
@@ -727,7 +728,7 @@ div.tooltip {
                   .domain([d3.min(all_objs), d3.max(all_objs)])
                   .range([0, 150]);
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(0, 0)").call(x_axis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(0, 0)").call(yaxis);
 	    
     // document.getElementById(middleID).innerHTML = graph;
   }

@@ -646,12 +646,33 @@ div.tooltip {
 	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 130)").call(x_axis);
 	    //d3_svg.append("g").style("font", "12px times").call(x_axis);
 				      
-
+	for(int i = 0; i < curr_years.length; i++) {
+		var column = category_name + '_Change';
+        	var temp_database;
+		var year = curr_years[i];
+		temp_database = database.filter(function (entry) { return [year].includes(new Date(entry['Date Filled Out']).getFullYear()); });
+		var temp_filtered_database = temp_database.filter(function(entry){ return entry[category_name]});
+		var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+        	var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+        	var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+        	var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+        	var result = denominator === 0 ? 0 : numerator / denominator;
+        	all_objs.push(result);
+					
+					
+	}
+	    console.log(all_objs);
+		console.log(middleID);
+ 	/*var y = d3.scale.linear()
+                  .domain([d3.min(all_objs), d3.max(all_objs)])
+                  .range([0, 150]);
+	  var yaxis = d3.svg.axis().scale(y).orient('left');
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(0, 0)").call(yaxis);*/
 
 	    
     }
-    console.log(x_axis);
-    x_axis.forEach(function (each_item, index) {
+    
+    /*x_axis.forEach(function (each_item, index) {
         var column = category_name + '_Change';
         var temp_database;
         if (filter_name == "yearfilt"){
@@ -719,16 +740,10 @@ div.tooltip {
         var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
         var result = denominator === 0 ? 0 : numerator / denominator;
         all_objs.push(result);
-      });
+      });*/
 
     // console.log(x_axis);
-    console.log(all_objs);
-		console.log(middleID);
- 	/*var y = d3.scale.linear()
-                  .domain([d3.min(all_objs), d3.max(all_objs)])
-                  .range([0, 150]);
-	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(0, 0)").call(yaxis);*/
+    
 	    
     // document.getElementById(middleID).innerHTML = graph;
   }

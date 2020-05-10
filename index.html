@@ -641,7 +641,7 @@ div.tooltip {
       var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 2).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
 	    var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 130)").call(x_axis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
 	    //d3_svg.append("g").style("font", "12px times").call(x_axis);
 	    d3.selectAll(".tick")
     		.filter(function (d) { return d === 0;  })
@@ -668,7 +668,7 @@ div.tooltip {
                   .domain([101, 0])
                   .range([0, 150]);
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, -12)").call(yaxis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
 	    
 	d3_svg.append("path")
       .datum(all_objs)

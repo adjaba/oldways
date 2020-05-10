@@ -296,7 +296,6 @@ div.tooltip {
     color: #000;
     text-decoration: none;
 }
-
 .check:after {
     content: attr(data-tooltip);
     position: absolute;
@@ -313,7 +312,6 @@ div.tooltip {
     transition: opacity .3s ease-in-out;
     will-change: opacity;
 }
-
 .check:hover:after {
     opacity: 1;
     pointer-events: auto;
@@ -421,7 +419,6 @@ div.tooltip {
     var column = obj.id;
     
     var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' onmouseout = 'clear_point(this)' width=\"25px\" height=\"25px\"><br>"
-
     poss_exclamation += "</div>" 
         
     document.getElementById(column + "lagged").innerHTML = poss_exclamation;
@@ -614,7 +611,6 @@ div.tooltip {
     function toPercent(fraction) {
       return (fraction * 100).toFixed(2) + "%"
     }
-
   function createGraphs(filter_name, category_name){
     // console.log(filter_name, category_name);
     
@@ -624,10 +620,6 @@ div.tooltip {
     x_axis = [];
     all_objs = [];
 	  var d3_svg;
-    var margin = {top: 20, right: 40, bottom: 40, left: 20},
-    width = 170 - margin.left - margin.right,
-    height = 170 - margin.top - margin.bottom;
-
     if(filter_name == "classfilt"){
       graph = "MEOW";
 	    d3.select("div[id='"+middleID+"']").html("");
@@ -644,12 +636,12 @@ div.tooltip {
       x_axis = curr_years;
       curr_years.sort();
 	d3.select("div[id='"+middleID+"']").html("");	
-      d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "200").attr("height", "200");
+      d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
 	    console.log(curr_years);
-      var x = d3.time.scale().domain([new Date((d3.min(curr_years)).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, width]);
+      var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 2).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
 	    var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(0, " + height + ")").call(x_axis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 130)").call(x_axis);
 	    //d3_svg.append("g").style("font", "12px times").call(x_axis);
 	    d3.selectAll(".tick")
     		.filter(function (d) { return d === 0;  })
@@ -674,9 +666,9 @@ div.tooltip {
 		console.log(middleID);
  	var y = d3.scale.linear()
                   .domain([101, 0])
-                  .range([height, 0]);
+                  .range([0, 150]);
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3_svg.append("g").style("font", "12px times").call(yaxis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, -12)").call(yaxis);
 	    
 	d3_svg.append("path")
       .datum(all_objs)
@@ -687,7 +679,6 @@ div.tooltip {
         .x(function(d) { return x(d[0]) })
         .y(function(d) { return y(d[1]) })
         ).attr("transform", "translate(30, -12)")
-
 	    
     }
     
@@ -705,7 +696,6 @@ div.tooltip {
 						.append("svg")
 						.attr("width", "100%")
 						.attr("height", "100%");
-
 					var x = d3.time.scale()
       			.domain([curr_years[0], curr_years[-1]])
       			.range([ 0, "200px" ]);
@@ -760,7 +750,6 @@ div.tooltip {
         var result = denominator === 0 ? 0 : numerator / denominator;
         all_objs.push(result);
       });*/
-
     // console.log(x_axis);
     
 	    
@@ -768,7 +757,6 @@ div.tooltip {
   }
     
   
-
     function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column){
       var box_inner_start = "<div class = 'boxed-inner'>";
       var invisible_check = "<input id = 'hide' type='checkbox'/>";
@@ -776,10 +764,7 @@ div.tooltip {
       var box_back_start = "<div class = 'boxed-inner-back'>";
       var box_end = "</div>";
       var label_end = "</label>";
-
-
       document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
-
       var lagged = get_cooking_lagged_years(column);
 	var d3_exclam = d3.select("div[id = '" + column + "lagged']");
 	    
@@ -787,7 +772,6 @@ div.tooltip {
     .attr("class", "check")	
 	.attr("href", "#")
 	.attr("data-tooltip", "here"); 
-
 	    
 	var imgs = d3_exclam.selectAll("image").data([0]);
         imgs.enter()
@@ -885,7 +869,6 @@ div.tooltip {
         var middle= "<div id = 'middle-" + category_name + "'>" + "</div>";
         // console.log("MEOW");
         // console.log(middle);
-
         flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column)
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
       }
@@ -897,8 +880,6 @@ div.tooltip {
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
         
         var middle= "<div id = 'middle- " + category_name + "'>" + "</div>";
-
-
         flippingCool(box_start, front, category_name, middle, back);
 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
       }
@@ -1014,7 +995,6 @@ div.tooltip {
         var front = name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">"
         var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + name + "'>" +"</center>";
         var middle= "<div id = 'middle- " + name + "'>" + "</div>";
-
         flippingCool(box_start, front, name, middle, back);
         /*console.log(change, 'total', total);
         console.log(change, 'complete', complete.length);

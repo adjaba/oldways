@@ -636,7 +636,7 @@ div.tooltip {
     else if(filter_name == "yearfilt"){
       graph = "HEEHAW";
       console.log("here");
-      // x_axis = curr_years;
+      x_axis = curr_years;
       curr_years.sort();
       d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
 	    console.log(curr_years);

@@ -660,7 +660,7 @@ div.tooltip {
         	var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
         	var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
         	var result = denominator === 0 ? 0 : numerator / denominator;
-        	all_objs.push([new Date(year.toString()), result*100));
+        	all_objs.push([new Date(year.toString()), result*100]);
 					
 					
 	}

@@ -652,9 +652,10 @@ div.tooltip {
 					var x = d3.time.scale()
       			.domain([curr_years[0], curr_years[-1]])
       			.range([ 0, "200px" ]);
+					
 					svg.append("g")
 						.attr("transform", "translate(0," + "200px" + ")")
-						.call(d3.axisBottom(x));
+						.call(d3.axis().scale(x));
 // 					// Add Y axis
 // 					var y = d3.scaleLinear()
 // 						.domain( [0, Math.max(])

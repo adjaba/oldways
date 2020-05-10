@@ -635,7 +635,7 @@ div.tooltip {
       curr_years.sort();
       var d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "100%").attr("height", "100%").attr("margin-left", "100px");
 	    //console.log(svg);
-      var x = d3.time.scale().domain([new Date(d3.min(curr_years)), new Date(d3.max(curr_years))]).range([0, 200]);
+      var x = d3.time.scale().domain([new Date(d3.min(curr_years).toString()), new Date(d3.max(curr_years).toString())]).range([0, 200]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
 	    var x_axis = d3.svg.axis().scale(x);
 	    d3_svg.append("g").style("font", "14px times").attr("transform", "translate(0," + "200px" + ")").call(x_axis);

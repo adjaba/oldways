@@ -613,8 +613,9 @@ div.tooltip {
 
   function createGraphs(filter_name, category_name){
     // console.log(filter_name, category_name);
-    var middleID= "middle- " + category_name;
-    category_name = category_name.slice(3,-4);
+    
+    category_name = category_name.slice(4,-4);
+    var middleID= "middle-" + category_name;
     var graph;
     x_axis = [];
     all_objs = [];
@@ -636,24 +637,27 @@ div.tooltip {
         var column = category_name + '_Change';
         var temp_database;
         if (filter_name == "yearfilt"){
-          temp_database = database.filter(function (entry) { return [each_item].includes(new Date(entry['Date Filled Out']).getFullYear()); });
-          console.log(temp_database);
+					temp_database = database.filter(function (entry) { return [each_item].includes(new Date(entry['Date Filled Out']).getFullYear()); });
+					var temp_filtered_database = temp_database.filter(function(entry){ return entry[category_name]});
+					console.log(temp_database);
+					console.log(temp_filtered_database);
+					console.log(curr_years);
 					var svg = d3.select("#"+middleID)
-					.append("svg")
+						.append("svg")
 						.attr("width", "100%")
 						.attr("height", "100%")
-					.append("g");
-					
-// 					var x = d3.scaleTime()
-//       					.domain([curr_years[0], curr_years[-1])
-//       						.range([ 0, width ]);
-// 					svg.append("g")
-// 		// 				.attr("transform", "translate(0," + height + ")")
-// 						.call(d3.axisBottom(x));
+						.append("g");
+
+					var x = d3.scaleTime()
+      			.domain([curr_years[0], curr_years[-1]])
+      			.range([ 0, "200px" ]);
+					svg.append("g")
+						.attr("transform", "translate(0," + "200px" + ")")
+						.call(d3.axisBottom(x));
 // 					// Add Y axis
-// 					var y = d3.scaleLinear()
-// 						.domain( [0, 9200])
-// 						.range([ height, 0 ]);
+					var y = d3.scaleLinear()
+						.domain( [0, Math.max(])
+						.range([ "200px", 0 ]);
 // 					svg.append("g")
 // 						.call(d3.axisLeft(y));
 // 					// Add the line

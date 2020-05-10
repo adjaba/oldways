@@ -633,7 +633,7 @@ div.tooltip {
       console.log("here");
       // x_axis = curr_years;
       curr_years.sort();
-      var svg = d3.select("div[id="+middleID+"]").append("svg").attr("width", "100%").attr("height", "100%");
+      var svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "100%").attr("height", "100%");
 	    console.log(svg);
       var x = d3.time.scale().domain([curr_years[0], curr_years[-1]]).range([0, "200px"]);
 	    svg.append("g").call(d3.svg.axis().scale(x));

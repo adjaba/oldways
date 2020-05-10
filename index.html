@@ -642,8 +642,8 @@ div.tooltip {
       var x = d3.time.scale().domain([new Date(d3.min(curr_years).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
 	    var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
-	    //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 130)").call(x_axis);
-	    d3_svg.append("g").style("font", "12px times").call(x_axis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 130)").call(x_axis);
+	    //d3_svg.append("g").style("font", "12px times").call(x_axis);
 				      
 
 

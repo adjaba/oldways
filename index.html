@@ -637,7 +637,50 @@ div.tooltip {
         var temp_database;
         if (filter_name == "yearfilt"){
           temp_database = database.filter(function (entry) { return [each_item].includes(new Date(entry['Date Filled Out']).getFullYear()); });
-        }
+          console.log(temp_database);
+					var svg = d3.select("#"+middleID)
+					.append("svg")
+						.attr("width", "100%")
+						.attr("height", "100%")
+					.append("g");
+					
+// 					var x = d3.scaleTime()
+//       					.domain([curr_years[0], curr_years[-1])
+//       						.range([ 0, width ]);
+// 					svg.append("g")
+// 		// 				.attr("transform", "translate(0," + height + ")")
+// 						.call(d3.axisBottom(x));
+// 					// Add Y axis
+// 					var y = d3.scaleLinear()
+// 						.domain( [0, 9200])
+// 						.range([ height, 0 ]);
+// 					svg.append("g")
+// 						.call(d3.axisLeft(y));
+// 					// Add the line
+// 					svg.append("path")
+// 						.datum(temp_database)
+// 						.attr("fill", "none")
+// 						.attr("stroke", "#69b3a2")
+// 						.attr("stroke-width", 1.5)
+// 						.attr("d", d3.line()
+// 							.x(function(d) { return x(d.date) })
+// 							.y(function(d) { return y(d.value) })
+// 							)
+// 					// Add the points
+// 					svg
+// 						.append("g")
+// 						.selectAll("dot")
+// 						.data(data)
+// 						.enter()
+// 						.append("circle")
+// 							.attr("cx", function(d) { return x(d.date) } )
+// 							.attr("cy", function(d) { return y(d.value) } )
+// 							.attr("r", 5)
+// 							.attr("fill", "#69b3a2")
+					
+// 						.attr("transform",
+// 									"translate(" + margin.left + "," + margin.top + ")");
+				}
         else if (filter_name == "classfilt"){
           var inter_map_classes = studentteachermapping.filter(function (row) { return [each_item].includes(row['Class']) });
           var inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
@@ -703,18 +746,6 @@ div.tooltip {
                 .style("opacity", .9);		
             div.html(formatTime(d.date) + "<br/>");	
            });
-	    
-	 
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
 	    
 	var classes = $('[class^=highlight]').map(function() {
       return $(this).attr('class');

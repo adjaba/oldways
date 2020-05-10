@@ -624,10 +624,9 @@ div.tooltip {
     x_axis = [];
     all_objs = [];
 	  var d3_svg;
-	  
-	  var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 180 - margin.left - margin.right,
-    height = 180 - margin.top - margin.bottom;
+    var margin = {top: 20, right: 60, bottom: 30, left: 30},
+    width = 200 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
 
     if(filter_name == "classfilt"){
       graph = "MEOW";
@@ -645,7 +644,7 @@ div.tooltip {
       x_axis = curr_years;
       curr_years.sort();
 	d3.select("div[id='"+middleID+"']").html("");	
-      d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "180").attr("height", "180");
+      d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "200").attr("height", "200");
 	    console.log(curr_years);
       var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 2).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, width]);
 	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);

@@ -649,7 +649,7 @@ div.tooltip {
 						.attr("height", "100%")
 						.append("g");
 
-					var x = d3.scaleTime()
+					var x = d3.time.scale()
       			.domain([curr_years[0], curr_years[-1]])
       			.range([ 0, "200px" ]);
 					svg.append("g")

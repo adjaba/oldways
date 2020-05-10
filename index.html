@@ -321,13 +321,7 @@ div.tooltip {
     visibility: hidden;
 }
 	
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-  stroke-width: 10px;
-}
+
   
 </style>
 
@@ -676,6 +670,7 @@ div.tooltip {
                   .domain([101, 0])
                   .range([0, 150]);
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
+	    yaxis.select('path').style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'});
 	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
 	    
 	d3_svg.append("path")
@@ -689,6 +684,8 @@ div.tooltip {
         ).attr("transform", "translate(40, -12)")
 	    
     }
+	  
+
     
     /*x_axis.forEach(function (each_item, index) {
         var column = category_name + '_Change';

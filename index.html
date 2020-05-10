@@ -670,8 +670,9 @@ div.tooltip {
                   .domain([101, 0])
                   .range([0, 150]);
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3.select('path').style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'});
+	  
 	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+	      yaxis.select(".domain").attr("stroke","#E04836").attr("stroke-width","6");
 	    
 	d3_svg.append("path")
       .datum(all_objs)

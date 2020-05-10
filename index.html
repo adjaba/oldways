@@ -667,7 +667,7 @@ div.tooltip {
                   .domain([d3.min(all_objs), d3.max(all_objs)])
                   .range([0, 150]);
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3_svg.append("g").style("font", "12px times").call(yaxis);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 0)").call(yaxis);
 
 	    
     }

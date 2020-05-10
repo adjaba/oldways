@@ -645,7 +645,7 @@ div.tooltip {
 	    var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
 	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, 130)").call(x_axis);
 	    //d3_svg.append("g").style("font", "12px times").call(x_axis);
-	    d3_svg.selectAll(".tick")
+	    d3.selectAll(".tick")
     		.filter(function (d) { return d === 0;  })
     		.remove();
 				      
@@ -660,7 +660,7 @@ div.tooltip {
         	var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
         	var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
         	var result = denominator === 0 ? 0 : numerator / denominator;
-        	all_objs.push(result*100);
+        	all_objs.push([new Date(year.toString()), result*100));
 					
 					
 	}
@@ -672,6 +672,15 @@ div.tooltip {
 	  var yaxis = d3.svg.axis().scale(y).orient('left');
 	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(30, -12)").call(yaxis);
 	    
+	d3_svg.append("path")
+      .datum(all_objs)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d[0]) })
+        .y(function(d) { return y(d[1]) })
+        )
 
 	    
     }

@@ -667,7 +667,7 @@ div.tooltip {
       		.attr("x", function(d) { return d[0]; })
       		.attr("width", x.rangeBand())
       		.attr("y", function(d) { return d[1]; })
-      		.attr("height", function(d) { return -1.5 * d[1]; });
+      		.attr("height", function(d) { return 1.5 * d[1]; });
 	    
 	    d3_svg.append("g")
       		.attr("transform", "translate(40, 134)")

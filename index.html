@@ -668,9 +668,10 @@ div.tooltip {
       		.attr("width", 20)
       		.attr("y", function(d) { return y(d[1]); })
       		.attr("height", function(d) {console.log(150 - y(1.5 * d[1])); return 150 - y(d[1]); })
-	    	.attr("transform", "translate(50, -8)");
+	    	.attr("transform", "translate(50, -14)");
 	    
 	    d3_svg.append("g")
+	    	.style("font", "12px times")
       		.attr("transform", "translate(40, 132)")
       		.call(x_axis);
 	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);

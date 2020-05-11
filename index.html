@@ -626,11 +626,13 @@ div.tooltip {
       graph = "MEOW";
 	    d3.select("div[id='"+middleID+"']").html("");
       x_axis = curr_classes;
+	    console.log(curr_classes);
     }
     else if(filter_name == "teacherfilt"){
       graph = "WOOF";
 	    d3.select("div[id='"+middleID+"']").html("");
       x_axis = curr_teachers; 
+
     }
     else if(filter_name == "yearfilt"){
       graph = "HEEHAW";

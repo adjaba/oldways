@@ -625,8 +625,51 @@ div.tooltip {
     if(filter_name == "classfilt"){
       graph = "MEOW";
 	    d3.select("div[id='"+middleID+"']").html("");
-      x_axis = curr_classes;
+    
+	    x_axis = curr_classes;
+	    var classes_data = [];
+	    var class_name;
+	    var inter_map_classes;
+	    var inter_students_in_classes;
+	    var temp_database;
+	    for (var i = 0; i < curr_classes.length; i++){
+		    class_name = curr_classes[i]
+		    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
+          	    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
+         	    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+        		var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+        		var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+        		var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+       			 var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+        		var result = denominator === 0 ? 0 : numerator / denominator;
+		    classes_data.push([class_name, result*100])
+	    }
 	    console.log(curr_classes);
+	    d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
+	    
+	    var x = d3.scaleBand()
+          	.range([0, 150])
+	    	.domain(classes_data.map(function(d) {return d[0];}))
+          	.padding(0.1);
+	     var y = d3.scaleLinear()
+	     	.domain([0, 101])
+          	.range([0, 150]);
+	    var x_axis = d3.svg.axis().scale(x).orient('bottom');
+	    var yaxis = d3.svg.axis().scale(y).orient('left');
+	    d3_svg.selectAll(".bar")
+      		.data(classes_data)
+    		.enter().append("rect")
+      		.attr("class", "bar")
+      		.attr("x", function(d) { return d[0]; })
+      		.attr("width", x.bandwidth())
+      		.attr("y", function(d) { return d[1]; })
+      		.attr("height", function(d) { return height - 1.5 * d[1]; });
+	    
+	    d3_svg.append("g")
+      		.attr("transform", "translate(40, 134)")
+      		.call(x);
+	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+	    //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
     }
     else if(filter_name == "teacherfilt"){
       graph = "WOOF";

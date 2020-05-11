@@ -637,7 +637,7 @@ div.tooltip {
 		    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
           	    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
          	    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
-        		console.long(temp_database);
+        		console.log(temp_database);
 		    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
         		var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
         		var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;

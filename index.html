@@ -863,6 +863,7 @@
             var div = d3.select("div[id = '" + column + "lagged']").append("a")
                 .attr("class", "check")
                 .attr("href", "#")
+                .attr("style", "margin:10px")
                 .attr("data-tooltip", "here");
 
             var imgs = div.append("svg:img")
@@ -870,6 +871,7 @@
                 .attr("src", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25")
+                .attr("style", "margin:10px")
                 .on("mouseover", function () {
                     console.log("here");
                 });

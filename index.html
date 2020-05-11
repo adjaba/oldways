@@ -643,7 +643,7 @@ div.tooltip {
         		var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
         		var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
        			 var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
-		    console.log(temp_database);
+		    console.log(numerator);
 		    console.log(denominator);
 		    console.log("next");
         		var result = denominator === 0 ? 0 : numerator / denominator;

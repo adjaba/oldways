@@ -656,7 +656,7 @@ div.tooltip {
           	.range([0, 150])
 	    	.domain(classes_data.map(function(d) {return d[0];}));
 	     var y = d3.scale.linear()
-	     	.domain([101, 0])
+	     	.domain([0, 101])
           	.range([0, 150]);
 	    var x_axis = d3.svg.axis().scale(x).orient('bottom');
 	    var yaxis = d3.svg.axis().scale(y).orient('left');

@@ -644,7 +644,7 @@ div.tooltip {
         		var result = denominator === 0 ? 0 : numerator / denominator;
 		    classes_data.push([class_name, result*100])
 	    }
-	    console.log(curr_classes);
+	    console.log(classes_data);
 	    d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
 	    
 	    var x = d3.scale.ordinal()

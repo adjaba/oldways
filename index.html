@@ -633,15 +633,16 @@ div.tooltip {
 	    var inter_students_in_classes;
 	    var temp_database;
 	    for (var i = 0; i < curr_classes.length; i++){
+		    var column = category_name + '_Change';
 		    class_name = curr_classes[i]
 		    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
           	    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
          	    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
         	    //temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
-		    var numerator = temp_database.filter((entry) => entry[category_name] === "✅" || entry[category_name] === "1").length;
-        		var same = temp_database.filter((entry) => entry[category_name] === "Remained Same" || entry[category_name] === "0").length;
-        		var decreased = temp_database.filter((entry) => entry[category_name] === "🔻" || entry[category_name] === "-1").length;
-       			 var denominator = temp_database.filter((entry) => isComplete(entry[category_name])).length;
+		    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+        		var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+        		var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+       			 var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
 		    console.log(temp_database);
 		    console.log(denominator);
 		    console.log("next");

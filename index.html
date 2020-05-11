@@ -1,1092 +1,1138 @@
 <!DOCTYPE html>
 <html>
 <style>
-  h1 {
-    font-family: Papyrus, fantasy;
-    font-size: 50px;
-    color: #654321;
-    text-align: center;
-  }
-  /* Fixed sidenav, full height */
-  .sidenav {
-    height: 100%;
-    width: 180px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #362311;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-  /* Style the sidenav links and the dropdown button */
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    display: block;
-    border: none;
-    background: none;
-    width: 100%;
-    cursor: pointer;
-    outline: none;
-  }
-  /* On mouse-over */
-  .active,
-  .accordion:hover {
-    color: #FFF2EB;
-  }
-  .accordion:after {
-    color: #818181;
-    content: ""attr(id) " \25B8";
-    font-size: 20px;
-  }
-  .active:after {
-    content: ""attr(id) "  \25BE";
-    color: #FFF2EB;
-    font-size: 20px;
-  }
-  .accordion {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-    font-family: Optima;
-    transition: 0.4s;
-  }
-  .boxed {
-/*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-    float: left;
-    width: 225px;
-    height: 225px;
-    margin: 10px;
-    padding: 5px;
-/*    border: 2px solid;
+    h1 {
+        font-family: Papyrus, fantasy;
+        font-size: 50px;
+        color: #654321;
+        text-align: center;
+    }
+
+    /* Fixed sidenav, full height */
+    .sidenav {
+        height: 100%;
+        width: 180px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #362311;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+    }
+
+    /* On mouse-over */
+    .active,
+    .accordion:hover {
+        color: #FFF2EB;
+    }
+
+    .accordion:after {
+        color: #818181;
+        content: ""attr(id) " \25B8";
+        font-size: 20px;
+    }
+
+    .active:after {
+        content: ""attr(id) "  \25BE";
+        color: #FFF2EB;
+        font-size: 20px;
+    }
+
+    .accordion {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #818181;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+        font-family: Optima;
+        transition: 0.4s;
+    }
+
+    .boxed {
+        /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+        float: left;
+        width: 225px;
+        height: 225px;
+        margin: 10px;
+        padding: 5px;
+        /*    border: 2px solid;
     border-color: #654321; */
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    cursor: pointer;
-  }
-  .boxed-inner {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transition: all 600ms;
-    transition: all 600ms;
-    z-index: 20;
-    padding: 5px;
-    border-radius: 2px;
-    border: 2px solid;
-    border-color: #654321;
-  }
-  .boxed-inner div {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: #FFF;
-    text-align: center;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 2px;
-    background-color: transparent;
-    transform-style: preserve-3d
-  }
-  .boxed-inner .boxed-inner-back {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-  }
-  .boxed:hover .boxed-inner {
-    -webkit-transform: rotateY(20deg);
-    transform: rotateY(20deg);
-    box-shadow: 0 20px 20px rgba(50, 50, 50, .2);
-  }
-  #hide:checked+.boxed-inner {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-  }
-  /*.boxed:hover #hide:checked+.boxed-inner {
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .boxed-inner {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: all 600ms;
+        transition: all 600ms;
+        z-index: 20;
+        padding: 5px;
+        border-radius: 2px;
+        border: 2px solid;
+        border-color: #654321;
+    }
+
+    .boxed-inner div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #FFF;
+        text-align: center;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 2px;
+        background-color: transparent;
+        transform-style: preserve-3d
+    }
+
+    .boxed-inner .boxed-inner-back {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+    .boxed:hover .boxed-inner {
+        -webkit-transform: rotateY(20deg);
+        transform: rotateY(20deg);
+        box-shadow: 0 20px 20px rgba(50, 50, 50, .2);
+    }
+
+    #hide:checked+.boxed-inner {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+    /*.boxed:hover #hide:checked+.boxed-inner {
     transform: rotateY(160deg);
     -webkit-transform: rotateY(160deg);
     box-shadow: 0 20px 20px rgba(255, 255, 255, .2);
   }*/
-  #hide {
-    display: none;
-  }
-  .panel {
-    padding: 0 18px;
-    display: none;
-    background-color: #362311;
-    font-family: Optima;
-    font-size: 18px;
-    color: #FCFCFC;
-    overflow: hidden;
-  }
-  #heading {
-    color: #FFF2EB;
-    text-align: center;
-    font-family: Optima;
-    font-size: 25px;
-  }
-  /* Main content */
-  .main {
-    margin-left: 200px;
-    /* Same as the width of the sidenav */
-    font-size: 20px;
-    /* Increased text to enable scrolling */
-    padding: 0px 10px;
-  }
-  .card {
-    transition: 0.3s;
-    float: left;
-    width: 79%;
-    height: auto;
-    border-radius: 5px;
-    background-color: #FCFCFC;
-  }
-  img {
-    border-radius: 5px 5px 0 0;
-  }
-  .help {
-    margin: 12px;
-  }
-  .container {
-    padding: 20px 0px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    font-family: Optima;
-    color: #362311;
-  }
-  .jumping-dots span {
-    position: relative;
-    bottom: 0px;
-    -webkit-animation: jump 1500ms infinite;
-    animation: jump 2s infinite;
-  }
-  .jumping-dots .dot-1 {
-    -webkit-animation-delay: 200ms;
-    animation-delay: 200ms;
-  }
-  .jumping-dots .dot-2 {
-    -webkit-animation-delay: 400ms;
-    animation-delay: 400ms;
-  }
-  .jumping-dots .dot-3 {
-    -webkit-animation-delay: 600ms;
-    animation-delay: 600ms;
-  }
-/* Common styles and resets */
-.highlight{
-  background: brown;
-}
-.highlight-hover{
-  height: 15px;
-  border-radius: 50%;
-  border: 1px solid brown;
-  outline:none;
-  cursor: pointer;
-}
-.highlight-hover:hover {
-    background-color: brown;
-  }
-  @-webkit-keyframes jump {
-    0% {
-      bottom: 0px;
+    #hide {
+        display: none;
     }
-    20% {
-      bottom: 30px;
-    }
-    40% {
-      bottom: 0px;
-    }
-  }
-  @keyframes jump {
-    0% {
-      bottom: 0px;
-    }
-    20% {
-      bottom: 30px;
-    }
-    40% {
-      bottom: 0px;
-    }
-  }
-  .tab {
-    overflow: hidden;
-    border: 1px solid #FFF2EB;
-    border-radius: 5px;
-    background-color: #654321;
-  }
-  /* Style the buttons inside the tab */
-  .tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-    color: #FFFFFF;
-    font-family: Optima;
-  }
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: #4f3419;
-  }
-  /* Create an active/current tablink class */
-  .tab button.actively {
-    background-color: #362311;
-  }
-  .rightpanel {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 17%;
-    height: auto;
-    border-radius: 5px;
-    background-color: #fffbed;
-    float: right;
-    position: fixed;
-    right: 10px;
-    font-family: Optima;
-    visibility: hidden;
-  }
-  .submitbutton {
-    border-radius: 5px;
-    background-color: #fffbed;
-    border: none;
-    padding: 12px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    font-family: Optima;
-    cursor: pointer;
-  }
-	
-div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 60px;					
-    height: 28px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
-}
-.check {
-    position: relative;
-    display: inline-block;
-    background-color: #5890ff;
-    width: 12px;
-    height: 12px;
-    border-radius: 100%;
-    color: #000;
-    text-decoration: none;
-}
-.check:after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 0;
-    left: 14px;
-    width: 100px;
-    background-color: #000;
-    color: #FFF;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    padding: 5px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .3s ease-in-out;
-    will-change: opacity;
-}
-.check:hover:after {
-    opacity: 1;
-    pointer-events: auto;
-}
-	
 
-	
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: #362311;
+        font-family: Optima;
+        font-size: 18px;
+        color: #FCFCFC;
+        overflow: hidden;
+    }
 
-  
+    #heading {
+        color: #FFF2EB;
+        text-align: center;
+        font-family: Optima;
+        font-size: 25px;
+    }
+
+    /* Main content */
+    .main {
+        margin-left: 200px;
+        /* Same as the width of the sidenav */
+        font-size: 20px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+
+    .card {
+        transition: 0.3s;
+        float: left;
+        width: 79%;
+        height: auto;
+        border-radius: 5px;
+        background-color: #FCFCFC;
+    }
+
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .help {
+        margin: 12px;
+    }
+
+    .container {
+        padding: 20px 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        font-family: Optima;
+        color: #362311;
+    }
+
+    .jumping-dots span {
+        position: relative;
+        bottom: 0px;
+        -webkit-animation: jump 1500ms infinite;
+        animation: jump 2s infinite;
+    }
+
+    .jumping-dots .dot-1 {
+        -webkit-animation-delay: 200ms;
+        animation-delay: 200ms;
+    }
+
+    .jumping-dots .dot-2 {
+        -webkit-animation-delay: 400ms;
+        animation-delay: 400ms;
+    }
+
+    .jumping-dots .dot-3 {
+        -webkit-animation-delay: 600ms;
+        animation-delay: 600ms;
+    }
+
+    /* Common styles and resets */
+    .highlight {
+        background: brown;
+    }
+
+    .highlight-hover {
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid brown;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .highlight-hover:hover {
+        background-color: brown;
+    }
+
+    @-webkit-keyframes jump {
+        0% {
+            bottom: 0px;
+        }
+
+        20% {
+            bottom: 30px;
+        }
+
+        40% {
+            bottom: 0px;
+        }
+    }
+
+    @keyframes jump {
+        0% {
+            bottom: 0px;
+        }
+
+        20% {
+            bottom: 30px;
+        }
+
+        40% {
+            bottom: 0px;
+        }
+    }
+
+    .tab {
+        overflow: hidden;
+        border: 1px solid #FFF2EB;
+        border-radius: 5px;
+        background-color: #654321;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        color: #FFFFFF;
+        font-family: Optima;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        background-color: #4f3419;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.actively {
+        background-color: #362311;
+    }
+
+    .rightpanel {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 17%;
+        height: auto;
+        border-radius: 5px;
+        background-color: #fffbed;
+        float: right;
+        position: fixed;
+        right: 10px;
+        font-family: Optima;
+        visibility: hidden;
+    }
+
+    .submitbutton {
+        border-radius: 5px;
+        background-color: #fffbed;
+        border: none;
+        padding: 12px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        font-family: Optima;
+        cursor: pointer;
+    }
+
+    div.tooltip {
+        position: absolute;
+        text-align: center;
+        width: 60px;
+        height: 28px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    .check {
+        position: relative;
+        display: inline-block;
+        background-color: #5890ff;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .check:after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 0;
+        left: 14px;
+        width: 100px;
+        background-color: #000;
+        color: #FFF;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 5px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s ease-in-out;
+        will-change: opacity;
+    }
+
+    .check:hover:after {
+        opacity: 1;
+        pointer-events: auto;
+    }
 </style>
 
 <head>
-  <meta charset="utf-8" />
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="https://d3js.org/queue.v1.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body style="background-image:url('scroll_background.png')" margin:"0px">
-  <div id="loader" style="display:block">
-    <h1 style="padding-top:150px"> loading ...</h1>
-    <center>
-      <span class="jumping-dots">
-        <span class="dot-1"><img src="cherries.png" width="166" height="196"></span>
-        <span class="dot-2"><img src="grapes.png" width="173" height="285"></span>
-        <span class="dot-3"><img src="orange.png" width="140" height="120"></span>
-      </span>
-    </center>
-    <h1 style="padding-top:50px"> please be patient. </h1>
-  </div>
-
-  <div id="mainpage" style="display:none">
-    <div class="sidenav">
-      <div id="heading"> See Survey Results </div>
-      <br>
-      <button class="accordion" id="class"></button>
-      <div class="panel" id="class-panel">
-      </div>
-      <br>
-      <button class="accordion" id="teacher"></button>
-      <div class="panel" id="teacher-panel">
-      </div>
-      <br>
-      <button class="accordion" id="year"></button>
-      <div class="panel" id="year-panel">
-      </div>
-      <center> <button onclick="viewfiltereddata()" class="submitbutton">View Results</button> </center>
+    <div id="loader" style="display:block">
+        <h1 style="padding-top:150px"> loading ...</h1>
+        <center>
+            <span class="jumping-dots">
+                <span class="dot-1"><img src="cherries.png" width="166" height="196"></span>
+                <span class="dot-2"><img src="grapes.png" width="173" height="285"></span>
+                <span class="dot-3"><img src="orange.png" width="140" height="120"></span>
+            </span>
+        </center>
+        <h1 style="padding-top:50px"> please be patient. </h1>
     </div>
-    <div class="main">
-      <h1>oldways portal</h1>
-      <center>
-        <div class="card">
-          <div class="tab">
-            <button class="tablinks" onclick="all_statistics(event, 'cooking')"> Cooking & Lifestyle
-            </button>
-            <button class="tablinks" onclick="all_statistics(event, 'physical')"> Physical Improvement
-            </button>
-            <button class="tablinks" onclick="all_statistics(event, 'stats')"> Overall Statistics </button>
-          </div>
-          <div class="container" id="container">
-          </div>
+
+    <div id="mainpage" style="display:none">
+        <div class="sidenav">
+            <div id="heading"> See Survey Results </div>
+            <br>
+            <button class="accordion" id="class"></button>
+            <div class="panel" id="class-panel">
+            </div>
+            <br>
+            <button class="accordion" id="teacher"></button>
+            <div class="panel" id="teacher-panel">
+            </div>
+            <br>
+            <button class="accordion" id="year"></button>
+            <div class="panel" id="year-panel">
+            </div>
+            <center> <button onclick="viewfiltereddata()" class="submitbutton">View Results</button> </center>
+        </div>
+        <div class="main">
+            <h1>oldways portal</h1>
+            <center>
+                <div class="card">
+                    <div class="tab">
+                        <button class="tablinks" onclick="all_statistics(event, 'cooking')"> Cooking & Lifestyle
+                        </button>
+                        <button class="tablinks" onclick="all_statistics(event, 'physical')"> Physical Improvement
+                        </button>
+                        <button class="tablinks" onclick="all_statistics(event, 'stats')"> Overall Statistics </button>
+                    </div>
+                    <div class="container" id="container">
+                    </div>
+
+                </div>
+
+
+            </center>
+            <div class="rightpanel" id="rightpanel">
+            </div>
 
         </div>
-
-
-      </center>
-      <div class="rightpanel" id="rightpanel">
-      </div>
-
     </div>
-  </div>
 </body>
 <script>
-  function changedisplays() {
-    document.getElementById('mainpage').style.display = 'block';
-    document.getElementById('loader').style.display = 'none';
-  }
-  var acc = document.getElementsByClassName("accordion");
-  var database;
-  var original_database;
-  var teacher_database;
-  var studentteachermapping;
-  var total_survey_count;
-  var selectedCategory;
-  var ogContainer = document.getElementById("container").innerHTML;
-  var oldContainer = ogContainer.innerHTML;
-  var i;
-  var curr_classes;
-  var curr_teachers;
-  var curr_years;
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-  
-  /*function clear_point(obj) {
-    console.log("HERE");
-    var column = obj.id;
-    
-    var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' onmouseout = 'clear_point(this)' width=\"25px\" height=\"25px\"><br>"
-    poss_exclamation += "</div>" 
-        
-    document.getElementById(column + "lagged").innerHTML = poss_exclamation;
-  }*/
-  function get_cooking_lagged_years(obj) {
-      // clear_point(obj);
-      var column = obj.id;
-      function isComplete(change) {
-        return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
-      }
-      var years = [];
-      var lagged = [];
-      $("input:checkbox[name=year]").each(function () {
-          years.push($(this).val());
+    function changedisplays() {
+        document.getElementById('mainpage').style.display = 'block';
+        document.getElementById('loader').style.display = 'none';
+    }
+    var acc = document.getElementsByClassName("accordion");
+    var database;
+    var original_database;
+    var teacher_database;
+    var studentteachermapping;
+    var total_survey_count;
+    var selectedCategory;
+    var ogContainer = document.getElementById("container").innerHTML;
+    var oldContainer = ogContainer.innerHTML;
+    var i;
+    var curr_classes;
+    var curr_teachers;
+    var curr_years;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
         });
-      years = years.map((year) => Number(year));
-      var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length; 
-      var cur_year;
-      var cur_years_info;
-      var percent;
-      var numerator;
-      var denominator;
-      var worst_year = 'all';
-      var worst_percent = desired_percent;
-      for(var i = 0; i < years.length; i++) {
-        cur_year = years[i];
-        cur_years_info = original_database.filter(function (row) {return cur_year == (new Date(row['Date Filled Out']).getFullYear());});
-        // console.log(cur_years_info)
-        numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-        denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
-        percent = numerator / denominator;
-        /*console.log("cat " + column);
-        console.log("percent " + percent);
-        console.log("desired " + desired_percent + "\n");*/
-        
-        if (percent < desired_percent) {
-          if (percent < worst_percent) {
-            worst_year = cur_year;
-            worst_percent = percent;
-          }
-        }        
-      }
-      lagged.push(worst_year);
-      lagged.push(worst_percent);
-      //document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
-	
-	return lagged
+    }
+
+    /*function clear_point(obj) {
+      console.log("HERE");
+      var column = obj.id;
       
-      
-    }
-  function viewfiltereddata() {
-    document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results. To view our project github page, please view our README at" + "<a href='https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/README.md'>" + "Oldways Github" + "</a>";
-    curr_classes = [];
-    curr_teachers = [];
-    curr_years = [];
-    $("input:checkbox[name=class]:checked").each(function () {
-      curr_classes.push($(this).val());
-    });
-    $("input:checkbox[name=teacher]:checked").each(function () {
-      curr_teachers.push($(this).val());
-    });
-    $("input:checkbox[name=year]:checked").each(function () {
-      curr_years.push($(this).val());
-    });
-    curr_years = curr_years.map((year) => Number(year));
-    database = original_database.filter(function (row) { return curr_years.includes(new Date(row['Date Filled Out']).getFullYear()); });
-    map_teachers = studentteachermapping.filter(function (row) { return curr_teachers.includes(row['Teacher Participant ID']) });
-    map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
-    students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
-    students_in_classes = map_classes.map((row) => row['Student Participant ID']);
-    database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
-    database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
-    total_survey_count = database.filter((entry) => entry['Participant ID']).length;
-    get_students(database);
-  }
-  function get_classes(teacher_database) {
-    function onlyUnique(value, index, self) {
-      return self.indexOf(value) === index;
-    }
-    var classes = teacher_database.map((entry) => entry['Class']);
-    classes = classes.filter(onlyUnique);
-    var text_to_add = "";
-    for (var i = 0; i < classes.length; i++) {
-      text_to_add += "<input type = 'checkbox' name = 'class" + "' value = '" + classes[i] + "' checked>"
-      text_to_add += " <label for = 'classes'" + i + "'> " + classes[i] + " </label> <br>"
-    }
-    document.getElementById("class-panel").innerHTML = text_to_add;
-  }
-  function get_teachers(studentteachermapping) {
-    function onlyUnique(value, index, self) {
-      return self.indexOf(value) === index;
-    }
-    var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
-    teachers = teachers.filter(onlyUnique);
-    var text_to_add = "";
-    for (var i = 0; i < teachers.length; i++) {
-      text_to_add += "<input type = 'checkbox' name = 'teacher" + "' value = '" + teachers[i] + "' checked>"
-      text_to_add += " <label for = 'teachers'" + i + "'> " + teachers[i] + " </label> <br>"
-    }
-    document.getElementById("teacher-panel").innerHTML = text_to_add;
-  }
-  function get_years(database) {
-    function onlyUnique(value, index, self) {
-      return self.indexOf(value) === index;
-    }
-    var dates = database.map((entry) => new Date(entry['Date Filled Out']));
-    dates = dates.map((entry) => entry.getFullYear())
-    dates = dates.filter(onlyUnique);
-    dates = dates.sort().reverse();
-    // console.log(dates[0]);
-    var text_to_add = "";
-    for (var i = 0; i < dates.length; i++) {
-      text_to_add += "<input type = 'checkbox' name = 'year" + "' value = '" + dates[i] + "' checked>"
-      text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
-    }
-    document.getElementById("year-panel").innerHTML = text_to_add;
-  }
-  function get_students(database) {
-    // console.log("here");
-    var text_to_add = '<br> <center> Number of Surveys: ';
-    text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
-    text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
-    document.getElementById("rightpanel").innerHTML = text_to_add;
-    var svg;
-    var circleSelection;
-    document.getElementById("rightpanel").innerHTML += "<center><div id='circles'>"
-    for (var i = 1; i < 100 + 1; i++) {
-      svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
-      circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
-      if (i % 10 == 0) {
-        document.getElementById("circles").innerHTML += "<br>"
-      }
-    }
-    document.getElementById("rightpanel").innerHTML += "<br></div></center>"
-    var help_start = "<div class='help' style = 'font-size: 15px'>";
-    var legend = "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
-    legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
-    legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
-    legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
-    legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
-    document.getElementById("rightpanel").innerHTML += help_start + legend;
-    
-//    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
-//    document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
-//    document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
-//    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
-//    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
-  }
-  function reset_results(obj) {
-    const circles = d3.selectAll("#circles circle").style("fill", "black");
-    document.getElementById('category').innerHTML = '<center>Hover over a category to see its breakdown.</center>';
-  }
-  function student_results(obj) {
-    function isComplete(change) {
-      return ["✅", "🔻", "Remained Same", "1", "0", "-1"].indexOf(change) >= 0
-    }
-    // change the color to grey
-    reset_results(database);
-    var category = obj.id;
-    var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
-    var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
-    var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
-    var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
-    // console.log(category);
-    // console.log(num_completed);
-    var circle_colors = [];
-    // var cur_students = database.filter((entry) => entry['Participant ID']).length;
-    // var num_completed = database.filter((entry) => isComplete(entry[category])).length;
-    // console.log(num_completed);
-    d3.selectAll('#circles circle').each(function (d, i) {
-      if (i < num_increase) {
-        d3.select(this).style("fill", "#0bb839");
-      }
-      else if (i < num_increase + num_same) {
-        d3.select(this).style("fill", "#ebeb31");
-      }
-      else if (i < num_increase + num_same + num_decrease) {
-        d3.select(this).style("fill", "#ed2d2d")
-      }
-      else if (i >= total_survey_count - num_completed) {
-        d3.select(this).style("fill", "#b3b3b3");
-      }
-    });
-    document.getElementById('category').innerHTML = "<b> Category: </b>" + category + "<br>";
-    /*console.log("changed rightpanel?");
-    console.log(rightpanel);
-    console.log(rightpanel.selectAll("svg"));*/
-  }
-  function all_statistics(evt, tabName) {
-    function toPercent(fraction) {
-      return (fraction * 100).toFixed(2) + "%"
-    }
-  function createGraphs(filter_name, category_name){
-    // console.log(filter_name, category_name);
-    
-//     category_name = category_name.slice(4,-4);
-    var middleID= "middle-" + category_name;
-    var graph;
-    x_axis = [];
-    all_objs = [];
-	  var d3_svg;
-    if(filter_name == "classfilt"){
-      graph = "MEOW";
-	    d3.select("div[id='"+middleID+"']").html("");
-    
-	    x_axis = curr_classes;
-	    var classes_data = [];
-	    var class_name;
-	    var inter_map_classes;
-	    var inter_students_in_classes;
-	    var temp_database;
-	    for (var i = 0; i < curr_classes.length; i++){
-		    var column = category_name + '_Change';
-		    class_name = curr_classes[i]
-		    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
-          	    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
-         	    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
-        	    //temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
-		    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-        		var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-        		var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-       			 var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
-		    /*console.log(numerator);
-		    console.log(denominator);
-		    console.log("next");*/
-        		var result = denominator === 0 ? 0 : numerator / denominator;
-		    classes_data.push([class_name, result*100])
-	    }
-	    console.log(classes_data);
-	    d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
-	    
-	    var x = d3.scale.ordinal()
-          	.range([0, 150])
-	    	.domain(classes_data.map(function(d) {return d[0];}));
-	     var y = d3.scale.linear()
-	     	.domain([0, 101])
-          	.range([150, 0]);
-	    var x_axis = d3.svg.axis().scale(x).orient('bottom');
-	    var yaxis = d3.svg.axis().scale(y).orient('left');
-	    d3_svg.selectAll(".bar")
-      		.data(classes_data)
-    		.enter().append("rect")
-      		.attr("class", "bar")
-      		.attr("x", function(d) { return x(d[0]); })
-      		.attr("width", 20)
-      		.attr("y", function(d) { return y(d[1]); })
-      		.attr("height", function(d) {console.log(150 - y(1.5 * d[1])); return 150 - y(d[1]); })
-	    	.attr("transform", "translate(50, -14)");
-	    
-	    d3_svg.append("g")
-	    	.style("font", "12px times")
-      		.attr("transform", "translate(40, 132)")
-      		.call(x_axis);
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
-	    //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
-    }
-    else if(filter_name == "teacherfilt"){
-      graph = "WOOF";
-	    d3.select("div[id='"+middleID+"']").html("");
-      x_axis = curr_teachers; 
+      var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' onmouseout = 'clear_point(this)' width=\"25px\" height=\"25px\"><br>"
+      poss_exclamation += "</div>" 
+          
+      document.getElementById(column + "lagged").innerHTML = poss_exclamation;
+    }*/
+    function get_cooking_lagged_years(obj) {
+        // clear_point(obj);
+        var column = obj.id;
+        function isComplete(change) {
+            return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
+        }
+        var years = [];
+        var lagged = [];
+        $("input:checkbox[name=year]").each(function () {
+            years.push($(this).val());
+        });
+        years = years.map((year) => Number(year));
+        var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length;
+        var cur_year;
+        var cur_years_info;
+        var percent;
+        var numerator;
+        var denominator;
+        var worst_year = 'all';
+        var worst_percent = desired_percent;
+        for (var i = 0; i < years.length; i++) {
+            cur_year = years[i];
+            cur_years_info = original_database.filter(function (row) { return cur_year == (new Date(row['Date Filled Out']).getFullYear()); });
+            // console.log(cur_years_info)
+            numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+            denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
+            percent = numerator / denominator;
+            /*console.log("cat " + column);
+            console.log("percent " + percent);
+            console.log("desired " + desired_percent + "\n");*/
+
+            if (percent < desired_percent) {
+                if (percent < worst_percent) {
+                    worst_year = cur_year;
+                    worst_percent = percent;
+                }
+            }
+        }
+        lagged.push(worst_year);
+        lagged.push(worst_percent);
+        //document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
+
+        return lagged
+
 
     }
-    else if(filter_name == "yearfilt"){
-      graph = "HEEHAW";
-      console.log("here");
-      x_axis = curr_years;
-      curr_years.sort();
-	d3.select("div[id='"+middleID+"']").html("");	
-      d3_svg = d3.select("div[id='"+middleID+"']").append("svg").attr("width", "90%").attr("height", "90%");
-	    console.log(curr_years);
-      var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 1).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
-	    //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
-	    var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
-	    //d3_svg.append("g").style("font", "12px times").call(x_axis);
-	    d3.selectAll(".tick")
-    		.filter(function (d) { return d === 0;  })
-    		.remove();
-				      
-	for(var i = 0; i < curr_years.length; i++) {
-		var column = category_name + '_Change';
-        	var temp_database;
-		var year = curr_years[i];
-		temp_database = database.filter(function (entry) { return [year].includes(new Date(entry['Date Filled Out']).getFullYear()); });
-		var temp_filtered_database = temp_database.filter(function(entry){ return entry[category_name]});
-		var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-        	var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-        	var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-        	var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
-        	var result = denominator === 0 ? 0 : numerator / denominator;
-        	all_objs.push([new Date(year.toString()), result*100]);
-					
-					
-	}
-	    console.log(all_objs);
-		console.log(middleID);
- 	var y = d3.scale.linear()
-                  .domain([101, 0])
-                  .range([0, 150]);
-	  var yaxis = d3.svg.axis().scale(y).orient('left');
-	  
-	    d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
-	      
-	    
-	d3_svg.append("path")
-      .datum(all_objs)
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.svg.line()
-        .x(function(d) { return x(d[0]) })
-        .y(function(d) { return y(d[1]) })
-        ).attr("transform", "translate(40, -12)")
-	    
+    function viewfiltereddata() {
+        document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results. To view our project github page, please view our README at" + "<a href='https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/README.md'>" + "Oldways Github" + "</a>";
+        curr_classes = [];
+        curr_teachers = [];
+        curr_years = [];
+        $("input:checkbox[name=class]:checked").each(function () {
+            curr_classes.push($(this).val());
+        });
+        $("input:checkbox[name=teacher]:checked").each(function () {
+            curr_teachers.push($(this).val());
+        });
+        $("input:checkbox[name=year]:checked").each(function () {
+            curr_years.push($(this).val());
+        });
+        curr_years = curr_years.map((year) => Number(year));
+        database = original_database.filter(function (row) { return curr_years.includes(new Date(row['Date Filled Out']).getFullYear()); });
+        map_teachers = studentteachermapping.filter(function (row) { return curr_teachers.includes(row['Teacher Participant ID']) });
+        map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
+        students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
+        students_in_classes = map_classes.map((row) => row['Student Participant ID']);
+        database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
+        database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
+        total_survey_count = database.filter((entry) => entry['Participant ID']).length;
+        get_students(database);
     }
-	  
+    function get_classes(teacher_database) {
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+        var classes = teacher_database.map((entry) => entry['Class']);
+        classes = classes.filter(onlyUnique);
+        var text_to_add = "";
+        for (var i = 0; i < classes.length; i++) {
+            text_to_add += "<input type = 'checkbox' name = 'class" + "' value = '" + classes[i] + "' checked>"
+            text_to_add += " <label for = 'classes'" + i + "'> " + classes[i] + " </label> <br>"
+        }
+        document.getElementById("class-panel").innerHTML = text_to_add;
+    }
+    function get_teachers(studentteachermapping) {
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+        var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
+        teachers = teachers.filter(onlyUnique);
+        var text_to_add = "";
+        for (var i = 0; i < teachers.length; i++) {
+            text_to_add += "<input type = 'checkbox' name = 'teacher" + "' value = '" + teachers[i] + "' checked>"
+            text_to_add += " <label for = 'teachers'" + i + "'> " + teachers[i] + " </label> <br>"
+        }
+        document.getElementById("teacher-panel").innerHTML = text_to_add;
+    }
+    function get_years(database) {
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+        var dates = database.map((entry) => new Date(entry['Date Filled Out']));
+        dates = dates.map((entry) => entry.getFullYear())
+        dates = dates.filter(onlyUnique);
+        dates = dates.sort().reverse();
+        // console.log(dates[0]);
+        var text_to_add = "";
+        for (var i = 0; i < dates.length; i++) {
+            text_to_add += "<input type = 'checkbox' name = 'year" + "' value = '" + dates[i] + "' checked>"
+            text_to_add += " <label for = 'years'" + i + "'> " + dates[i] + " </label> <br>"
+        }
+        document.getElementById("year-panel").innerHTML = text_to_add;
+    }
+    function get_students(database) {
+        // console.log("here");
+        var text_to_add = '<br> <center> Number of Surveys: ';
+        text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
+        text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
+        document.getElementById("rightpanel").innerHTML = text_to_add;
+        var svg;
+        var circleSelection;
+        document.getElementById("rightpanel").innerHTML += "<center><div id='circles'>"
+        for (var i = 1; i < 100 + 1; i++) {
+            svg = d3.select('#rightpanel #circles').append('svg').attr('width', '20').attr('height', '16').attr('id', i);
+            circleSelection = svg.append("circle").attr("cx", 8).attr("cy", 8).attr("r", 8).style("fill", "black");
+            if (i % 10 == 0) {
+                document.getElementById("circles").innerHTML += "<br>"
+            }
+        }
+        document.getElementById("rightpanel").innerHTML += "<br></div></center>"
+        var help_start = "<div class='help' style = 'font-size: 15px'>";
+        var legend = "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
+        legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
+        legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
+        legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
+        legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
+        document.getElementById("rightpanel").innerHTML += help_start + legend;
 
-    
-    /*x_axis.forEach(function (each_item, index) {
-        var column = category_name + '_Change';
-        var temp_database;
-        if (filter_name == "yearfilt"){
-					temp_database = database.filter(function (entry) { return [each_item].includes(new Date(entry['Date Filled Out']).getFullYear()); });
-					var temp_filtered_database = temp_database.filter(function(entry){ return entry[category_name]});
-					console.log(temp_database);
-					console.log(temp_filtered_database);
-					console.log(curr_years);
-					curr_years.sort()
-					/*var svg = d3.select("#"+middleID)
-						.append("svg")
-						.attr("width", "100%")
-						.attr("height", "100%");
-					var x = d3.time.scale()
-      			.domain([curr_years[0], curr_years[-1]])
-      			.range([ 0, "200px" ]);
-					
-					svg.append("g")
-						.call(d3.svg.axis().scale(x));
-// 					// Add Y axis
-// 					var y = d3.scaleLinear()
-// 						.domain( [0, Math.max(])
-// 						.range([ "200px", 0 ]);
-// 					svg.append("g")
-// 						.call(d3.axisLeft(y));
-// 					// Add the line
-// 					svg.append("path")
-// 						.datum(temp_database)
-// 						.attr("fill", "none")
-// 						.attr("stroke", "#69b3a2")
-// 						.attr("stroke-width", 1.5)
-// 						.attr("d", d3.line()
-// 							.x(function(d) { return x(d.date) })
-// 							.y(function(d) { return y(d.value) })
-// 							)
-// 					// Add the points
-// 					svg
-// 						.append("g")
-// 						.selectAll("dot")
-// 						.data(data)
-// 						.enter()
-// 						.append("circle")
-// 							.attr("cx", function(d) { return x(d.date) } )
-// 							.attr("cy", function(d) { return y(d.value) } )
-// 							.attr("r", 5)
-// 							.attr("fill", "#69b3a2")
-					
-// 						.attr("transform",
-// 									"translate(" + margin.left + "," + margin.top + ")");
-				}
-        else if (filter_name == "classfilt"){
-          var inter_map_classes = studentteachermapping.filter(function (row) { return [each_item].includes(row['Class']) });
-          var inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
-          temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+        //    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
+        //    document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
+        //    document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
+        //    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
+        //    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
+    }
+    function reset_results(obj) {
+        const circles = d3.selectAll("#circles circle").style("fill", "black");
+        document.getElementById('category').innerHTML = '<center>Hover over a category to see its breakdown.</center>';
+    }
+    function student_results(obj) {
+        function isComplete(change) {
+            return ["✅", "🔻", "Remained Same", "1", "0", "-1"].indexOf(change) >= 0
         }
-        else if (filter_name == "teacherfilt"){
-          var inter_map_teachers = studentteachermapping.filter(function (row) { return [each_item].includes(row['Teacher Participant ID'])});
-          var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
-          temp_database = database.filter(function (row) { return inter_students_of_teachers.includes(row['Participant ID']) });
+        // change the color to grey
+        reset_results(database);
+        var category = obj.id;
+        var num_completed = Math.round(obj.getAttribute("data-completed") / total_survey_count * 100);
+        var num_increase = Math.round(obj.getAttribute("data-improved") / total_survey_count * 100);
+        var num_same = Math.round(obj.getAttribute("data-same") / total_survey_count * 100);
+        var num_decrease = Math.round(obj.getAttribute("data-decreased") / total_survey_count * 100);
+        // console.log(category);
+        // console.log(num_completed);
+        var circle_colors = [];
+        // var cur_students = database.filter((entry) => entry['Participant ID']).length;
+        // var num_completed = database.filter((entry) => isComplete(entry[category])).length;
+        // console.log(num_completed);
+        d3.selectAll('#circles circle').each(function (d, i) {
+            if (i < num_increase) {
+                d3.select(this).style("fill", "#0bb839");
+            }
+            else if (i < num_increase + num_same) {
+                d3.select(this).style("fill", "#ebeb31");
+            }
+            else if (i < num_increase + num_same + num_decrease) {
+                d3.select(this).style("fill", "#ed2d2d")
+            }
+            else if (i >= total_survey_count - num_completed) {
+                d3.select(this).style("fill", "#b3b3b3");
+            }
+        });
+        document.getElementById('category').innerHTML = "<b> Category: </b>" + category + "<br>";
+        /*console.log("changed rightpanel?");
+        console.log(rightpanel);
+        console.log(rightpanel.selectAll("svg"));*/
+    }
+    function all_statistics(evt, tabName) {
+        function toPercent(fraction) {
+            return (fraction * 100).toFixed(2) + "%"
         }
-        var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-        var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-        var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-        var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
-        var result = denominator === 0 ? 0 : numerator / denominator;
-        all_objs.push(result);
-      });*/
-    // console.log(x_axis);
-    
-	    
-    // document.getElementById(middleID).innerHTML = graph;
-  }
-    
-  
-    function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column){
-      var box_inner_start = "<div class = 'boxed-inner'>";
-      var invisible_check = "<input id = 'hide' type='checkbox'/>";
-      var box_front_start = "<div class = 'boxed-inner-front'>";
-      var box_back_start = "<div class = 'boxed-inner-back'>";
-      var box_end = "</div>";
-      var label_end = "</label>";
-      document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
-      var lagged = get_cooking_lagged_years(column);
-	var d3_exclam = d3.select("div[id = '" + column + "lagged']");
-	    
-	    var div = d3.select("div[id = '" + column + "lagged']").append("a")	
-    .attr("class", "check")	
-	.attr("href", "#")
-	.attr("data-tooltip", "here"); 
-	    
-	var imgs = d3_exclam.selectAll("image").data([0]);
-        imgs.enter()
-                .append("svg:img")
-	    	.attr("id", column)
+        function createGraphs(filter_name, category_name) {
+            // console.log(filter_name, category_name);
+
+            //     category_name = category_name.slice(4,-4);
+            var middleID = "middle-" + category_name;
+            var graph;
+            x_axis = [];
+            all_objs = [];
+            var d3_svg;
+            if (filter_name == "classfilt") {
+                graph = "MEOW";
+                d3.select("div[id='" + middleID + "']").html("");
+
+                x_axis = curr_classes;
+                var classes_data = [];
+                var class_name;
+                var inter_map_classes;
+                var inter_students_in_classes;
+                var temp_database;
+                for (var i = 0; i < curr_classes.length; i++) {
+                    var column = category_name + '_Change';
+                    class_name = curr_classes[i]
+                    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
+                    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
+                    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+                    //temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
+                    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                    var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    /*console.log(numerator);
+                    console.log(denominator);
+                    console.log("next");*/
+                    var result = denominator === 0 ? 0 : numerator / denominator;
+                    classes_data.push([class_name, result * 100])
+                }
+                console.log(classes_data);
+                d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
+
+                var x = d3.scale.ordinal()
+                    .range([0, 150])
+                    .domain(classes_data.map(function (d) { return d[0]; }));
+                var y = d3.scale.linear()
+                    .domain([0, 101])
+                    .range([150, 0]);
+                var x_axis = d3.svg.axis().scale(x).orient('bottom');
+                var yaxis = d3.svg.axis().scale(y).orient('left');
+                d3_svg.selectAll(".bar")
+                    .data(classes_data)
+                    .enter().append("rect")
+                    .attr("class", "bar")
+                    .attr("x", function (d) { return x(d[0]); })
+                    .attr("width", 20)
+                    .attr("y", function (d) { return y(d[1]); })
+                    .attr("height", function (d) { console.log(150 - y(1.5 * d[1])); return 150 - y(d[1]); })
+                    .attr("transform", "translate(50, -14)");
+
+                d3_svg.append("g")
+                    .style("font", "12px times")
+                    .attr("transform", "translate(40, 132)")
+                    .call(x_axis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+                //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
+            }
+            else if (filter_name == "teacherfilt") {
+                graph = "WOOF";
+                d3.select("div[id='" + middleID + "']").html("");
+                x_axis = curr_teachers;
+
+            }
+            else if (filter_name == "yearfilt") {
+                graph = "HEEHAW";
+                console.log("here");
+                x_axis = curr_years;
+                curr_years.sort();
+                d3.select("div[id='" + middleID + "']").html("");
+                d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
+                console.log(curr_years);
+                var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 1).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
+                //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
+                var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
+                //d3_svg.append("g").style("font", "12px times").call(x_axis);
+                d3.selectAll(".tick")
+                    .filter(function (d) { return d === 0; })
+                    .remove();
+
+                for (var i = 0; i < curr_years.length; i++) {
+                    var column = category_name + '_Change';
+                    var temp_database;
+                    var year = curr_years[i];
+                    temp_database = database.filter(function (entry) { return [year].includes(new Date(entry['Date Filled Out']).getFullYear()); });
+                    var temp_filtered_database = temp_database.filter(function (entry) { return entry[category_name] });
+                    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                    var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    var result = denominator === 0 ? 0 : numerator / denominator;
+                    all_objs.push([new Date(year.toString()), result * 100]);
+
+
+                }
+                console.log(all_objs);
+                console.log(middleID);
+                var y = d3.scale.linear()
+                    .domain([101, 0])
+                    .range([0, 150]);
+                var yaxis = d3.svg.axis().scale(y).orient('left');
+
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+
+
+                d3_svg.append("path")
+                    .datum(all_objs)
+                    .attr("fill", "none")
+                    .attr("stroke", "steelblue")
+                    .attr("stroke-width", 1.5)
+                    .attr("d", d3.svg.line()
+                        .x(function (d) { return x(d[0]) })
+                        .y(function (d) { return y(d[1]) })
+                    ).attr("transform", "translate(40, -12)")
+
+            }
+
+
+
+            /*x_axis.forEach(function (each_item, index) {
+                var column = category_name + '_Change';
+                var temp_database;
+                if (filter_name == "yearfilt"){
+                            temp_database = database.filter(function (entry) { return [each_item].includes(new Date(entry['Date Filled Out']).getFullYear()); });
+                            var temp_filtered_database = temp_database.filter(function(entry){ return entry[category_name]});
+                            console.log(temp_database);
+                            console.log(temp_filtered_database);
+                            console.log(curr_years);
+                            curr_years.sort()
+                            /*var svg = d3.select("#"+middleID)
+                                .append("svg")
+                                .attr("width", "100%")
+                                .attr("height", "100%");
+                            var x = d3.time.scale()
+                            .domain([curr_years[0], curr_years[-1]])
+                            .range([ 0, "200px" ]);
+                        	
+                            svg.append("g")
+                                .call(d3.svg.axis().scale(x));
+        // 					// Add Y axis
+        // 					var y = d3.scaleLinear()
+        // 						.domain( [0, Math.max(])
+        // 						.range([ "200px", 0 ]);
+        // 					svg.append("g")
+        // 						.call(d3.axisLeft(y));
+        // 					// Add the line
+        // 					svg.append("path")
+        // 						.datum(temp_database)
+        // 						.attr("fill", "none")
+        // 						.attr("stroke", "#69b3a2")
+        // 						.attr("stroke-width", 1.5)
+        // 						.attr("d", d3.line()
+        // 							.x(function(d) { return x(d.date) })
+        // 							.y(function(d) { return y(d.value) })
+        // 							)
+        // 					// Add the points
+        // 					svg
+        // 						.append("g")
+        // 						.selectAll("dot")
+        // 						.data(data)
+        // 						.enter()
+        // 						.append("circle")
+        // 							.attr("cx", function(d) { return x(d.date) } )
+        // 							.attr("cy", function(d) { return y(d.value) } )
+        // 							.attr("r", 5)
+        // 							.attr("fill", "#69b3a2")
+                        	
+        // 						.attr("transform",
+        // 									"translate(" + margin.left + "," + margin.top + ")");
+                        }
+                else if (filter_name == "classfilt"){
+                  var inter_map_classes = studentteachermapping.filter(function (row) { return [each_item].includes(row['Class']) });
+                  var inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
+                  temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+                }
+                else if (filter_name == "teacherfilt"){
+                  var inter_map_teachers = studentteachermapping.filter(function (row) { return [each_item].includes(row['Teacher Participant ID'])});
+                  var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
+                  temp_database = database.filter(function (row) { return inter_students_of_teachers.includes(row['Participant ID']) });
+                }
+                var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                var result = denominator === 0 ? 0 : numerator / denominator;
+                all_objs.push(result);
+              });*/
+            // console.log(x_axis);
+
+
+            // document.getElementById(middleID).innerHTML = graph;
+        }
+
+
+        function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column) {
+            var box_inner_start = "<div class = 'boxed-inner'>";
+            var invisible_check = "<input id = 'hide' type='checkbox'/>";
+            var box_front_start = "<div class = 'boxed-inner-front'>";
+            var box_back_start = "<div class = 'boxed-inner-back'>";
+            var box_end = "</div>";
+            var label_end = "</label>";
+            document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
+            var lagged = get_cooking_lagged_years(column);
+            var d3_exclam = d3.select("div[id = '" + column + "lagged']");
+
+            var div = d3.select("div[id = '" + column + "lagged']").append("a")
+                .attr("class", "check")
+                .attr("href", "#")
+                .attr("data-tooltip", "here");
+
+            var imgs = div.append("svg:img")
+                .attr("id", column)
                 .attr("src", "red_exclamation.png")
                 .attr("width", "25")
                 .attr("height", "25")
-	    	.on("mouseover", function() { 
-          console.log("here");
-    });
-	var div = d3.select("img[id = '" + column + "']").append("div")	
-    		.attr("class", "tooltip")				
-    		.style("opacity", 0);
-	d3.select("img[id = '" + column + "']").on("mouseover", function(d) {		
-            div.transition()		
-                .duration(200)		
-                .style("opacity", .9);		
-            div.html(formatTime(d.date) + "<br/>");	
-           });
-	    
-	var classes = $('[class^=highlight]').map(function() {
-      return $(this).attr('class');
-      });
-      // console.log(classes);
-      var markedbuttons = [];
-      // Filter only unique ones
-      var uniqueClasses = $.unique(classes);
-      var yourbuttons = [];
-      for (let hoverish of uniqueClasses) {
-        yourbuttons.push(document.getElementsByClassName(hoverish));
-        markedbuttons.push(document.getElementsByClassName(hoverish)[0]);
-      }
-      for(var k= yourbuttons.length - 1; k >= 0; k--){
-        for (var i = yourbuttons[k].length - 1; i >= 0; i--) {
-            yourbuttons[k][0].classList.add("highlight");
-            createGraphs("classfilt", yourbuttons[k][0].className.slice(16, -10));
-            yourbuttons[k][i].onclick=function(){
-              for (var color = markedbuttons.length - 1; color >= 0; color--) {
-                if (markedbuttons[color].className == this.className + " highlight"){
-                  markedbuttons[color].classList.remove("highlight");
-                  this.classList.add("highlight");
-	          console.log('className',this.className);
-                  newClassName = this.className.slice(16, -10);
-	          console.log(newClassName);
-		  cleanName = newClassName.slice(4, -4);
-                  var middleID= "middle- " + cleanName;
-                  createGraphs(this.id, newClassName);
-                  markedbuttons[color] = this;
-                }
-              }
+                .on("mouseover", function () {
+                    console.log("here");
+                });
+
+            // var imgs = d3_exclam.selectAll("image").data([0]);
+            // imgs.enter()
+            //     .append("svg:img")
+            //     .attr("id", column)
+            //     .attr("src", "red_exclamation.png")
+            //     .attr("width", "25")
+            //     .attr("height", "25")
+            //     .on("mouseover", function () {
+            //         console.log("here");
+            //     });
+            var div = d3.select("img[id = '" + column + "']").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+            d3.select("img[id = '" + column + "']").on("mouseover", function (d) {
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                div.html(formatTime(d.date) + "<br/>");
+            });
+
+            var classes = $('[class^=highlight]').map(function () {
+                return $(this).attr('class');
+            });
+            // console.log(classes);
+            var markedbuttons = [];
+            // Filter only unique ones
+            var uniqueClasses = $.unique(classes);
+            var yourbuttons = [];
+            for (let hoverish of uniqueClasses) {
+                yourbuttons.push(document.getElementsByClassName(hoverish));
+                markedbuttons.push(document.getElementsByClassName(hoverish)[0]);
             }
-          }
-      }
+            for (var k = yourbuttons.length - 1; k >= 0; k--) {
+                for (var i = yourbuttons[k].length - 1; i >= 0; i--) {
+                    yourbuttons[k][0].classList.add("highlight");
+                    createGraphs("classfilt", yourbuttons[k][0].className.slice(16, -10));
+                    yourbuttons[k][i].onclick = function () {
+                        for (var color = markedbuttons.length - 1; color >= 0; color--) {
+                            if (markedbuttons[color].className == this.className + " highlight") {
+                                markedbuttons[color].classList.remove("highlight");
+                                this.classList.add("highlight");
+                                console.log('className', this.className);
+                                newClassName = this.className.slice(16, -10);
+                                console.log(newClassName);
+                                cleanName = newClassName.slice(4, -4);
+                                var middleID = "middle- " + cleanName;
+                                createGraphs(this.id, newClassName);
+                                markedbuttons[color] = this;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
+            //       category_name = category_name.bold();
+            //       var column = category_name.substring(3, category_name.length - 4) + '_Change';
+            var column = category_name + '_Change';
+
+
+            //var box_inner_start = "<div class = 'boxed-inner'>"
+            //var invisible_check = "<input id = 'hide' type='checkbox'/>"
+            //var box_front_start = "<div class = 'boxed-inner-front'>"
+            //var box_back_start = "<div class = 'boxed-inner-back'>"
+            //var box_end = "</div>"
+            //var label_end = "</label>"
+            if (category_class == "cooking") {
+                var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
+
+                var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">";
+
+                // iterate through years and determine if any are lagging        
+                // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
+                var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'>" //<img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
+                // onmouseover = 'get_cooking_lagged_years(this)';
+
+
+                var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
+
+                /*for (var i = 0; i < lagged_years.length; i++) {
+                      poss_exclamation += lagged_years[i] + "<br>"
+                    }*/
+                poss_exclamation += "</div>"
+
+                // $("img[id='" + column + "']").on('mouseover', get_cooking_lagged_years);
+                //onmouseover = 'get_cooking_lagged_years(this)'
+
+                // console.log(poss_exclamation);
+
+                var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" + "</center>";
+
+                var middle = "<div id = 'middle-" + category_name + "'>" + "</div>";
+                // console.log("MEOW");
+                // console.log(middle);
+                flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column)
+                //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
+            }
+            else {
+                var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
+
+                var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
+
+                var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" + "</center>";
+
+                var middle = "<div id = 'middle- " + category_name + "'>" + "</div>";
+                flippingCool(box_start, front, category_name, middle, back);
+                //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
+            }
+        }
+        function isComplete(change) {
+            return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
+        }
+        var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
+        var pics = ["home_cooked.jpeg", "greens.jpeg", "grains.jpeg", "fruits.jpeg", "exercise.jpeg", "tubers.jpeg", "beans.jpeg", "herbsspices.jpeg", "vegetarian.jpeg"];
+        var columns = categories.map((category) => category + '_Change');
+        var box_start = "<div class = 'boxed'>"
+        var box_end = "</div>"
+        if (tabName == "cooking") {
+            document.getElementById("rightpanel").style.visibility = "visible";
+            document.getElementById("container").innerHTML = "";
+            categories.forEach(function (category, index) {
+                var column = category + '_Change';
+                var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                var denominator = database.filter((entry) => isComplete(entry[column])).length;
+                // console.log(numerator);
+                //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
+                var result = denominator === 0 ? 0 : numerator / denominator;
+                addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking", pics[index]);
+
+            })
+        }
+        if (tabName == "stats") {
+            document.getElementById("rightpanel").style.visibility = "hidden";
+            document.getElementById("container").innerHTML = "";
+            var positiveImpactNum = 0;
+            var positiveImpact = database.filter(function (entry) {
+                var positivelyImpacted = false;
+                columns.forEach(function (column) {
+                    positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
+                    positiveImpactNum += entry[column] === "✅" || entry[column] === "1" ? 1 : 0;
+                })
+                return positivelyImpacted
+            })
+            var negativeImpactNum = 0;
+            var negativeImpact = database.filter(function (entry) {
+                var negativelyImpacted = false;
+                columns.forEach(function (column) {
+                    negativelyImpacted = negativelyImpacted || entry[column] === "🔻" || entry[column] === "-1";
+                    negativeImpactNum += entry[column] === "🔻" || entry[column] === "-1" ? 1 : 0;
+                })
+                return negativelyImpacted
+            })
+            var noImpactNum = 0;
+            var noImpact = database.filter(function (entry) {
+                var noImpacted = false;
+                columns.forEach(function (column) {
+                    noImpacted = noImpacted || entry[column] === "Remained Same" || entry[column] === "0";
+                    noImpactNum += entry[column] === "Remained Same" || entry[column] === "0" ? 1 : 0;
+                })
+                return noImpacted
+            })
+            addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats", "happy.jpeg");
+            //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
+            // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
+            // console.log("posImpactNum", positiveImpactNum)
+            // console.log("posImpact", positiveImpact.length);
+            var totalWithPrePost = database.filter(function (entry) {
+                var complete = false;
+                columns.forEach(function (column) {
+                    complete = complete || isComplete(entry[column]);
+                    //entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
+                })
+                return complete
+            })
+            var atLeastOnePos = positiveImpact.length;
+            var atLeastOneNeg = negativeImpact.length;
+            var atLeastOneSame = noImpact.length;
+            var totalComplete = totalWithPrePost.length;
+            addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos / totalComplete), totalComplete, toPercent(atLeastOneSame / totalComplete), toPercent(atLeastOneNeg / totalComplete), "stats", "happy.jpeg");
+            addToContainer("Average number of categories positively impacted per person", (positiveImpactNum / totalComplete).toFixed(2), totalComplete, (noImpactNum / totalComplete).toFixed(2), (negativeImpactNum / totalComplete).toFixed(2), "stats", "happy.jpeg");
+            //    var to_add = box_start + "complete:" + totalComplete + "<br>";
+            //    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
+            //    to_add += "<br>"
+            //    to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
+            //    to_add += box_end
+            //    document.getElementById("container").innerHTML += to_add
+            /*console.log("complete", totalComplete);
+            console.log("show increase in at least one", totalComplete === 0 ? 0 : atLeastOnePos / totalComplete);
+            console.log("average increased categories", totalComplete === 0 ? 0 : positiveImpactNum / totalComplete);*/
+        }
+        if (tabName == "physical") {
+            document.getElementById("rightpanel").style.visibility = "visible";
+            document.getElementById("container").innerHTML = "";
+            function averageAndPercentage(change, pre, post, name, unit, picture) {
+                var complete = database.filter((entry) => isComplete(entry[change]));
+                var total = 0;
+                var count = database.filter(function (entry) {
+                    total += entry[change] === "✅" || entry[change] === "1" ? entry[pre] - entry[post] : 0;
+                    return entry[change] === "✅" || entry[change] === "1"
+                })
+                var same = database.filter(function (entry) {
+                    return entry[change] === "Remained Same" || entry[change] === "0"
+                })
+                var decreased = database.filter(function (entry) {
+                    return entry[change] === "🔻" || entry[change] === "-1"
+                })
+                var box_start = "<label class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)'>"
+                //      to_add = ""
+                //      to_add += box_start + change + "total: " + total + "<br>";
+                //      to_add += change + "complete: " + complete.length + "<br>";
+                //      to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
+                //      to_add += box_end
+                //      document.getElementById("container").innerHTML += to_add
+                name = name.bold();
+                //        document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
+                var front = name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">"
+                var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + name + "'>" + "</center>";
+                var middle = "<div id = 'middle- " + name + "'>" + "</div>";
+                flippingCool(box_start, front, name, middle, back);
+                /*console.log(change, 'total', total);
+                console.log(change, 'complete', complete.length);
+                console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);*/
+            }
+            averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
+            averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
+            //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" actively", "");
+        }
+        evt.currentTarget.className += " actively";
+        //console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
+        //document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
+        //document.getElementById("container").innerHTML += "test";
     }
-    
-    
-    function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
-//       category_name = category_name.bold();
-//       var column = category_name.substring(3, category_name.length - 4) + '_Change';
-      var column = category_name+'_Change';
-	   
-      
-      //var box_inner_start = "<div class = 'boxed-inner'>"
-      //var invisible_check = "<input id = 'hide' type='checkbox'/>"
-      //var box_front_start = "<div class = 'boxed-inner-front'>"
-      //var box_back_start = "<div class = 'boxed-inner-back'>"
-      //var box_end = "</div>"
-      //var label_end = "</label>"
-      if (category_class == "cooking") {
-        var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
-	
-	var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" ;
-        
-        // iterate through years and determine if any are lagging        
-        // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
-        var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'>" //<img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
-        // onmouseover = 'get_cooking_lagged_years(this)';
-	
-	
-	var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
-        
-	/*for (var i = 0; i < lagged_years.length; i++) {
-          poss_exclamation += lagged_years[i] + "<br>"
-        }*/
-        poss_exclamation += "</div>" 
-        
-        // $("img[id='" + column + "']").on('mouseover', get_cooking_lagged_years);
-        //onmouseover = 'get_cooking_lagged_years(this)'
-        
-        // console.log(poss_exclamation);
-        
-        var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
-	
-        var middle= "<div id = 'middle-" + category_name + "'>" + "</div>";
-        // console.log("MEOW");
-        // console.log(middle);
-        flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column)
-//        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
-      }
-      else {
-        var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
-        
-        var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
-        
-        var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" +"</center>";
-        
-        var middle= "<div id = 'middle- " + category_name + "'>" + "</div>";
-        flippingCool(box_start, front, category_name, middle, back);
-//        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
-      }
+    queue()
+        .defer(d3.csv, "atoah.csv")
+        .defer(d3.csv, "mapping.csv")
+        .defer(d3.csv, "atoah_teacher.csv")
+        .await(loaddata);
+    function loaddata(error, atoahstudent, mapping, atoahteacher) {
+        //setTimeout("changedisplays()", 5000);
+        setTimeout("changedisplays()", 1000);
+        database = atoahstudent;
+        original_database = atoahstudent;
+        teacher_database = atoahteacher;
+        studentteachermapping = mapping;
+        selectedCategory = "Hover over a category to see its breakdown."
+        // total_survey_count = 30;
+        get_years(database);
+        get_teachers(studentteachermapping);
+        get_classes(teacher_database);
+        viewfiltereddata();
     }
-    function isComplete(change) {
-      return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
-    }
-    var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
-    var pics = ["home_cooked.jpeg", "greens.jpeg", "grains.jpeg", "fruits.jpeg", "exercise.jpeg", "tubers.jpeg", "beans.jpeg", "herbsspices.jpeg", "vegetarian.jpeg"];
-    var columns = categories.map((category) => category + '_Change');
-    var box_start = "<div class = 'boxed'>"
-    var box_end = "</div>"
-    if (tabName == "cooking") {
-      document.getElementById("rightpanel").style.visibility = "visible";
-      document.getElementById("container").innerHTML = "";
-      categories.forEach(function (category, index) {
-        var column = category + '_Change';
-        var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-        var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-        var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-        var denominator = database.filter((entry) => isComplete(entry[column])).length;
-        // console.log(numerator);
-        //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
-        var result = denominator === 0 ? 0 : numerator / denominator;
-        addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking", pics[index]);
-        
-      })
-    }
-    if (tabName == "stats") {
-      document.getElementById("rightpanel").style.visibility = "hidden";
-      document.getElementById("container").innerHTML = "";
-      var positiveImpactNum = 0;
-      var positiveImpact = database.filter(function (entry) {
-        var positivelyImpacted = false;
-        columns.forEach(function (column) {
-          positivelyImpacted = positivelyImpacted || entry[column] === "✅" || entry[column] === "1";
-          positiveImpactNum += entry[column] === "✅" || entry[column] === "1" ? 1 : 0;
-        })
-        return positivelyImpacted
-      })
-      var negativeImpactNum = 0;
-      var negativeImpact = database.filter(function (entry) {
-        var negativelyImpacted = false;
-        columns.forEach(function (column) {
-          negativelyImpacted = negativelyImpacted || entry[column] === "🔻" || entry[column] === "-1";
-          negativeImpactNum += entry[column] === "🔻" || entry[column] === "-1" ? 1 : 0;
-        })
-        return negativelyImpacted
-      })
-      var noImpactNum = 0;
-      var noImpact = database.filter(function (entry) {
-        var noImpacted = false;
-        columns.forEach(function (column) {
-          noImpacted = noImpacted || entry[column] === "Remained Same" || entry[column] === "0";
-          noImpactNum += entry[column] === "Remained Same" || entry[column] === "0" ? 1 : 0;
-        })
-        return noImpacted
-      })
-      addToContainer("Number of categories positively impacted", positiveImpactNum, database.filter((entry) => entry['Participant ID']).length, noImpactNum, negativeImpactNum, "stats", "happy.jpeg");
-      //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ positiveImpactNum + "<br>" + "posImpact:" + positiveImpact.length + box_end;
-      // document.getElementById("container").innerHTML += "posImpact:"+ positiveImpact.length + box_end;
-      // console.log("posImpactNum", positiveImpactNum)
-      // console.log("posImpact", positiveImpact.length);
-      var totalWithPrePost = database.filter(function (entry) {
-        var complete = false;
-        columns.forEach(function (column) {
-          complete = complete || isComplete(entry[column]);
-          //entry[column] === "✅" || entry[column] === "🔻" || entry[column]=== "Remained Same";
-        })
-        return complete
-      })
-      var atLeastOnePos = positiveImpact.length;
-      var atLeastOneNeg = negativeImpact.length;
-      var atLeastOneSame = noImpact.length;
-      var totalComplete = totalWithPrePost.length;
-      addToContainer("Percentage of people that were positively impacted in at least one category", toPercent(atLeastOnePos / totalComplete), totalComplete, toPercent(atLeastOneSame / totalComplete), toPercent(atLeastOneNeg / totalComplete), "stats", "happy.jpeg");
-      addToContainer("Average number of categories positively impacted per person", (positiveImpactNum / totalComplete).toFixed(2), totalComplete, (noImpactNum / totalComplete).toFixed(2), (negativeImpactNum / totalComplete).toFixed(2), "stats", "happy.jpeg");
-      //    var to_add = box_start + "complete:" + totalComplete + "<br>";
-      //    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
-      //    to_add += "<br>"
-      //    to_add += "average increased categories"+ totalComplete === 0? 0: positiveImpactNum/totalComplete;
-      //    to_add += box_end
-      //    document.getElementById("container").innerHTML += to_add
-      /*console.log("complete", totalComplete);
-      console.log("show increase in at least one", totalComplete === 0 ? 0 : atLeastOnePos / totalComplete);
-      console.log("average increased categories", totalComplete === 0 ? 0 : positiveImpactNum / totalComplete);*/
-    }
-    if (tabName == "physical") {
-      document.getElementById("rightpanel").style.visibility = "visible";
-      document.getElementById("container").innerHTML = "";
-      function averageAndPercentage(change, pre, post, name, unit, picture) {
-        var complete = database.filter((entry) => isComplete(entry[change]));
-        var total = 0;
-        var count = database.filter(function (entry) {
-          total += entry[change] === "✅" || entry[change] === "1" ? entry[pre] - entry[post] : 0;
-          return entry[change] === "✅" || entry[change] === "1"
-        })
-        var same = database.filter(function (entry) {
-          return entry[change] === "Remained Same" || entry[change] === "0"
-        })
-        var decreased = database.filter(function (entry) {
-          return entry[change] === "🔻" || entry[change] === "-1"
-        })
-        var box_start = "<label class = 'boxed' id = '" + name + "' data-completed = " + complete.length + " data-improved = " + count.length + " data-same = " + same.length + " data-decreased = " + decreased.length + " onmouseover='student_results(this)'>"
-        //      to_add = ""
-        //      to_add += box_start + change + "total: " + total + "<br>";
-        //      to_add += change + "complete: " + complete.length + "<br>";
-        //      to_add += change + "percent:" + complete.length === 0? 0: count.length/complete.length;
-        //      to_add += box_end
-        //      document.getElementById("container").innerHTML += to_add
-        name = name.bold();
-//        document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
-        var front = name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">"
-        var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + name + "'>" + " " +  "<input type='button' id='yearfilt' class='highlight-hover " + name + "'>" +"</center>";
-        var middle= "<div id = 'middle- " + name + "'>" + "</div>";
-        flippingCool(box_start, front, name, middle, back);
-        /*console.log(change, 'total', total);
-        console.log(change, 'complete', complete.length);
-        console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);*/
-      }
-      averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
-      averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
-      //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" actively", "");
-    }
-    evt.currentTarget.className += " actively";
-    //console.log('# of participants', database.filter((entry) => entry['Participant ID']).length);
-    //document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
-    //document.getElementById("container").innerHTML += "test";
-  }
-  queue()
-    .defer(d3.csv, "atoah.csv")
-    .defer(d3.csv, "mapping.csv")
-    .defer(d3.csv, "atoah_teacher.csv")
-    .await(loaddata);
-  function loaddata(error, atoahstudent, mapping, atoahteacher) {
-    //setTimeout("changedisplays()", 5000);
-    setTimeout("changedisplays()", 1000); 
-    database = atoahstudent;
-    original_database = atoahstudent;
-    teacher_database = atoahteacher;
-    studentteachermapping = mapping;
-    selectedCategory = "Hover over a category to see its breakdown."
-    // total_survey_count = 30;
-    get_years(database);
-    get_teachers(studentteachermapping);
-    get_classes(teacher_database);
-    viewfiltereddata();
-  }
 </script>
 
 </html>

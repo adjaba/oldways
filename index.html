@@ -627,7 +627,7 @@ div.tooltip {
 	    d3.select("div[id='"+middleID+"']").html("");
     
 	    x_axis = curr_classes;
-	    var classes_data = [["", 0], ["", 0]];
+	    var classes_data = [];
 	    var class_name;
 	    var inter_map_classes;
 	    var inter_students_in_classes;
@@ -667,7 +667,8 @@ div.tooltip {
       		.attr("x", function(d) { return x(d[0]); })
       		.attr("width", 20)
       		.attr("y", function(d) { return y(d[1]); })
-      		.attr("height", function(d) {console.log(150 - y(1.5 * d[1])); return 150 - y(1.5 * d[1]); });
+      		.attr("height", function(d) {console.log(150 - y(1.5 * d[1])); return 150 - y(1.5 * d[1]); })
+	    	.attr("transform", "translate(-40, -40)";
 	    
 	    d3_svg.append("g")
       		.attr("transform", "translate(40, 134)")

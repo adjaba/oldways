@@ -660,7 +660,7 @@ div.tooltip {
     		.enter().append("rect")
       		.attr("class", "bar")
       		.attr("x", function(d) { return d[0]; })
-      		.attr("width", x.bandwidth())
+      		.attr("width", x.rangeBand())
       		.attr("y", function(d) { return d[1]; })
       		.attr("height", function(d) { return height - 1.5 * d[1]; });
 	    

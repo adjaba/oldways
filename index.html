@@ -703,13 +703,13 @@
                     .attr("width", 20)
                     .attr("y", function (d) { return y(d[1]); })
                     .attr("height", function (d) { return 150 - y(d[1]); })
-                    .attr("transform", "translate(50, -14)");
+                    .attr("transform", "translate(50, -11)");
 
                 d3_svg.append("g")
                     .style("font", "12px times")
-                    .attr("transform", "translate(40, 132)")
+                    .attr("transform", "translate(40, 140)")
                     .call(x_axis);
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -9)").call(yaxis);
                 //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
             }
             else if (filter_name == "teacherfilt") {
@@ -763,9 +763,9 @@
                 
                 d3_svg.append("g")
                     .style("font", "12px times")
-                    .attr("transform", "translate(40, 132)")
+                    .attr("transform", "translate(40, 140)")
                     .call(x_axis);
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -9)").call(yaxis);
                 
 
             }
@@ -812,7 +812,7 @@
                     .range([0, 150]);
                 var yaxis = d3.svg.axis().scale(y).orient('left');
 
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -10)").call(yaxis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -9)").call(yaxis);
 
 
                 d3_svg.append("path")
@@ -823,7 +823,7 @@
                     .attr("d", d3.svg.line()
                         .x(function (d) { return x(d[0]) })
                         .y(function (d) { return y(d[1]) })
-                    ).attr("transform", "translate(40, -10)")
+                    ).attr("transform", "translate(40, -9)")
 
             }
 

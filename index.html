@@ -715,7 +715,56 @@
             else if (filter_name == "teacherfilt") {
                 graph = "WOOF";
                 d3.select("div[id='" + middleID + "']").html("");
-                x_axis = curr_teachers;
+                //x_axis = curr_teachers;
+                var data = []
+                for (var i = 0; i < curr_teachers.length; i++) {
+                    var column = category_name + '_Change';
+                    teacher_name = curr_teachers[i]
+                    var inter_map_teachers = studentteachermapping.filter(function (row) { return [each_item].includes(row['Teacher Participant ID'])});
+                    var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
+                    temp_database = database.filter(function (row) { return inter_students_of_teachers.includes(row['Participant ID']) });//temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
+                    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                    var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    /*console.log(numerator);
+                    console.log(denominator);
+                    console.log("next");*/
+                    var result = denominator === 0 ? 0 : numerator / denominator;
+                    data.push(result)
+                }
+                d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
+                var x = d3.scale.linear()
+                    .range([0, 150])
+                    .domain([0,100]);
+                var y = d3.scale.linear()
+                    .domain([0, d3.max(bins, function(d) { return d.length; })])
+                    .range([150, 0]);
+                
+                var histogram = d3.svg.histogram()
+                    .value(function(d) { return de; })   // I need to give the vector of value
+                    .domain(x.domain())  // then the domain of the graphic
+                    .thresholds(x.ticks(20));
+                var bins = histogram(data);
+                
+                var x_axis = d3.svg.axis().scale(x).orient('bottom');
+                var yaxis = d3.svg.axis().scale(y).orient('left');
+                
+                d3_svg.selectAll("rect")
+                        .data(bins)
+                        .enter()
+                        .append("rect")
+                        .attr("x", 1)
+                        .attr("transform", function(d) { return "translate(" + x(d) + "," + y(d.length) + ")"; })
+                        .attr("width", 5})
+                        .attr("height", function(d) { return 150 - y(d.length); })
+                
+                d3_svg.append("g")
+                    .style("font", "12px times")
+                    .attr("transform", "translate(40, 132)")
+                    .call(x_axis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
+                
 
             }
             else if (filter_name == "yearfilt") {

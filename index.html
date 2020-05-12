@@ -702,7 +702,7 @@
                     .attr("x", function (d) { return x(d[0]); })
                     .attr("width", 20)
                     .attr("y", function (d) { return y(d[1]); })
-                    .attr("height", function (d) { console.log(150 - y(1.5 * d[1])); return 150 - y(d[1]); })
+                    .attr("height", function (d) { return 150 - y(d[1]); })
                     .attr("transform", "translate(50, -14)");
 
                 d3_svg.append("g")
@@ -717,6 +717,8 @@
                 d3.select("div[id='" + middleID + "']").html("");
                 //x_axis = curr_teachers;
                 var data = []
+                console.log('teachers');
+                console.log(curr_teachers);
                 for (var i = 0; i < curr_teachers.length; i++) {
                     var column = category_name + '_Change';
                     teacher_name = curr_teachers[i]

@@ -703,13 +703,13 @@
                     .attr("width", 20)
                     .attr("y", function (d) { return y(d[1]); })
                     .attr("height", function (d) { return 150 - y(d[1]); })
-                    .attr("transform", "translate(50, -12)");
+                    .attr("transform", "translate(50, -14)");
 
                 d3_svg.append("g")
                     .style("font", "12px times")
                     .attr("transform", "translate(40, 140)")
                     .call(x_axis);
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -9)").call(yaxis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
                 //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
             }
             else if (filter_name == "teacherfilt") {
@@ -765,7 +765,7 @@
                     .style("font", "12px times")
                     .attr("transform", "translate(40, 140)")
                     .call(x_axis);
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -11)").call(yaxis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
                 
 
             }

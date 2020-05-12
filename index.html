@@ -734,7 +734,7 @@
                     console.log(denominator);
                     console.log("next");*/
                     var result = denominator === 0 ? 0 : numerator / denominator;
-                    data.push(result)
+                    data.push(result*100)
                 }
                 console.log(data);
                 d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");

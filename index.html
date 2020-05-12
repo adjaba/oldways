@@ -741,11 +741,14 @@
                     .domain([0, d3.max(bins, function(d) { return d.length; })])
                     .range([150, 0]);
                 
+                console.log(data);
                 var histogram = d3.svg.histogram()
                     .value(function(d) { return de; })   // I need to give the vector of value
                     .domain(x.domain())  // then the domain of the graphic
                     .thresholds(x.ticks(20));
                 var bins = histogram(data);
+                console.log(bins);
+                
                 
                 var x_axis = d3.svg.axis().scale(x).orient('bottom');
                 var yaxis = d3.svg.axis().scale(y).orient('left');

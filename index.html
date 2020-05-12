@@ -741,7 +741,7 @@
                 var x = d3.scale.linear()
                     .range([0, 150])
                     .domain([0,100]);
-                var histogram = d3.histogram()
+                var histogram = d3.layout.histogram()
                     .value(function(d) { return d; })   // I need to give the vector of value
                     .domain(x.domain())  // then the domain of the graphic
                     .thresholds(x.ticks(20));

@@ -745,7 +745,7 @@
                     .bins(x.ticks(20))
                     (data);
                 var y = d3.scale.linear()
-                    .domain([0, d3.max(bins, function(d) { return d.length; })])
+                    .domain([0, d3.max(histogram, function(d) { return d.length; })])
                     .range([150, 0]);
                      
                 

@@ -812,7 +812,7 @@
                     .range([0, 150]);
                 var yaxis = d3.svg.axis().scale(y).orient('left');
 
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -20)").call(yaxis);
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -25)").call(yaxis);
 
 
                 d3_svg.append("path")
@@ -823,7 +823,7 @@
                     .attr("d", d3.svg.line()
                         .x(function (d) { return x(d[0]) })
                         .y(function (d) { return y(d[1]) })
-                    ).attr("transform", "translate(40, -20)")
+                    ).attr("transform", "translate(40, -25)")
 
             }
 

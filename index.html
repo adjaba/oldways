@@ -7,7 +7,6 @@
         color: #654321;
         text-align: center;
     }
-
     /* Fixed sidenav, full height */
     .sidenav {
         height: 100%;
@@ -20,7 +19,6 @@
         overflow-x: hidden;
         padding-top: 20px;
     }
-
     /* Style the sidenav links and the dropdown button */
     .sidenav a {
         padding: 6px 8px 6px 16px;
@@ -31,25 +29,21 @@
         cursor: pointer;
         outline: none;
     }
-
     /* On mouse-over */
     .active,
     .accordion:hover {
         color: #FFF2EB;
     }
-
     .accordion:after {
         color: #818181;
         content: ""attr(id) " \25B8";
         font-size: 20px;
     }
-
     .active:after {
         content: ""attr(id) "  \25BE";
         color: #FFF2EB;
         font-size: 20px;
     }
-
     .accordion {
         padding: 6px 8px 6px 16px;
         text-decoration: none;
@@ -65,7 +59,6 @@
         font-family: Optima;
         transition: 0.4s;
     }
-
     .boxed {
         /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
         float: left;
@@ -81,7 +74,6 @@
         transform-style: preserve-3d;
         cursor: pointer;
     }
-
     .boxed-inner {
         position: relative;
         height: 100%;
@@ -96,7 +88,6 @@
         border: 2px solid;
         border-color: #654321;
     }
-
     .boxed-inner div {
         position: absolute;
         height: 100%;
@@ -109,23 +100,19 @@
         background-color: transparent;
         transform-style: preserve-3d
     }
-
     .boxed-inner .boxed-inner-back {
         -webkit-transform: rotateY(180deg);
         transform: rotateY(180deg);
     }
-
     .boxed:hover .boxed-inner {
         -webkit-transform: rotateY(20deg);
         transform: rotateY(20deg);
         box-shadow: 0 20px 20px rgba(50, 50, 50, .2);
     }
-
     #hide:checked+.boxed-inner {
         transform: rotateY(180deg);
         -webkit-transform: rotateY(180deg);
     }
-
     /*.boxed:hover #hide:checked+.boxed-inner {
     transform: rotateY(160deg);
     -webkit-transform: rotateY(160deg);
@@ -134,7 +121,6 @@
     #hide {
         display: none;
     }
-
     .panel {
         padding: 0 18px;
         display: none;
@@ -144,14 +130,12 @@
         color: #FCFCFC;
         overflow: hidden;
     }
-
     #heading {
         color: #FFF2EB;
         text-align: center;
         font-family: Optima;
         font-size: 25px;
     }
-
     /* Main content */
     .main {
         margin-left: 200px;
@@ -160,7 +144,6 @@
         /* Increased text to enable scrolling */
         padding: 0px 10px;
     }
-
     .card {
         transition: 0.3s;
         float: left;
@@ -169,15 +152,12 @@
         border-radius: 5px;
         background-color: #FCFCFC;
     }
-
     img {
         border-radius: 5px 5px 0 0;
     }
-
     .help {
         margin: 12px;
     }
-
     .container {
         padding: 20px 0px;
         display: flex;
@@ -186,34 +166,28 @@
         font-family: Optima;
         color: #362311;
     }
-
     .jumping-dots span {
         position: relative;
         bottom: 0px;
         -webkit-animation: jump 1500ms infinite;
         animation: jump 2s infinite;
     }
-
     .jumping-dots .dot-1 {
         -webkit-animation-delay: 200ms;
         animation-delay: 200ms;
     }
-
     .jumping-dots .dot-2 {
         -webkit-animation-delay: 400ms;
         animation-delay: 400ms;
     }
-
     .jumping-dots .dot-3 {
         -webkit-animation-delay: 600ms;
         animation-delay: 600ms;
     }
-
     /* Common styles and resets */
     .highlight {
         background: brown;
     }
-
     .highlight-hover {
         height: 15px;
         border-radius: 50%;
@@ -221,46 +195,37 @@
         outline: none;
         cursor: pointer;
     }
-
     .highlight-hover:hover {
         background-color: brown;
     }
-
     @-webkit-keyframes jump {
         0% {
             bottom: 0px;
         }
-
         20% {
             bottom: 30px;
         }
-
         40% {
             bottom: 0px;
         }
     }
-
     @keyframes jump {
         0% {
             bottom: 0px;
         }
-
         20% {
             bottom: 30px;
         }
-
         40% {
             bottom: 0px;
         }
     }
-
     .tab {
         overflow: hidden;
         border: 1px solid #FFF2EB;
         border-radius: 5px;
         background-color: #654321;
     }
-
     /* Style the buttons inside the tab */
     .tab button {
         background-color: inherit;
@@ -274,17 +239,14 @@
         color: #FFFFFF;
         font-family: Optima;
     }
-
     /* Change background color of buttons on hover */
     .tab button:hover {
         background-color: #4f3419;
     }
-
     /* Create an active/current tablink class */
     .tab button.actively {
         background-color: #362311;
     }
-
     .rightpanel {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
@@ -298,7 +260,6 @@
         font-family: Optima;
         visibility: hidden;
     }
-
     .submitbutton {
         border-radius: 5px;
         background-color: #fffbed;
@@ -312,7 +273,6 @@
         font-family: Optima;
         cursor: pointer;
     }
-
     div.tooltip {
         position: absolute;
         text-align: center;
@@ -325,7 +285,6 @@
         border-radius: 8px;
         pointer-events: none;
     }
-
     .check {
         position: relative;
         display: inline-block;
@@ -336,7 +295,6 @@
         color: #000;
         text-decoration: none;
     }
-
     .check:after {
         content: attr(data-tooltip);
         position: absolute;
@@ -353,7 +311,6 @@
         transition: opacity .3s ease-in-out;
         will-change: opacity;
     }
-
     .check:hover:after {
         opacity: 1;
         pointer-events: auto;
@@ -450,7 +407,6 @@
             }
         });
     }
-
     /*function clear_point(obj) {
       console.log("HERE");
       var column = obj.id;
@@ -490,7 +446,6 @@
             /*console.log("cat " + column);
             console.log("percent " + percent);
             console.log("desired " + desired_percent + "\n");*/
-
             if (percent < desired_percent) {
                 if (percent < worst_percent) {
                     worst_year = cur_year;
@@ -501,10 +456,7 @@
         lagged.push(worst_year);
         lagged.push(worst_percent);
         //document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
-
         return lagged
-
-
     }
     function viewfiltereddata() {
         document.getElementById("container").innerHTML = "Please click on a tab above to view survey results. Filter by class, teacher and year on the left if you would like to see more specific results. To view our project github page, please view our README at" + "<a href='https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/README.md'>" + "Oldways Github" + "</a>";
@@ -597,7 +549,6 @@
         legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ed2d2d'></svg> = % of students who showed decrease"
         legend += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#b3b3b3'></svg> = % of students who did not complete survey</div>"
         document.getElementById("rightpanel").innerHTML += help_start + legend;
-
         //    document.getElementById("rightpanel").innerHTML += "<div class='help' style = 'font-size: 15px'> <br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:black'></svg> = 1% of the surveyed population"
         //    document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#0bb839'></svg> = % of students who showed improvement"
         //    document.getElementById("rightpanel").innerHTML += "<br> <svg width='20' height='16' id='help'><circle cx='8' cy='8' r='8' style='fill:#ebeb31'></svg> = % of students who showed no change"
@@ -650,7 +601,6 @@
         }
         function createGraphs(filter_name, category_name) {
             // console.log(filter_name, category_name);
-
             //     category_name = category_name.slice(4,-4);
             var middleID = "middle-" + category_name;
             var graph;
@@ -660,7 +610,6 @@
             if (filter_name == "classfilt") {
                 graph = "MEOW";
                 d3.select("div[id='" + middleID + "']").html("");
-
                 x_axis = curr_classes;
                 var classes_data = [];
                 var class_name;
@@ -686,7 +635,6 @@
                 }
                 //console.log(classes_data);
                 d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
-
                 var x = d3.scale.ordinal()
                     .range([0, 150])
                     .domain(classes_data.map(function (d) { return d[0]; }));
@@ -704,10 +652,9 @@
                     .attr("y", function (d) { return y(d[1]); })
                     .attr("height", function (d) { return 150 - y(d[1]); })
                     .attr("transform", "translate(50, -14)");
-
                 d3_svg.append("g")
                     .style("font", "12px times")
-                    .attr("transform", "translate(40, 140)")
+                    .attr("transform", "translate(40, 132)")
                     .call(x_axis);
                 d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
                 //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
@@ -763,11 +710,10 @@
                 
                 d3_svg.append("g")
                     .style("font", "12px times")
-                    .attr("transform", "translate(40, 140)")
+                    .attr("transform", "translate(40, 132)")
                     .call(x_axis);
                 d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
                 
-
             }
             else if (filter_name == "yearfilt") {
                 graph = "HEEHAW";
@@ -780,7 +726,7 @@
                 var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 1).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
                 //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
                 var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 140)").call(x_axis).selectAll("text")  
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis).selectAll("text")  
     .style("text-anchor", "end")
     .attr("dx", "-.8em")
     .attr("dy", ".15em")
@@ -789,7 +735,6 @@
                 d3.selectAll(".tick")
                     .filter(function (d) { return d === 0; })
                     .remove();
-
                 for (var i = 0; i < curr_years.length; i++) {
                     var column = category_name + '_Change';
                     var temp_database;
@@ -802,8 +747,6 @@
                     var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
                     var result = denominator === 0 ? 0 : numerator / denominator;
                     all_objs.push([new Date(year.toString()), result * 100]);
-
-
                 }
                 //console.log(all_objs);
                 //console.log(middleID);
@@ -811,10 +754,7 @@
                     .domain([101, 0])
                     .range([0, 150]);
                 var yaxis = d3.svg.axis().scale(y).orient('left');
-
-                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -9)").call(yaxis);
-
-
+                d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, -12)").call(yaxis);
                 d3_svg.append("path")
                     .datum(all_objs)
                     .attr("fill", "none")
@@ -823,12 +763,8 @@
                     .attr("d", d3.svg.line()
                         .x(function (d) { return x(d[0]) })
                         .y(function (d) { return y(d[1]) })
-                    ).attr("transform", "translate(40, -9)")
-
+                    ).attr("transform", "translate(40, -12)")
             }
-
-
-
             /*x_axis.forEach(function (each_item, index) {
                 var column = category_name + '_Change';
                 var temp_database;
@@ -898,12 +834,8 @@
                 all_objs.push(result);
               });*/
             // console.log(x_axis);
-
-
             // document.getElementById(middleID).innerHTML = graph;
         }
-
-
         function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column) {
             var box_inner_start = "<div class = 'boxed-inner'>";
             var invisible_check = "<input id = 'hide' type='checkbox'/>";
@@ -914,13 +846,11 @@
             document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + poss_exclamation + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
             var lagged = get_cooking_lagged_years(column);
             var d3_exclam = d3.select("div[id = '" + column + "lagged']");
-
             var div = d3.select("div[id = '" + column + "lagged']").append("a")
                 .attr("class", "check")
                 .attr("href", "#")
                 .attr("style", "margin:10px")
                 .attr("data-tooltip", "here");
-
             var imgs = div.append("svg:img")
                 .attr("id", column)
                 .attr("src", "red_exclamation.png")
@@ -929,7 +859,6 @@
                 .on("mouseover", function () {
                     console.log("here");
                 });
-
             // var imgs = d3_exclam.selectAll("image").data([0]);
             // imgs.enter()
             //     .append("svg:img")
@@ -949,7 +878,6 @@
                     .style("opacity", .9);
                 div.html(formatTime(d.date) + "<br/>");
             });
-
             var classes = $('[class^=highlight]').map(function () {
                 return $(this).attr('class');
             });
@@ -984,14 +912,10 @@
                 }
             }
         }
-
-
         function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
             //       category_name = category_name.bold();
             //       var column = category_name.substring(3, category_name.length - 4) + '_Change';
             var column = category_name + '_Change';
-
-
             //var box_inner_start = "<div class = 'boxed-inner'>"
             //var invisible_check = "<input id = 'hide' type='checkbox'/>"
             //var box_front_start = "<div class = 'boxed-inner-front'>"
@@ -1000,29 +924,20 @@
             //var label_end = "</label>"
             if (category_class == "cooking") {
                 var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + " onmouseover='student_results(this)' >"
-
                 var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">";
-
                 // iterate through years and determine if any are lagging        
                 // var lagged_years = get_cooking_lagged_years(category_name); // denominator = completed
                 var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'>" //<img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
                 // onmouseover = 'get_cooking_lagged_years(this)';
-
-
                 var poss_exclamation_no_hover = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br></div>"
-
                 /*for (var i = 0; i < lagged_years.length; i++) {
                       poss_exclamation += lagged_years[i] + "<br>"
                     }*/
                 poss_exclamation += "</div>"
-
                 // $("img[id='" + column + "']").on('mouseover', get_cooking_lagged_years);
                 //onmouseover = 'get_cooking_lagged_years(this)'
-
                 // console.log(poss_exclamation);
-
                 var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" + "</center>";
-
                 var middle = "<div id = 'middle-" + category_name + "'>" + "</div>";
                 // console.log("MEOW");
                 // console.log(middle);
@@ -1031,11 +946,8 @@
             }
             else {
                 var box_start = "<label class = 'boxed' id = '" + category_name + "' data-completed = " + denominator + " data-improved = " + improved + " data-same = " + same + " data-decreased = " + decreased + ">"
-
                 var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
-
                 var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" + "</center>";
-
                 var middle = "<div id = 'middle- " + category_name + "'>" + "</div>";
                 flippingCool(box_start, front, category_name, middle, back);
                 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
@@ -1062,7 +974,6 @@
                 //numerator + database.filter((entry) => entry[column] === "🔻").length + database.filter((entry) => entry[column] === 'Remained Same').length;
                 var result = denominator === 0 ? 0 : numerator / denominator;
                 addToContainer(category, toPercent(result), denominator, numerator, same, decreased, "cooking", pics[index]);
-
             })
         }
         if (tabName == "stats") {

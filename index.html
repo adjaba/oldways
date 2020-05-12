@@ -756,7 +756,7 @@
                         .append("rect")
                         .attr("x", 1)
                         .attr("transform", function(d) { return "translate(" + x(d) + "," + y(d.length) + ")"; })
-                        .attr("width", 5})
+                        .attr("width", 5)
                         .attr("height", function(d) { return 150 - y(d.length); })
                 
                 d3_svg.append("g")

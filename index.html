@@ -684,7 +684,7 @@
                     var result = denominator === 0 ? 0 : numerator / denominator;
                     classes_data.push([class_name, result * 100])
                 }
-                console.log(classes_data);
+                //console.log(classes_data);
                 d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
 
                 var x = d3.scale.ordinal()
@@ -743,7 +743,7 @@
                 
                 console.log(data);
                 var histogram = d3.svg.histogram()
-                    .value(function(d) { return de; })   // I need to give the vector of value
+                    .value(function(d) { return d; })   // I need to give the vector of value
                     .domain(x.domain())  // then the domain of the graphic
                     .thresholds(x.ticks(20));
                 var bins = histogram(data);
@@ -772,12 +772,12 @@
             }
             else if (filter_name == "yearfilt") {
                 graph = "HEEHAW";
-                console.log("here");
+                //console.log("here");
                 x_axis = curr_years;
                 curr_years.sort();
                 d3.select("div[id='" + middleID + "']").html("");
                 d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
-                console.log(curr_years);
+                //console.log(curr_years);
                 var x = d3.time.scale().domain([new Date((d3.min(curr_years) - 1).toString()), new Date((d3.max(curr_years) + 1).toString())]).range([0, 150]);
                 //var x = d3.time.scale().domain([Date.now(), Date.now() + 21 * 60 * 60 * 1000]);
                 var x_axis = d3.svg.axis().scale(x).orient('bottom').ticks(d3.time.years, 1).tickFormat(d3.time.format('%Y')).tickSubdivide(12);
@@ -802,8 +802,8 @@
 
 
                 }
-                console.log(all_objs);
-                console.log(middleID);
+                //console.log(all_objs);
+                //console.log(middleID);
                 var y = d3.scale.linear()
                     .domain([101, 0])
                     .range([0, 150]);

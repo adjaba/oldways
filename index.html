@@ -723,6 +723,8 @@
                     var inter_map_teachers = studentteachermapping.filter(function (row) { return [teacher_name].includes(row['Teacher Participant ID'])});
                     var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
                     temp_database = database.filter(function (row) { return inter_students_of_teachers.includes(row['Participant ID']) });//temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
+                    console.log('temp');
+                    console.log(temp_database);
                     var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
                     var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
                     var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;

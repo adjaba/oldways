@@ -430,6 +430,8 @@
         years = years.map((year) => Number(year));
         console.log("YEARS", years)
         var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length;
+        console.log(original_database);
+        console.log(desired_percent);
         var cur_year;
         var cur_years_info;
         var percent;

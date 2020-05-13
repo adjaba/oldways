@@ -8,7 +8,7 @@ Each member equally contributed to each part of the project. Work was primarily 
  ## Mattie
  * Generating Dummy Data for the purpose of visualization
  * Green, Yellow, Red Dot Student Distribution Summary Panel
- * Warning Sign on categories that need to be observed
+ * Graphs for the backside of the card
  * Communicating with Oldways Organization
 
 
@@ -16,7 +16,7 @@ Each member equally contributed to each part of the project. Work was primarily 
  * Creating cards for each category
  * Generating statistics for Data on front side of the card
  * Flipping effect of individual cards
- * Graphs for the backside of the card
+ * Warning Sign on categories that need to be observed
  
  
 ## Haripriya

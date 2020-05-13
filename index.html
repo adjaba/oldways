@@ -848,7 +848,7 @@
             var box_end = "</div>";
             var label_end = "</label>";
             var lagged = get_cooking_lagged_years(column);
-            var exclam = '<a class="check" href="#" style="margin:10px;top: 0px;right:12px;position: absolute;" data-tooltip="Year with minimum improvement:'+lagged[0]+'('+lagged[1]+')"><img id="'+ category_name + '" src="red_exclamation.png" width="25" height="25"></a>';
+            var exclam = '<a class="check" href="#" style="margin:10px;top: 0px;right:12px;position: absolute;" data-tooltip="Year with minimum improvement:'+lagged[0]+'('+(lagged[1]* 100).toFixed(2) +'%)"><img id="'+ category_name + '" src="red_exclamation.png" width="25" height="25"></a>';
             document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + exclam + back  + middle + box_end + label_end;
             console.log(poss_exclamation_no_hover);
             console.log("COL", column)

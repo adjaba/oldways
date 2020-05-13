@@ -429,10 +429,8 @@
             years.push($(this).val());
         });
         years = years.map((year) => Number(year));
-        console.log("YEARS", years)
         var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length;
         console.log(original_database);
-        console.log("COLUMN", column);
         console.log(desired_percent);
         var cur_year;
         var cur_years_info;
@@ -849,11 +847,11 @@
             var box_back_start = "<div class = 'boxed-inner-back'>";
             var box_end = "</div>";
             var label_end = "</label>";
-            var exclam = '<a class="check" href="#" style="margin:10px;top: 0px;right:12px;position: absolute;" data-tooltip="here"><img id="'+ category_name + '" src="red_exclamation.png" width="25" height="25"></a>';
+            var lagged = get_cooking_lagged_years(column);
+            var exclam = '<a class="check" href="#" style="margin:10px;top: 0px;right:12px;position: absolute;" data-tooltip="Year with minimum improvement:'+lagged[0]+'('+lagged[1]+')"><img id="'+ category_name + '" src="red_exclamation.png" width="25" height="25"></a>';
             document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + exclam + back  + middle + box_end + label_end;
             console.log(poss_exclamation_no_hover);
             console.log("COL", column)
-            var lagged = get_cooking_lagged_years(column);
             var d3_exclam = d3.select("div[id = '" + column + "lagged']");
             // var div = d3.select("div[id = '" + column + "lagged']").append("a")
             // var div = d3.select("div[class = boxed-inner-back]").append("a")

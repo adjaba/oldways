@@ -418,7 +418,8 @@
     }*/
     function get_cooking_lagged_years(obj) {
         // clear_point(obj);
-        var column = obj.id;
+        // var column = obj.id;
+        var column = obj;
         function isComplete(change) {
             return ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(change) >= 0
         }

@@ -843,13 +843,14 @@
             var box_back_start = "<div class = 'boxed-inner-back'>";
             var box_end = "</div>";
             var label_end = "</label>";
-            document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + poss_exclamation + back + middle + box_end + label_end;
+            document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + back + middle + box_end + label_end;
             var lagged = get_cooking_lagged_years(column);
             var d3_exclam = d3.select("div[id = '" + column + "lagged']");
-            var div = d3.select("div[id = '" + column + "lagged']").append("a")
+            // var div = d3.select("div[id = '" + column + "lagged']").append("a")
+            var div = d3.select("div[id = boxed-inner-back]").append("a")
                 .attr("class", "check")
                 .attr("href", "#")
-                .attr("style", "margin:10px")
+                .attr("style", "margin:10px; top:-5px; right:12px")
                 .attr("data-tooltip", "here");
             var imgs = div.append("svg:img")
                 .attr("id", column)

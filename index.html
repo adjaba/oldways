@@ -843,8 +843,8 @@
             var box_back_start = "<div class = 'boxed-inner-back'>";
             var box_end = "</div>";
             var label_end = "</label>";
-            var exclam = '<a class="check" href="#" style="margin:10px; top:-5px; right:12px" data-tooltip="here"><img id="'+ category_name + ' src="red_exclamation.png" width="25" height="25"></a>';
-            document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + back + exclam + middle + box_end + label_end;
+            var exclam = '<a class="check" href="#" style="margin:10px; top:-5px; right:12px" data-tooltip="here"><img id="'+ category_name + '" src="red_exclamation.png" width="25" height="25"></a>';
+            document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + front + box_end + box_back_start + category_name + exclam + back  + middle + box_end + label_end;
             var lagged = get_cooking_lagged_years(column);
             var d3_exclam = d3.select("div[id = '" + column + "lagged']");
             // var div = d3.select("div[id = '" + column + "lagged']").append("a")

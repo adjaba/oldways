@@ -7,7 +7,7 @@
  
  Please view paper here: https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/Oldways_Survey_Visualization.pdf
  
- View demo here: https://youtu.be/YCbuSv0I9VU
+ Please view demo here: https://youtu.be/YCbuSv0I9VU
  
 Each member equally contributed to each part of the project. Work was primarily split among group members in the following way:
  

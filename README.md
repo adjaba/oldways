@@ -5,7 +5,7 @@
  
  Please view visualization here: https://github.mit.edu/pages/6894-sp20/FP-Oldways-Data-Visualization/
  
- Please view paper here: https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/Oldways_Survey_Visualization.pdf
+ Please view paper here: https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/final/Oldways_Survey_Visualization.pdf
  
  Please view demo here: https://youtu.be/YCbuSv0I9VU
  

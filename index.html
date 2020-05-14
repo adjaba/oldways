@@ -1097,8 +1097,8 @@
         .defer(d3.csv, "atoah_teacher.csv")
         .await(loaddata);
     function loaddata(error, atoahstudent, mapping, atoahteacher) {
-        //setTimeout("changedisplays()", 5000);
-        setTimeout("changedisplays()", 1000);
+        setTimeout("changedisplays()", 5000);
+        //setTimeout("changedisplays()", 1000);
         database = atoahstudent;
         original_database = atoahstudent;
         teacher_database = atoahteacher;

@@ -25,7 +25,6 @@ Each member equally contributed to each part of the project. Work was primarily 
 * Tabs for Different Categories 
 * Channeling Data to backside of the card and Horizontal Navigation Dots
 
-![Screenshot 1 of Visualization](loadingpage.png =880x702)
 ![Screenshot 2 of Visualization](screen1.png)
 ![Screenshot 3 of Visualization](back.png)
 

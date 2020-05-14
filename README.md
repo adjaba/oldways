@@ -3,6 +3,8 @@
  
  Please view visualization here: https://github.mit.edu/pages/6894-sp20/FP-Oldways-Data-Visualization/
  
+ Please view paper here: https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/Oldways_Survey_Visualization.pdf
+ 
 Each member equally contributed to each part of the project. Work was primarily split among group members in the following way:
  
  ## Mattie

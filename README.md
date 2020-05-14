@@ -1,6 +1,8 @@
  # Oldways Survey Visualization
  Team Members: Mattie Wasiak, Andrea Jaba and Haripriya Mehta
  
+ Abstract: We present Oldways Survey Visualization, a tool that allows the nutrition non-profit organization, Oldways, view the survey results of students who have taken their cooking classes. Our data visualization tool generates summary statistics and graphs using survey data such that Oldways administrators can easily see student performance summaries grouped by class, by teacher, and by year. Additionally, our tool has markers to direct the user's attention to certain noteworthy things in the data, such as a struggling class, as well as including a survey panel that color codes students based on whether or not they have improved in a specific category after taking the class.
+ 
  Please view visualization here: https://github.mit.edu/pages/6894-sp20/FP-Oldways-Data-Visualization/
  
  Please view paper here: https://github.mit.edu/6894-sp20/FP-Oldways-Data-Visualization/blob/master/Oldways_Survey_Visualization.pdf

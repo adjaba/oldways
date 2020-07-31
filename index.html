@@ -1092,9 +1092,9 @@
         //document.getElementById("container").innerHTML += "test";
     }
     queue()
-        .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")
+        .defer(d3.csv, "atoahcsv")
         .defer(d3.csv, "mapping.csv")
-        .defer(d3.csv, "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv")
+        .defer(d3.csv, "atoah_teacher.csv")
         .await(loaddata);
     function loaddata(error, atoahstudent, mapping, atoahteacher) {
         setTimeout("changedisplays()", 5000);

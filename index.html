@@ -635,7 +635,7 @@
                 var inter_students_in_classes;
                 var temp_database;
                 for (var i = 0; i < curr_classes.length; i++) {
-                    var column = category_name + '_Change';
+                    var column = category_name + ' Change';
                     class_name = curr_classes[i]
                     inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
                     inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
@@ -685,7 +685,7 @@
                 console.log('teachers');
                 console.log(curr_teachers);
                 for (var i = 0; i < curr_teachers.length; i++) {
-                    var column = category_name + '_Change';
+                    var column = category_name + ' Change';
                     teacher_name = curr_teachers[i]
                     var inter_map_teachers = studentteachermapping.filter(function (row) { return [teacher_name].includes(row['Teacher Participant ID'])});
                     var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
@@ -754,7 +754,7 @@
                     .filter(function (d) { return d === 0; })
                     .remove();
                 for (var i = 0; i < curr_years.length; i++) {
-                    var column = category_name + '_Change';
+                    var column = category_name + ' Change';
                     var temp_database;
                     var year = curr_years[i];
                     temp_database = database.filter(function (entry) { return [year].includes(new Date(entry['Date Filled Out']).getFullYear()); });
@@ -937,7 +937,7 @@
         function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
             //       category_name = category_name.bold();
             //       var column = category_name.substring(3, category_name.length - 4) + '_Change';
-            var column = category_name + '_Change';
+            var column = category_name + ' Change';
             //var box_inner_start = "<div class = 'boxed-inner'>"
             //var invisible_check = "<input id = 'hide' type='checkbox'/>"
             //var box_front_start = "<div class = 'boxed-inner-front'>"
@@ -980,14 +980,14 @@
         }
         var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
         var pics = ["home_cooked.jpeg", "greens.jpeg", "grains.jpeg", "fruits.jpeg", "exercise.jpeg", "tubers.jpeg", "beans.jpeg", "herbsspices.jpeg", "vegetarian.jpeg"];
-        var columns = categories.map((category) => category + '_Change');
+        var columns = categories.map((category) => category + ' Change');
         var box_start = "<div class = 'boxed'>"
         var box_end = "</div>"
         if (tabName == "cooking") {
             document.getElementById("rightpanel").style.visibility = "visible";
             document.getElementById("container").innerHTML = "";
             categories.forEach(function (category, index) {
-                var column = category + '_Change';
+                var column = category + ' Change';
                 var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
                 var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
                 var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
@@ -1090,8 +1090,8 @@
                 console.log(change, 'complete', complete.length);
                 console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);*/
             }
-            averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
-            averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
+            averageAndPercentage('Weight Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
+            averageAndPercentage('WaistCircumference Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
             //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
         }
         tablinks = document.getElementsByClassName("tablinks");

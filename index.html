@@ -478,23 +478,30 @@
         $("input:checkbox[name=year]:checked").each(function () {
             curr_years.push($(this).val());
         });
+
+        // NOTE: we are assuming students fill out the form the year they took the class
+        // NOTE: assuming studentcsv['teacher'] maps with teachercsv['teacher participant id']
         curr_years = curr_years.map((year) => Number(year));
         database = original_database.filter(function (row) { return curr_years.includes(new Date(row['Date Filled Out']).getFullYear()); });
-        map_teachers = studentteachermapping.filter(function (row) { return curr_teachers.includes(row['Teacher Participant ID']) });
-        map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
-        students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
-        students_in_classes = map_classes.map((row) => row['Student Participant ID']);
-        database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
-        database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
+        database = database.filter(function (row) { return curr_teachers.includes(row['Teacher']); });
+
+        // map_teachers = teacher_database.filter(function (row) { return curr_teachers.includes(row['Participant ID']) });
+        // map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
+        // students_of_teachers = database.map((row) => row['Student Participant ID']);
+        // students_in_classes = map_classes.map((row) => row['Student Participant ID']);
+        // database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
+        // database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
         total_survey_count = database.filter((entry) => entry['Participant ID']).length;
         get_students(database);
     }
     function get_classes(teacher_database) {
-        function onlyUnique(value, index, self) {
-            return self.indexOf(value) === index;
-        }
-        var classes = teacher_database.map((entry) => entry['Class']);
-        classes = classes.filter(onlyUnique);
+        // function onlyUnique(value, index, self) {
+        //     return self.indexOf(value) === index;
+        // }
+        // var classes = teacher_database.map((entry) => entry['Class']);
+        // classes = classes.filter(onlyUnique);
+        // NOTE: hard-coded. 
+        var classes = ["ATOAH"]
         var text_to_add = "";
         for (var i = 0; i < classes.length; i++) {
             text_to_add += "<input type = 'checkbox' name = 'class" + "' value = '" + classes[i] + "' checked>"
@@ -502,11 +509,14 @@
         }
         document.getElementById("class-panel").innerHTML = text_to_add;
     }
-    function get_teachers(studentteachermapping) {
+    function get_teachers(database) {
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
         }
-        var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
+        //NOTE: took from student database
+        // var teachers = teacher_database.map((entry) => entry['Participant ID']);
+        var teachers = database.map((entry) => entry['Teacher']);
+
         teachers = teachers.filter(onlyUnique);
         var text_to_add = "";
         for (var i = 0; i < teachers.length; i++) {
@@ -515,11 +525,11 @@
         }
         document.getElementById("teacher-panel").innerHTML = text_to_add;
     }
-    function get_years(database) {
+    function get_years(teacher_database) {
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
         }
-        var dates = database.map((entry) => new Date(entry['Date Filled Out']));
+        var dates = teacher_database.map((entry) => new Date(entry['Class Date']));
         dates = dates.map((entry) => entry.getFullYear())
         dates = dates.filter(onlyUnique);
         dates = dates.sort().reverse();
@@ -1092,9 +1102,9 @@
         //document.getElementById("container").innerHTML += "test";
     }
     queue()
-        .defer(d3.csv, "atoah.csv")
+        .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")
         .defer(d3.csv, "mapping.csv")
-        .defer(d3.csv, "atoah_teacher.csv")
+        .defer(d3.csv, "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv")
         .await(loaddata);
     function loaddata(error, atoahstudent, mapping, atoahteacher) {
         setTimeout("changedisplays()", 5000);
@@ -1102,11 +1112,12 @@
         database = atoahstudent;
         original_database = atoahstudent;
         teacher_database = atoahteacher;
-        studentteachermapping = mapping;
+        // studentteachermapping = mapping;
         selectedCategory = "Hover over a category to see its breakdown."
         // total_survey_count = 30;
-        get_years(database);
-        get_teachers(studentteachermapping);
+        get_years(teacher_database);
+        // get_teachers(studentteachermapping);
+        get_teachers(teacher_database);
         get_classes(teacher_database);
         viewfiltereddata();
     }

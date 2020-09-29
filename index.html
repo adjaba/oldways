@@ -517,7 +517,6 @@
         //NOTE: took from student database
         // var teachers = teacher_database.map((entry) => entry['Participant ID']);
         var teachers = database.map((entry) => entry['Teacher']);
-        console.log("GOT TEACHERS", teachers)
 
         teachers = teachers.filter(onlyUnique);
         var text_to_add = "";
@@ -544,7 +543,6 @@
         document.getElementById("year-panel").innerHTML = text_to_add;
     }
     function get_students(database) {
-        // console.log("here");
         var text_to_add = '<br> <center> Number of Surveys: ';
         text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
         text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
@@ -633,18 +631,23 @@
                 var class_name;
                 var inter_map_classes;
                 var inter_students_in_classes;
-                var temp_database;
+                // var temp_database;
                 for (var i = 0; i < curr_classes.length; i++) {
                     var column = category_name + ' Change';
                     class_name = curr_classes[i]
-                    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
-                    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
-                    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+                    // inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
+                    // inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
+                    // temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
                     //temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
-                    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-                    var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-                    var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-                    var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    
+                    // var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                    var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length)
+                    // var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    // var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    // var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    var denominator = database.filter((entry) => isComplete(entry[column])).length;
                     /*console.log(numerator);
                     console.log(denominator);
                     console.log("next");*/

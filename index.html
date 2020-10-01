@@ -250,8 +250,7 @@
     .rightpanel {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
-        margin-top: -50px;
-        width: 240px;
+        width: 17%;
         height: auto;
         border-radius: 5px;
         background-color: #fffbed;
@@ -434,6 +433,7 @@
         years = years.map((year) => Number(year));
         var desired_percent = original_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length / original_database.filter((entry) => isComplete(entry[column])).length;
         console.log(original_database);
+        console.log("column", column)
         console.log(desired_percent);
         var cur_year;
         var cur_years_info;
@@ -479,23 +479,30 @@
         $("input:checkbox[name=year]:checked").each(function () {
             curr_years.push($(this).val());
         });
+
+        // NOTE: we are assuming students fill out the form the year they took the class
+        // NOTE: assuming studentcsv['teacher'] maps with teachercsv['teacher participant id']
         curr_years = curr_years.map((year) => Number(year));
         database = original_database.filter(function (row) { return curr_years.includes(new Date(row['Date Filled Out']).getFullYear()); });
-        map_teachers = studentteachermapping.filter(function (row) { return curr_teachers.includes(row['Teacher Participant ID']) });
-        map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
-        students_of_teachers = map_teachers.map((row) => row['Student Participant ID']);
-        students_in_classes = map_classes.map((row) => row['Student Participant ID']);
-        database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
-        database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
+        database = database.filter(function (row) { return curr_teachers.includes(row['Teacher']); });
+
+        // map_teachers = teacher_database.filter(function (row) { return curr_teachers.includes(row['Participant ID']) });
+        // map_classes = studentteachermapping.filter(function (row) { return curr_classes.includes(row['Class']) });
+        // students_of_teachers = database.map((row) => row['Student Participant ID']);
+        // students_in_classes = map_classes.map((row) => row['Student Participant ID']);
+        // database = database.filter(function (row) { return students_of_teachers.includes(row['Participant ID']) });
+        // database = database.filter(function (row) { return students_in_classes.includes(row['Participant ID']) });
         total_survey_count = database.filter((entry) => entry['Participant ID']).length;
         get_students(database);
     }
     function get_classes(teacher_database) {
-        function onlyUnique(value, index, self) {
-            return self.indexOf(value) === index;
-        }
-        var classes = teacher_database.map((entry) => entry['Class']);
-        classes = classes.filter(onlyUnique);
+        // function onlyUnique(value, index, self) {
+        //     return self.indexOf(value) === index;
+        // }
+        // var classes = teacher_database.map((entry) => entry['Class']);
+        // classes = classes.filter(onlyUnique);
+        // NOTE: hard-coded. 
+        var classes = ["ATOAH"]
         var text_to_add = "";
         for (var i = 0; i < classes.length; i++) {
             text_to_add += "<input type = 'checkbox' name = 'class" + "' value = '" + classes[i] + "' checked>"
@@ -503,11 +510,14 @@
         }
         document.getElementById("class-panel").innerHTML = text_to_add;
     }
-    function get_teachers(studentteachermapping) {
+    function get_teachers(database) {
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
         }
-        var teachers = studentteachermapping.map((entry) => entry['Teacher Participant ID']);
+        //NOTE: took from student database
+        // var teachers = teacher_database.map((entry) => entry['Participant ID']);
+        var teachers = database.map((entry) => entry['Teacher']);
+
         teachers = teachers.filter(onlyUnique);
         var text_to_add = "";
         for (var i = 0; i < teachers.length; i++) {
@@ -524,7 +534,7 @@
         dates = dates.map((entry) => entry.getFullYear())
         dates = dates.filter(onlyUnique);
         dates = dates.sort().reverse();
-        // console.log(dates[0]);
+        console.log("GOT DATES", dates[0])
         var text_to_add = "";
         for (var i = 0; i < dates.length; i++) {
             text_to_add += "<input type = 'checkbox' name = 'year" + "' value = '" + dates[i] + "' checked>"
@@ -533,7 +543,6 @@
         document.getElementById("year-panel").innerHTML = text_to_add;
     }
     function get_students(database) {
-        // console.log("here");
         var text_to_add = '<br> <center> Number of Surveys: ';
         text_to_add += "<b>" + total_survey_count + "</b> </center><br>";
         text_to_add += "<center><span id='category'>" + selectedCategory + "<br> </span></center>";
@@ -622,18 +631,23 @@
                 var class_name;
                 var inter_map_classes;
                 var inter_students_in_classes;
-                var temp_database;
+                // var temp_database;
                 for (var i = 0; i < curr_classes.length; i++) {
-                    var column = category_name + '_Change';
+                    var column = category_name + ' Change';
                     class_name = curr_classes[i]
-                    inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
-                    inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
-                    temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
+                    // inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
+                    // inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
+                    // temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
                     //temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
-                    var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-                    var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-                    var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-                    var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    
+                    // var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                    var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+                    // var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
+                    // var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
+                    // var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
+                    var denominator = database.filter((entry) => isComplete(entry[column])).length;
                     /*console.log(numerator);
                     console.log(denominator);
                     console.log("next");*/
@@ -674,7 +688,7 @@
                 console.log('teachers');
                 console.log(curr_teachers);
                 for (var i = 0; i < curr_teachers.length; i++) {
-                    var column = category_name + '_Change';
+                    var column = category_name + ' Change';
                     teacher_name = curr_teachers[i]
                     var inter_map_teachers = studentteachermapping.filter(function (row) { return [teacher_name].includes(row['Teacher Participant ID'])});
                     var inter_students_of_teachers = inter_map_teachers.map((row) => row['Student Participant ID']);
@@ -743,7 +757,7 @@
                     .filter(function (d) { return d === 0; })
                     .remove();
                 for (var i = 0; i < curr_years.length; i++) {
-                    var column = category_name + '_Change';
+                    var column = category_name + ' Change';
                     var temp_database;
                     var year = curr_years[i];
                     temp_database = database.filter(function (entry) { return [year].includes(new Date(entry['Date Filled Out']).getFullYear()); });
@@ -926,7 +940,7 @@
         function addToContainer(category_name, number, denominator, improved, same, decreased, category_class, picture) {
             //       category_name = category_name.bold();
             //       var column = category_name.substring(3, category_name.length - 4) + '_Change';
-            var column = category_name + '_Change';
+            var column = category_name + ' Change';
             //var box_inner_start = "<div class = 'boxed-inner'>"
             //var invisible_check = "<input id = 'hide' type='checkbox'/>"
             //var box_front_start = "<div class = 'boxed-inner-front'>"
@@ -969,14 +983,14 @@
         }
         var categories = ['Home Cooked', 'Greens', 'Whole Grains', 'Fruits', 'Exercise', 'Tubers', 'Beans', 'Herbs & Spices', 'Vegetarian'];
         var pics = ["home_cooked.jpeg", "greens.jpeg", "grains.jpeg", "fruits.jpeg", "exercise.jpeg", "tubers.jpeg", "beans.jpeg", "herbsspices.jpeg", "vegetarian.jpeg"];
-        var columns = categories.map((category) => category + '_Change');
+        var columns = categories.map((category) => category + ' Change');
         var box_start = "<div class = 'boxed'>"
         var box_end = "</div>"
         if (tabName == "cooking") {
             document.getElementById("rightpanel").style.visibility = "visible";
             document.getElementById("container").innerHTML = "";
             categories.forEach(function (category, index) {
-                var column = category + '_Change';
+                var column = category + ' Change';
                 var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
                 var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
                 var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
@@ -1079,8 +1093,8 @@
                 console.log(change, 'complete', complete.length);
                 console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);*/
             }
-            averageAndPercentage('Weight_Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
-            averageAndPercentage('WaistCircumference_Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
+            averageAndPercentage('Weight Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
+            averageAndPercentage('WaistCircumference Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');
             //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
         }
         tablinks = document.getElementsByClassName("tablinks");
@@ -1093,22 +1107,25 @@
         //document.getElementById("container").innerHTML += "test";
     }
     queue()
-        .defer(d3.csv, "atoah.csv")
+        .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")
         .defer(d3.csv, "mapping.csv")
-        .defer(d3.csv, "atoah_teacher.csv")
+        .defer(d3.csv, "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv")
         .await(loaddata);
     function loaddata(error, atoahstudent, mapping, atoahteacher) {
         setTimeout("changedisplays()", 5000);
         //setTimeout("changedisplays()", 1000);
         database = atoahstudent;
-        console.log("STUDENT DATA", database)
+        console.log('database', database)
         original_database = atoahstudent;
         teacher_database = atoahteacher;
-        studentteachermapping = mapping;
+        // studentteachermapping = mapping;
         selectedCategory = "Hover over a category to see its breakdown."
         // total_survey_count = 30;
-        get_years(database);
-        get_teachers(studentteachermapping);
+        // get_years(teacher_database);
+        get_years(original_database);
+        
+        // get_teachers(studentteachermapping);
+        get_teachers(original_database);
         get_classes(teacher_database);
         viewfiltereddata();
     }

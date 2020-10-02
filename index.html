@@ -381,8 +381,8 @@
         </div>
     </div>
 </body>
-<script>
-    var files = require("./files.js");
+<script type = "module">
+    import files from "./files.js";
     console.log("IMPORTED", files)
     function changedisplays() {
         document.getElementById('mainpage').style.display = 'block';

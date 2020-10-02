@@ -1138,7 +1138,7 @@
         queue
             .defer(d3.csv, files[oneClass].student)
             .defer(d3.csv, files[oneClass].teacher)
-            .await((input) => labelData(...input, oneClass));
+            .await((error, studentfile, teacherfile) => labelData(error, studentfile, teacherfile, oneClass));
     })
     // queue()
     //     .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")

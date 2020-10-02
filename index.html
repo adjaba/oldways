@@ -1136,8 +1136,8 @@
     var queue = queue()
     classes.forEach(oneClass => {
         queue
-            .defer(d3.csv, classes[oneClass].student)
-            .defer(d3.csv, classes[oneClass].teacher)
+            .defer(d3.csv, files[oneClass].student)
+            .defer(d3.csv, files[oneClass].teacher)
             .await((input) => labelData(...input, oneClass));
     })
     // queue()

@@ -382,8 +382,28 @@
     </div>
 </body>
 <!-- <script type="text/javascript" src="./files.js"></script> -->
-<script type="text/javascript" src="./files.js">
+<!-- <script type="text/javascript" src="./files.js"> -->
+<script>
     console.log("IMPORTED", files)
+    // const files = [
+    //     {
+    //         name:
+    //         "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv",
+    //         class: "ATOAH",
+    //         type: "student",
+    //     },
+    //     {
+    //         name: "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv",
+    //         class: "ATOAH",
+    //         type: "teacher",
+    //     },
+    // ];
+    const files = {
+        "ATOAH": {
+            "student": "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv",
+            "teacher": "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv",
+        },
+    };
     function changedisplays() {
         document.getElementById('mainpage').style.display = 'block';
         document.getElementById('loader').style.display = 'none';
@@ -1109,11 +1129,35 @@
         //document.getElementById("container").innerHTML += box_start + '# of participants:' + database.filter((entry) => entry['Participant ID']).length + box_end;
         //document.getElementById("container").innerHTML += "test";
     }
-    queue()
-        .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")
-        .defer(d3.csv, "mapping.csv")
-        .defer(d3.csv, "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv")
-        .await(loaddata);
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
+    var classes = Object.keys(files);
+    var queue = queue()
+    classes.forEach(oneClass => {
+        queue
+            .defer(d3.csv, classes[oneClass].student)
+            .defer(d3.csv, classes[oneClass].teacher)
+            .await((input) => labelData(...input, oneClass));
+    })
+    // queue()
+    //     .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")
+    //     // .defer(d3.csv, "mapping.csv")
+    //     .defer(d3.csv, "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv")
+    //     .await()
+    //     .await(loaddata);
+    queue.awaitAll((error) => {
+        setTimeout("changedisplays()", 5000);
+        console.log("FINAL DATABASE", database);
+        console.log("TEACH", teacher_database);
+    })
+    function labelData(error, student, teacher, className) {
+        console.log('labeling')
+        student = student.map((entry) => {return {...entry, class: className}})
+        database = database.concat(student)
+        teacher = teacher.map((entry) => {return {...entry, class: className}})
+        teacher_database = teacher_database.concat(teacher)
+    }
     function loaddata(error, atoahstudent, mapping, atoahteacher) {
         setTimeout("changedisplays()", 5000);
         //setTimeout("changedisplays()", 1000);

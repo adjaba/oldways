@@ -859,7 +859,7 @@
             // console.log(x_axis);
             // document.getElementById(middleID).innerHTML = graph;
         }
-        function flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column) {
+        function flippingCool(box_start, front, category_name, middle, back, column, poss_exclamation, poss_exclamation_no_hover) {
             var box_inner_start = "<div class = 'boxed-inner'>";
             var invisible_check = "<input id = 'hide' type='checkbox'/>";
             var box_front_start = "<div class = 'boxed-inner-front'>";
@@ -969,7 +969,7 @@
                 var middle = "<div id = 'middle-" + category_name + "'>" + "</div>";
                 // console.log("MEOW");
                 // console.log(middle);
-                flippingCool(box_start, front, category_name, middle, back, poss_exclamation, poss_exclamation_no_hover, column)
+                flippingCool(box_start, front, category_name, middle, back, column, poss_exclamation, poss_exclamation_no_hover )
                 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + " improved" + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"150px\" height=\"150px\">" + box_end + box_back_start + "Back" + box_end + label_end;
             }
             else {
@@ -977,7 +977,7 @@
                 var front = category_name.bold() + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>";
                 var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + category_name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + category_name + "'>" + "</center>";
                 var middle = "<div id = 'middle- " + category_name + "'>" + "</div>";
-                flippingCool(box_start, front, category_name, middle, back);
+                flippingCool(box_start, front, category_name, middle, back, column);
                 //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
             }
         }

@@ -1154,6 +1154,7 @@
         // setTimeout("changedisplays()", 5000);
         console.log("FINAL DATABASE", database);
         console.log("TEACH", teacher_database);
+        loaddata(database, teacher_database)
     })
     function labelData(student, teacher, className) {
         console.log('labeling')
@@ -1162,20 +1163,14 @@
         teacher = teacher.map((entry) => {return {...entry, class: className}})
         teacher_database = teacher_database.concat(teacher)
     }
-    function loaddata(error, atoahstudent, mapping, atoahteacher) {
+    function loaddata(studentdb, teacherdb) {
         setTimeout("changedisplays()", 5000);
         //setTimeout("changedisplays()", 1000);
-        database = atoahstudent;
-        console.log('database', database)
-        original_database = atoahstudent;
-        teacher_database = atoahteacher;
-        // studentteachermapping = mapping;
+        database = studentdb;
+        original_database = studentdb;
+        teacher_database = teacherdb;
         selectedCategory = "Hover over a category to see its breakdown."
-        // total_survey_count = 30;
-        // get_years(teacher_database);
         get_years(original_database);
-        
-        // get_teachers(studentteachermapping);
         get_teachers(original_database);
         get_classes(teacher_database);
         viewfiltereddata();

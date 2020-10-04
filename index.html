@@ -1138,7 +1138,8 @@
         queue
             .defer(d3.csv, files[oneClass].student)
             .defer(d3.csv, files[oneClass].teacher)
-            .await((error, studentfile, teacherfile) => labelData(error, studentfile, teacherfile, oneClass));
+            // .defer((error, studentfile, teacherfile) => labelData(error, studentfile, teacherfile, one))
+            // .await((error, studentfile, teacherfile) => labelData(error, studentfile, teacherfile, oneClass));
     })
     // queue()
     //     .defer(d3.csv, "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv")
@@ -1146,12 +1147,15 @@
     //     .defer(d3.csv, "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv")
     //     .await()
     //     .await(loaddata);
-    queue.awaitAll((error) => {
-        setTimeout("changedisplays()", 5000);
+    queue.awaitAll((error, results) => {
+        for (var i =0; i< results.length; i+=2){
+            labelData(results[i], results[i+1], classes[i])
+        }
+        // setTimeout("changedisplays()", 5000);
         console.log("FINAL DATABASE", database);
         console.log("TEACH", teacher_database);
     })
-    function labelData(error, student, teacher, className) {
+    function labelData(student, teacher, className) {
         console.log('labeling')
         student = student.map((entry) => {return {...entry, class: className}})
         database = database.concat(student)

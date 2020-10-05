@@ -451,7 +451,7 @@
         for (var i = 0; i < years.length; i++) {
             cur_year = years[i];
             cur_years_info = original_database.filter(function (row) { return cur_year == (new Date(row['Date Filled Out']).getFullYear()); });
-            
+
             numerator = cur_years_info.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
             denominator = cur_years_info.filter((entry) => isComplete(entry[column])).length;
             percent = numerator / denominator;
@@ -571,6 +571,7 @@
         function isComplete(change) {
             return ["✅", "🔻", "Remained Same", "1", "0", "-1"].indexOf(change) >= 0
         }
+
         // change the color to grey
         reset_results(database);
         var category = obj.id;
@@ -622,31 +623,20 @@
                 var classes_data = [];
                 var class_name;
                 var inter_map_classes;
-                var inter_students_in_classes;
                 // var temp_database;
                 for (var i = 0; i < curr_classes.length; i++) {
                     var column = category_name + ' Change';
                     class_name = curr_classes[i]
-                    // inter_map_classes = studentteachermapping.filter(function (row) { return [class_name].includes(row['Class']) });
-                    // inter_students_in_classes = inter_map_classes.map((row) => row['Student Participant ID']);
-                    // temp_database = database.filter(function (row) { return inter_students_in_classes.includes(row['Participant ID']) });
-                    //temp_database = temp_database.filter(function(entry){ return entry[category_name]});	
-                    
-                    // var numerator = temp_database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
+
                     var numerator = database.filter((entry) => entry[column] === "✅" || entry[column] === "1").length;
-                    // var same = temp_database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
                     var same = database.filter((entry) => entry[column] === "Remained Same" || entry[column] === "0").length;
-                    // var decreased = temp_database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
                     var decreased = database.filter((entry) => entry[column] === "🔻" || entry[column] === "-1").length;
-                    // var denominator = temp_database.filter((entry) => isComplete(entry[column])).length;
                     var denominator = database.filter((entry) => isComplete(entry[column])).length;
-                    /*console.log(numerator);
-                    console.log(denominator);
-                    console.log("next");*/
+
                     var result = denominator === 0 ? 0 : numerator / denominator;
                     classes_data.push([class_name, result * 100])
                 }
-                //console.log(classes_data);
+                
                 d3_svg = d3.select("div[id='" + middleID + "']").append("svg").attr("width", "90%").attr("height", "90%");
                 var x = d3.scale.ordinal()
                     .range([0, 150])
@@ -744,7 +734,6 @@
     .attr("dx", "-.8em")
     .attr("dy", ".15em")
     .attr("transform", "rotate(-65)");
-                //d3_svg.append("g").style("font", "12px times").call(x_axis);
                 d3.selectAll(".tick")
                     .filter(function (d) { return d === 0; })
                     .remove();
@@ -761,8 +750,6 @@
                     var result = denominator === 0 ? 0 : numerator / denominator;
                     all_objs.push([new Date(year.toString()), result * 100]);
                 }
-                //console.log(all_objs);
-                //console.log(middleID);
                 var y = d3.scale.linear()
                     .domain([101, 0])
                     .range([0, 150]);
@@ -1087,9 +1074,6 @@
                 var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + name + "'>" + "</center>";
                 var middle = "<div id = 'middle- " + name + "'>" + "</div>";
                 flippingCool(box_start, front, name, middle, back);
-                /*console.log(change, 'total', total);
-                console.log(change, 'complete', complete.length);
-                console.log(change, 'percent', complete.length === 0 ? 0 : count.length / complete.length);*/
             }
             averageAndPercentage('Weight Change', 'Weight_Pre', 'Weight_Post', 'Weight', ' pounds', 'weight.jpeg');
             averageAndPercentage('WaistCircumference Change', 'WaistCircumference_Pre', 'WaistCircumference_Post', 'Waist Circumference', ' inches', 'waist.jpeg');

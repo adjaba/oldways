@@ -1109,7 +1109,12 @@
                 //      document.getElementById("container").innerHTML += to_add
                 name = name.bold();
                 //        document.getElementById("container").innerHTML += box_start + name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">" + box_end;
-                var front = name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">"
+                var front;
+                if (complete.length > 0){
+                    front = name + "<br>" + "<span style='color: #0bb839;'>" + toPercent(count.length / complete.length) + " improved</span>" + "<br> Average improvement <br>" + (total / complete.length).toFixed(2) + unit + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\">"
+                } else {
+                    front = name + "<br>" + "<span style='color: #0bb839;'>" + "No data recorded";
+                }
                 var back = "<br>" + "<center>" + "<input type='button' id='classfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='teacherfilt' class='highlight-hover " + name + "'>" + " " + "<input type='button' id='yearfilt' class='highlight-hover " + name + "'>" + "</center>";
                 var middle = "<div id = 'middle- " + name + "'>" + "</div>";
                 flippingCool(box_start, front, name, middle, back);

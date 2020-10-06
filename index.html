@@ -514,7 +514,7 @@
         });
 
         percent = percentageImproved(cur_years_info, column);
-        if (percent.isNaN()) {
+        if (isNaN(percent)) {
           continue;
         }
         if (percent < desired_percent) {
@@ -1295,13 +1295,7 @@
           //        document.getElementById("container").innerHTML += box_start + invisible_check + box_inner_start + box_front_start + category_name + "<br>" + "<span style='color: #0bb839;'>" + number + "</span>" + "<br><br>" + "<img src='" + picture + "' width=\"100px\" height=\"100px\" onerror='this.style.display=\"none\"'>" + box_end + box_back_start + "Back" + box_end + label_end;
         }
       }
-      function isCompleteFilter(change) {
-        return (
-          ["✅", "🔻", "Remained Same", "1", "0", "-1", 1, 0, -1].indexOf(
-            change
-          ) >= 0
-        );
-      }
+
       var categories = [
         "Home Cooked",
         "Vegetables",

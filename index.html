@@ -327,19 +327,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
 
-  <body style="background-image:url('scroll_background.png')" margin:"0px">
+  <body style="background-image:url('assets/scroll_background.png')"
+  margin:"0px">
   <div id="loader" style="display: block">
     <h1 style="padding-top: 150px">loading ...</h1>
     <center>
       <span class="jumping-dots">
         <span class="dot-1"
-          ><img src="cherries.png" width="166" height="196"
+          ><img src="assets/cherries.png" width="166" height="196"
         /></span>
         <span class="dot-2"
-          ><img src="grapes.png" width="173" height="285"
+          ><img src="assets/grapes.png" width="173" height="285"
         /></span>
         <span class="dot-3"
-          ><img src="orange.png" width="140" height="120"
+          ><img src="assets/orange.png" width="140" height="120"
         /></span>
       </span>
     </center>
@@ -422,7 +423,7 @@
       console.log("HERE");
       var column = obj.id;
 
-      var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' onmouseout = 'clear_point(this)' width=\"25px\" height=\"25px\"><br>"
+      var poss_exclamation = "<div style = 'text-align:right; right:12px;' id = '" + column + "lagged'><img id = '" + column + "' src='assets/red_exclamation.png' onmouseover = 'get_cooking_lagged_years(this)' onmouseout = 'clear_point(this)' width=\"25px\" height=\"25px\"><br>"
       poss_exclamation += "</div>"
 
       document.getElementById(column + "lagged").innerHTML = poss_exclamation;
@@ -1044,7 +1045,7 @@
           (lagged[1] * 100).toFixed(2) +
           '%)"><img id="' +
           category_name +
-          '" src="red_exclamation.png" width="25" height="25"></a>';
+          '" src="assets/red_exclamation.png" width="25" height="25"></a>';
         document.getElementById("container").innerHTML +=
           box_start +
           invisible_check +
@@ -1069,7 +1070,7 @@
         //     .attr("data-tooltip", "here");
         // var imgs = div.append("svg:img")
         //     .attr("id", column)
-        //     .attr("src", "red_exclamation.png")
+        //     .attr("src", "assets/red_exclamation.png")
         //     .attr("width", "25")
         //     .attr("height", "25")
         //     .on("mouseover", function () {
@@ -1079,7 +1080,7 @@
         // imgs.enter()
         //     .append("svg:img")
         //     .attr("id", column)
-        //     .attr("src", "red_exclamation.png")
+        //     .attr("src", "assets/red_exclamation.png")
         //     .attr("width", "25")
         //     .attr("height", "25")
         //     .on("mouseover", function () {
@@ -1180,14 +1181,14 @@
           var poss_exclamation =
             "<div style = 'text-align:right; right:12px;' id = '" +
             column +
-            "lagged'>"; //<img id = '" + column + "' src='red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
+            "lagged'>"; //<img id = '" + column + "' src='assets/red_exclamation.png' width=\"25px\" height=\"25px\"><br>"
           // onmouseover = 'get_cooking_lagged_years(this)';
           var poss_exclamation_no_hover =
             "<div style = 'text-align:right; right:12px;' id = '" +
             column +
             "lagged'><img id = '" +
             column +
-            '\' src=\'red_exclamation.png\' width="25px" height="25px"><br></div>';
+            '\' src=\'assets/red_exclamation.png\' width="25px" height="25px"><br></div>';
           /*for (var i = 0; i < lagged_years.length; i++) {
                       poss_exclamation += lagged_years[i] + "<br>"
                     }*/
@@ -1290,6 +1291,7 @@
         "herbsspices.jpeg",
         "vegetarian.jpeg",
       ];
+      pics = pics.map((filename) => "assets/" + filename);
       var columns = categories.map((category) => category + " Change");
       var box_start = "<div class = 'boxed'>";
       var box_end = "</div>";
@@ -1377,7 +1379,7 @@
           noImpactNum,
           negativeImpactNum,
           "stats",
-          "happy.jpeg"
+          "assets/happy.jpeg"
         );
         //    document.getElementById("container").innerHTML += box_start + "posImpactNum:"+ ImprovedImpactNum + "<br>" + "posImpact:" + ImprovedImpact.length + box_end;
         // document.getElementById("container").innerHTML += "posImpact:"+ ImprovedImpact.length + box_end;
@@ -1402,7 +1404,7 @@
           toPercent(atLeastOneSame / totalComplete),
           toPercent(atLeastOneNeg / totalComplete),
           "stats",
-          "happy.jpeg"
+          "assets/happy.jpeg"
         );
         addToContainer(
           "Average number of categories Improvedly impacted per person",
@@ -1411,7 +1413,7 @@
           (noImpactNum / totalComplete).toFixed(2),
           (negativeImpactNum / totalComplete).toFixed(2),
           "stats",
-          "happy.jpeg"
+          "assets/happy.jpeg"
         );
         //    var to_add = box_start + "complete:" + totalComplete + "<br>";
         //    to_add += "show increase in at least one"+ totalComplete === 0? 0: atLeastOnePos/totalComplete;
@@ -1510,7 +1512,7 @@
           "Weight_Post",
           "Weight",
           " pounds",
-          "weight.jpeg"
+          "assets/weight.jpeg"
         );
         averageAndPercentage(
           "WaistCircumference Change",
@@ -1518,7 +1520,7 @@
           "WaistCircumference_Post",
           "Waist Circumference",
           " inches",
-          "waist.jpeg"
+          "assets/waist.jpeg"
         );
         //averageAndPercentage('BP Category_Change', 'BP Category_Pre Num', 'BP Category_Post Num', 'BP Category', ' mmHg', 'bpmonitor.jpeg');
       }

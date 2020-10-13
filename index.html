@@ -390,14 +390,6 @@
   </div>
   <script src="files.js"></script>
   <script>
-    console.log(files);
-    // const files = {
-    //   ATOAH: {
-    //     student:
-    //       "ATOAH - Student Data-Marvin Young Data Sample - ACTOAH - Student Data-Marvin Young Data Sample.csv",
-    //     teacher: "ATOAH - Teacher Data-Marvin Youngs' Data (Teacher) .csv",
-    //   },
-    // };
     function changedisplays() {
       document.getElementById("mainpage").style.display = "block";
       document.getElementById("loader").style.display = "none";
@@ -527,8 +519,6 @@
       }
       lagged.push(worst_year);
       lagged.push(worst_percent);
-      console.log(lagged);
-      //document.getElementById(column + "lagged").innerHTML += "<br>" + worst_year;
       return lagged;
     }
     function viewfiltereddata() {
@@ -697,12 +687,7 @@
       var num_decrease = Math.round(
         (obj.getAttribute("data-decreased") / total_survey_count) * 100
       );
-      // console.log(category);
-      // console.log(num_completed);
       var circle_colors = [];
-      // var cur_students = database.filter((entry) => entry['Participant ID']).length;
-      // var num_completed = database.filter((entry) => isCompleteFilter(entry[category])).length;
-      // console.log(num_completed);
       d3.selectAll("#circles circle").each(function (d, i) {
         if (i < num_increase) {
           d3.select(this).style("fill", "#0bb839");
@@ -716,24 +701,17 @@
       });
       document.getElementById("category").innerHTML =
         "<b> Category: </b>" + category + "<br>";
-      /*console.log("changed rightpanel?");
-        console.log(rightpanel);
-        console.log(rightpanel.selectAll("svg"));*/
     }
     function all_statistics(evt, tabName) {
       function toPercent(fraction) {
         return (fraction * 100).toFixed(2) + "%";
       }
       function createGraphs(filter_name, category_name) {
-        // console.log(filter_name, category_name);
-        //     category_name = category_name.slice(4,-4);
         var middleID = "middle-" + category_name;
-        var graph;
         x_axis = [];
         all_objs = [];
         var d3_svg;
         if (filter_name == "classfilt") {
-          graph = "MEOW";
           d3.select("div[id='" + middleID + "']").html("");
           x_axis = curr_classes;
           var classes_data = [];
@@ -798,7 +776,6 @@
             .call(yaxis);
           //d3_svg.append("g").style("font", "12px times").attr("transform", "translate(40, 132)").call(x_axis);
         } else if (filter_name == "teacherfilt") {
-          graph = "WOOF";
           d3.select("div[id='" + middleID + "']").html("");
           //x_axis = curr_teachers;
           var data = [];
@@ -832,9 +809,7 @@
             var denominator = temp_database.filter((entry) =>
               isCompleteFilter(entry[column])
             ).length;
-            /*console.log(numerator);
-                    console.log(denominator);
-                    console.log("next");*/
+
             var result = denominator === 0 ? 0 : numerator / denominator;
             data.push(result * 100);
           }
@@ -886,7 +861,6 @@
             .attr("transform", "translate(40, -12)")
             .call(yaxis);
         } else if (filter_name == "yearfilt") {
-          graph = "HEEHAW";
           //console.log("here");
           x_axis = curr_years;
           curr_years.sort();
@@ -1085,8 +1059,7 @@
           middle +
           box_end +
           label_end;
-        // console.log(poss_exclamation_no_hover);
-        console.log("COL", column);
+
         var d3_exclam = d3.select("div[id = '" + column + "lagged']");
         // var div = d3.select("div[id = '" + column + "lagged']").append("a")
         // var div = d3.select("div[class = boxed-inner-back]").append("a")
@@ -1124,7 +1097,7 @@
         var classes = $("[class^=highlight]").map(function () {
           return $(this).attr("class");
         });
-        // console.log(classes);
+
         var markedbuttons = [];
         // Filter only unique ones
         var uniqueClasses = $.unique(classes);
@@ -1148,9 +1121,7 @@
                 ) {
                   markedbuttons[color].classList.remove("highlight");
                   this.classList.add("highlight");
-                  console.log("className", this.className);
                   newClassName = this.className.slice(16, -10);
-                  console.log(newClassName);
                   cleanName = newClassName.slice(4, -4);
                   var middleID = "middle- " + cleanName;
                   createGraphs(this.id, newClassName);
